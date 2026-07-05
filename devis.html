@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Demande de devis | Coup de Main Provence</title>
-<meta name="description" content="Estimez et demandez votre devis d'aide à domicile (ménage, courses, cuisine) à Cabannes et 20 km autour. 15 € de l'heure après crédit d'impôt." />
+<meta name="description" content="Estimez et demandez votre devis d'aide à domicile (ménage, courses, cuisine) à Cabannes et 20 km autour." />
 <meta name="robots" content="noindex" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,54 +39,77 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased}
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1.12}
   a{color:inherit;text-decoration:none}
-  .wrap{width:min(1080px,92vw);margin-inline:auto}
+  .wrap{width:min(680px,92vw);margin-inline:auto}
 
-  /* top bar */
   header{position:sticky;top:0;z-index:20;background:rgba(251,248,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .top{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
-  .brand{display:flex;align-items:center;gap:.5rem;font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;color:var(--olive-dark)}
-  .brand .l{font-size:1.35rem}
-  .back{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-weight:600;font-size:.92rem;background:none;border:0;cursor:pointer}
+  .brand{display:flex;align-items:center;gap:.5rem;font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;color:var(--olive-dark)}
+  .brand .l{font-size:1.3rem}
+  .back{display:inline-flex;align-items:center;gap:.3rem;color:var(--muted);font-weight:600;font-size:.9rem;background:none;border:0;cursor:pointer}
   .back:hover{color:var(--olive-dark)}
   .progress{height:5px;background:var(--sand-2)}
-  .progress .bar{height:100%;background:var(--terracotta);width:16%;transition:width .35s ease;border-radius:0 3px 3px 0}
+  .progress .bar{height:100%;background:var(--terracotta);width:12%;transition:width .35s ease;border-radius:0 3px 3px 0}
 
-  /* layout */
-  .grid{display:grid;grid-template-columns:1fr 360px;gap:2.4rem;align-items:start;padding:2.6rem 0 4rem}
-  .stepwrap{min-height:60vh}
-  .step{display:none;animation:fade .35s ease}
+  .stepwrap{padding:2.4rem 0 6rem;min-height:60vh}
+  .step{display:none;animation:fade .3s ease}
   .step.active{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
-  .step h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin:.5rem 0 .4rem}
-  .step .sub{color:var(--muted);margin-bottom:1.6rem;font-size:1.02rem}
+  .kicker{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+  .step h2{font-size:clamp(1.55rem,3.2vw,2.1rem);margin:.5rem 0 .4rem}
+  .step .sub{color:var(--muted);margin-bottom:1.5rem;font-size:1rem}
 
-  /* option cards */
-  .opts{display:grid;gap:.8rem;max-width:560px}
-  .opt{display:flex;align-items:center;gap:1rem;background:#fff;border:2px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;cursor:pointer;transition:border .15s,transform .1s,box-shadow .15s;text-align:left;width:100%;font:inherit;color:inherit}
+  .opts{display:grid;gap:.7rem;max-width:560px}
+  .opt{display:flex;align-items:center;gap:.9rem;background:#fff;border:2px solid var(--line);border-radius:14px;padding:1rem 1.1rem;cursor:pointer;transition:border .15s,transform .1s;text-align:left;width:100%;font:inherit;color:inherit}
   .opt:hover{border-color:var(--olive-light);transform:translateY(-1px)}
   .opt.sel{border-color:var(--terracotta);box-shadow:0 12px 30px -18px rgba(201,113,75,.7)}
-  .opt .ic{font-size:1.5rem;flex:none;width:44px;height:44px;border-radius:11px;background:var(--sand);display:grid;place-items:center}
-  .opt .tt{font-weight:600;font-size:1.05rem}
-  .opt .tt small{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:.15rem}
-  .opt .tag{margin-left:auto;background:#eef1e8;color:var(--olive-dark);font-size:.72rem;font-weight:700;padding:.3rem .6rem;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+  .opt .ic{font-size:1.4rem;flex:none;width:42px;height:42px;border-radius:11px;background:var(--sand);display:grid;place-items:center}
+  .opt .tt{font-weight:600;font-size:1.02rem}
+  .opt .tt small{display:block;font-weight:400;color:var(--muted);font-size:.84rem;margin-top:.12rem}
+  .opt .tag{margin-left:auto;background:#eef1e8;color:var(--olive-dark);font-size:.68rem;font-weight:700;padding:.28rem .55rem;border-radius:999px;text-transform:uppercase}
+  .opt .chk{margin-left:auto;width:26px;height:26px;border-radius:8px;border:2px solid var(--line);flex:none;display:grid;place-items:center;color:#fff;font-size:.9rem;font-weight:700}
+  .opt.sel .chk{background:var(--terracotta);border-color:var(--terracotta)}
+  .opt .price-add{margin-left:auto;font-weight:700;color:var(--olive-dark);white-space:nowrap}
 
-  /* chips */
-  .chips{display:flex;flex-wrap:wrap;gap:.7rem;max-width:560px}
-  .chip{background:#fff;border:2px solid var(--line);border-radius:12px;padding:.85rem 1.3rem;cursor:pointer;font-weight:600;font-size:1rem;transition:border .15s,transform .1s;font-family:inherit;color:inherit}
+  .chips{display:flex;flex-wrap:wrap;gap:.6rem;max-width:560px}
+  .chip{background:#fff;border:2px solid var(--line);border-radius:12px;padding:.75rem 1.15rem;cursor:pointer;font-weight:600;font-size:.98rem;transition:border .15s,transform .1s;font-family:inherit;color:inherit}
   .chip:hover{border-color:var(--olive-light);transform:translateY(-1px)}
-  .chip.sel{border-color:var(--terracotta);background:#fff;box-shadow:0 10px 24px -16px rgba(201,113,75,.7)}
+  .chip.sel{border-color:var(--terracotta);box-shadow:0 10px 24px -16px rgba(201,113,75,.7)}
 
-  /* fields */
   .field{margin-bottom:1rem;max-width:520px}
-  .field.small{max-width:280px;display:inline-block;margin-right:1rem}
+  .field.small{max-width:300px}
   label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.35rem}
   input,select,textarea{width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fff;color:var(--ink)}
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--olive)}
   textarea{min-height:90px;resize:vertical}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:520px}
 
-  /* nav buttons */
+  /* calendar */
+  .cal{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.1rem;max-width:520px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem}
+  .cal-head button{background:var(--sand);border:1px solid var(--line);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1rem;color:var(--olive-dark)}
+  .cal-head button:disabled{opacity:.35;cursor:not-allowed}
+  .cal-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem}
+  .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:5px}
+  .cal-dow span{text-align:center;font-size:.7rem;font-weight:700;color:var(--muted)}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+  .cal-cell{aspect-ratio:1;border:1px solid transparent;border-radius:10px;background:var(--cream);cursor:pointer;font:inherit;font-weight:600;color:var(--ink);position:relative;display:flex;align-items:center;justify-content:center;font-size:.9rem;padding:0}
+  .cal-cell.empty{background:transparent;border:none;cursor:default}
+  .cal-cell.past{color:#cdc6b6;cursor:not-allowed;background:transparent}
+  .cal-cell:not(.past):not(.empty):hover{border-color:var(--olive-light)}
+  .cal-cell.sel{background:var(--terracotta);color:#fff}
+  .cal-cell .p5{position:absolute;bottom:1px;left:0;right:0;text-align:center;font-size:.5rem;font-weight:700;color:var(--terracotta);line-height:1}
+  .cal-cell.sel .p5{color:#fff}
+  .planline{margin-top:1rem;font-weight:600;color:var(--olive-dark);max-width:520px}
+  .planline em{font-style:normal;color:var(--muted);font-weight:400}
+
+  .times{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:.5rem;max-width:520px;margin-top:.5rem}
+  .time{background:#fff;border:2px solid var(--line);border-radius:10px;padding:.55rem .3rem;cursor:pointer;font:inherit;font-weight:600;text-align:center;position:relative;font-size:.95rem}
+  .time:hover{border-color:var(--olive-light)}
+  .time.sel{border-color:var(--terracotta);box-shadow:0 8px 18px -12px rgba(201,113,75,.7)}
+  .time small{display:block;font-size:.6rem;color:var(--terracotta);font-weight:700;margin-top:1px}
+
+  .hint{background:#eef1e8;border-radius:12px;padding:.7rem .9rem;font-size:.86rem;color:var(--olive-dark);max-width:520px;margin-bottom:1.2rem;display:flex;gap:.5rem}
+
   .nav{display:flex;gap:.8rem;margin-top:2rem;align-items:center}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;font-size:1rem;padding:.95rem 1.8rem;border-radius:999px;cursor:pointer;border:2px solid transparent;font-family:inherit;transition:transform .12s,background .15s,opacity .15s}
   .btn-primary{background:var(--terracotta);color:#fff;box-shadow:0 14px 30px -14px rgba(201,113,75,.8)}
@@ -96,33 +119,24 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   .btn-ghost:hover{border-color:var(--olive)}
   .btn-wa{background:#25D366;color:#0b3d24}
 
-  /* summary */
-  .summary{position:sticky;top:96px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.6rem;font-size:.95rem}
-  .summary h3{font-size:1.15rem;text-align:center;margin-bottom:1rem}
-  .sline{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;color:var(--muted)}
-  .sline b{color:var(--ink);font-weight:600;text-align:right}
-  .sdiv{border-top:1px solid var(--line);margin:.6rem 0}
-  .srow{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.35rem 0}
-  .srow .old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--terracotta)}
-  .srow .cred{color:var(--olive-dark);font-weight:600}
-  .stotal{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.5rem;padding-top:.7rem;border-top:2px solid var(--line)}
-  .stotal span{font-weight:700}
-  .stotal b{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:var(--olive-dark)}
-  .stotal small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
-  .snote{margin-top:1rem;background:#eef1e8;border-radius:12px;padding:.7rem .9rem;font-size:.82rem;color:var(--olive-dark);display:flex;gap:.5rem}
-  .muted-em{color:var(--muted);font-style:normal}
+  /* recap (only at the end) */
+  .recap{background:var(--olive);color:var(--cream);border-radius:16px;padding:1.4rem 1.5rem;margin-bottom:1.8rem;max-width:520px}
+  .recap h3{color:#fff;text-align:center;margin-bottom:.9rem;font-size:1.15rem}
+  .rl{display:flex;justify-content:space-between;gap:1rem;padding:.32rem 0;font-size:.92rem;color:rgba(251,248,242,.85)}
+  .rl b{color:#fff;text-align:right;font-weight:600}
+  .rdiv{border-top:1px solid rgba(255,255,255,.2);margin:.55rem 0}
+  .rold{text-decoration:line-through;text-decoration-color:var(--terracotta);color:rgba(251,248,242,.65)}
+  .rcred{color:#dfe7d3;font-weight:600}
+  .rtotal{display:flex;justify-content:space-between;align-items:baseline;margin-top:.5rem;padding-top:.7rem;border-top:2px solid rgba(255,255,255,.25)}
+  .rtotal span{font-weight:700}
+  .rtotal b{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--sand)}
+  .rtotal small{display:block;font-weight:400;color:rgba(251,248,242,.6);font-size:.75rem}
+  .rnote{margin-top:.9rem;font-size:.78rem;color:rgba(251,248,242,.7)}
 
-  /* merci */
   #step-merci{text-align:center;max-width:600px;margin:2rem auto}
   #step-merci .big{font-size:3.5rem}
   #step-merci h2{margin:1rem 0}
   .form-status{margin-top:1rem;font-weight:600;min-height:1.4em}
-
-  @media(max-width:860px){
-    .grid{grid-template-columns:1fr;gap:1.4rem;padding:1.6rem 0 6rem}
-    .summary{position:static;order:-1}
-    .stepwrap{min-height:auto}
-  }
 </style>
 </head>
 <body>
@@ -135,178 +149,208 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   <div class="progress"><div class="bar" id="bar"></div></div>
 </header>
 
-<div class="wrap grid">
-  <div class="stepwrap">
+<div class="wrap stepwrap">
 
-    <!-- 1. COMMUNE -->
-    <section class="step active" data-step="commune">
-      <span class="kicker">Étape 1</span>
-      <h2>Où aurait lieu la prestation ?</h2>
-      <p class="sub">Votre commune nous permet de calculer votre estimation, frais de déplacement compris.</p>
-      <div class="field">
-        <label for="commune">Votre commune</label>
-        <select id="commune">
-          <option value="" data-label="" disabled selected>Choisir votre commune…</option>
-          <option value="0">Cabannes</option>
-          <option value="4">Saint-Andiol · 4 km</option>
-          <option value="4">Verquières · 4 km</option>
-          <option value="5">Mollégès · 5 km</option>
-          <option value="6">Noves · 6 km</option>
-          <option value="7">Plan-d'Orgon · 7 km</option>
-          <option value="8">Eyragues · 8 km</option>
-          <option value="9">Châteaurenard · 9 km</option>
-          <option value="10">Orgon · 10 km</option>
-          <option value="10">Rognonas · 10 km</option>
-          <option value="11">Graveson · 11 km</option>
-          <option value="11">Maillane · 11 km</option>
-          <option value="12">Cavaillon · 12 km</option>
-          <option value="12">Eygalières · 12 km</option>
-          <option value="13">Saint-Rémy-de-Provence · 13 km</option>
-          <option value="13">Sénas · 13 km</option>
-          <option value="15">Barbentane · 15 km</option>
-          <option value="16">Mas-Blanc-des-Alpilles · 16 km</option>
-          <option value="17">Tarascon · 17 km</option>
-          <option value="custom">Autre commune (≤ 20 km)…</option>
-        </select>
-      </div>
-      <div class="field small" id="kmField" style="display:none">
-        <label for="km">Distance depuis Cabannes (km)</label>
-        <input id="km" type="number" min="0" max="20" step="1" value="10" />
-      </div>
-    </section>
-
-    <!-- 2. PRESTATION -->
-    <section class="step" data-step="prestation">
-      <span class="kicker">Étape 2</span>
-      <h2>Quelle prestation souhaitez-vous ?</h2>
-      <p class="sub">15 € de l'heure net, après le crédit d'impôt de 50 % déduit tout de suite.</p>
-      <div class="opts" data-key="prestation">
-        <button class="opt" data-value="Ménage & repassage"><span class="ic">🧹</span><span class="tt">Ménage & repassage<small>Entretien courant, sols, sanitaires, linge</small></span></button>
-        <button class="opt" data-value="Courses & commissions"><span class="ic">🛒</span><span class="tt">Courses & commissions<small>Courses, pharmacie, marché, rangement</small></span></button>
-        <button class="opt" data-value="Cuisine à domicile"><span class="ic">🍲</span><span class="tt">Cuisine à domicile<small>Repas du jour, batch cooking, régimes</small></span></button>
-        <button class="opt" data-value="Plusieurs prestations"><span class="ic">✨</span><span class="tt">Plusieurs prestations<small>Un mélange sur mesure, on en parle</small></span></button>
-      </div>
-    </section>
-
-    <!-- 3. FREQUENCE -->
-    <section class="step" data-step="frequence">
-      <span class="kicker">Étape 3</span>
-      <h2>À quelle fréquence ?</h2>
-      <p class="sub">Sans engagement, vous pouvez ajuster ou mettre en pause à tout moment.</p>
-      <div class="opts" data-key="frequence">
-        <button class="opt" data-value="Chaque semaine"><span class="ic">📅</span><span class="tt">Chaque semaine</span><span class="tag">Populaire</span></button>
-        <button class="opt" data-value="Toutes les deux semaines"><span class="ic">🗓️</span><span class="tt">Toutes les deux semaines</span></button>
-        <button class="opt" data-value="Une fois par mois"><span class="ic">📆</span><span class="tt">Une fois par mois</span></button>
-        <button class="opt" data-value="Ponctuel"><span class="ic">⭐</span><span class="tt">Ponctuel, une seule fois</span></button>
-      </div>
-    </section>
-
-    <!-- 4. DUREE -->
-    <section class="step" data-step="duree">
-      <span class="kicker">Étape 4</span>
-      <h2>Combien de temps par passage ?</h2>
-      <p class="sub">Une estimation suffit, on ajustera ensemble selon vos besoins.</p>
-      <div class="chips" data-key="duree">
-        <button class="chip" data-value="2">2h</button>
-        <button class="chip" data-value="2.5">2h30</button>
-        <button class="chip" data-value="3">3h</button>
-        <button class="chip" data-value="3.5">3h30</button>
-        <button class="chip" data-value="4">4h</button>
-        <button class="chip" data-value="5">5h</button>
-        <button class="chip" data-value="6">6h</button>
-      </div>
-    </section>
-
-    <!-- 5. PLANNING -->
-    <section class="step" data-step="planning">
-      <span class="kicker">Étape 5</span>
-      <h2>Quand souhaitez-vous commencer ?</h2>
-      <p class="sub">Indiquez une date idéale et un moment de la journée. Rien n'est figé.</p>
-      <div class="field small">
-        <label for="date">Date souhaitée</label>
-        <input id="date" type="date" />
-      </div>
-      <div style="margin-top:.4rem">
-        <label style="max-width:520px">Moment de la journée</label>
-        <div class="chips" data-key="creneau">
-          <button class="chip" data-value="Le matin">🌅 Le matin</button>
-          <button class="chip" data-value="L'après-midi">☀️ L'après-midi</button>
-          <button class="chip" data-value="Je suis flexible">🕐 Je suis flexible</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. COORDONNEES -->
-    <section class="step" data-step="coordonnees">
-      <span class="kicker">Dernière étape</span>
-      <h2>Vos coordonnées</h2>
-      <p class="sub">Huguette vous rappelle rapidement avec votre devis. Sans engagement.</p>
-      <form id="devisForm">
-        <div class="two">
-          <div class="field" style="max-width:none;margin-bottom:0">
-            <label for="prenom">Prénom</label>
-            <input id="prenom" name="prénom" type="text" placeholder="Marie" required />
-          </div>
-          <div class="field" style="max-width:none;margin-bottom:0">
-            <label for="nom">Nom</label>
-            <input id="nom" name="nom" type="text" placeholder="Durand" required />
-          </div>
-        </div>
-        <div class="field" style="margin-top:1rem">
-          <label for="tel">Téléphone</label>
-          <input id="tel" name="téléphone" type="tel" inputmode="tel" placeholder="06 12 34 56 78" required />
-        </div>
-        <div class="field">
-          <label for="email">Email (facultatif)</label>
-          <input id="email" name="email" type="email" placeholder="marie.durand@email.fr" />
-        </div>
-        <div class="field">
-          <label for="message">Un détail à ajouter ? (facultatif)</label>
-          <textarea id="message" name="message" placeholder="Ex : maison de 90 m², un chat, accès par le portail bleu…"></textarea>
-        </div>
-        <div class="nav">
-          <button type="submit" class="btn btn-primary" id="submitBtn">Envoyer ma demande</button>
-        </div>
-        <p class="form-status" id="formStatus"></p>
-      </form>
-    </section>
-
-    <!-- MERCI -->
-    <section class="step" data-step="merci" id="step-merci">
-      <div class="big">🌿</div>
-      <h2>Merci, c'est bien reçu !</h2>
-      <p class="sub">Huguette vous rappelle très vite avec votre devis, crédit d'impôt déduit. Vous pouvez aussi la joindre tout de suite sur WhatsApp.</p>
-      <a href="https://wa.me/33641946311?text=Bonjour%20Huguette%2C%20je%20viens%20de%20faire%20une%20demande%20de%20devis%20sur%20le%20site." class="btn btn-wa" target="_blank" rel="noopener">💬 Écrire sur WhatsApp</a>
-      <div style="margin-top:1.4rem"><a href="index.html" class="back">‹ Revenir au site</a></div>
-    </section>
-
-    <!-- nav (shared, hidden on merci) -->
-    <div class="nav" id="mainNav">
-      <button class="btn btn-ghost" id="prevBtn" style="display:none">Retour</button>
-      <button class="btn btn-primary" id="nextBtn" disabled>Continuer</button>
+  <!-- 1 COMMUNE -->
+  <section class="step active" data-step="commune">
+    <span class="kicker">Étape 1</span>
+    <h2>Où aurait lieu la prestation ?</h2>
+    <p class="sub">Votre commune sert à estimer les frais de déplacement.</p>
+    <div class="field">
+      <label for="commune">Votre commune</label>
+      <select id="commune">
+        <option value="" disabled selected>Choisir votre commune…</option>
+        <option value="0">Cabannes</option>
+        <option value="4">Saint-Andiol · 4 km</option>
+        <option value="4">Verquières · 4 km</option>
+        <option value="5">Mollégès · 5 km</option>
+        <option value="6">Noves · 6 km</option>
+        <option value="7">Plan-d'Orgon · 7 km</option>
+        <option value="8">Eyragues · 8 km</option>
+        <option value="9">Châteaurenard · 9 km</option>
+        <option value="10">Orgon · 10 km</option>
+        <option value="10">Rognonas · 10 km</option>
+        <option value="11">Graveson · 11 km</option>
+        <option value="11">Maillane · 11 km</option>
+        <option value="12">Cavaillon · 12 km</option>
+        <option value="12">Eygalières · 12 km</option>
+        <option value="13">Saint-Rémy-de-Provence · 13 km</option>
+        <option value="13">Sénas · 13 km</option>
+        <option value="15">Barbentane · 15 km</option>
+        <option value="16">Mas-Blanc-des-Alpilles · 16 km</option>
+        <option value="17">Tarascon · 17 km</option>
+        <option value="custom">Autre commune (≤ 20 km)…</option>
+      </select>
     </div>
+    <div class="field small" id="kmField" style="display:none">
+      <label for="km">Distance depuis Cabannes (km)</label>
+      <input id="km" type="number" min="0" max="20" step="1" value="10" />
+    </div>
+  </section>
+
+  <!-- 2 PRESTATION (multi) -->
+  <section class="step" data-step="prestation">
+    <span class="kicker">Étape 2</span>
+    <h2>Quelles prestations souhaitez-vous ?</h2>
+    <p class="sub">Cochez une ou plusieurs prestations.</p>
+    <div class="opts" data-multi="prestations">
+      <button class="opt" data-value="Ménage"><span class="ic">🧹</span><span class="tt">Ménage<small>Entretien courant, sols, sanitaires, poussières</small></span><span class="chk">✓</span></button>
+      <button class="opt" data-value="Courses & commissions"><span class="ic">🛒</span><span class="tt">Courses & commissions<small>Courses, pharmacie, marché, rangement</small></span><span class="chk">✓</span></button>
+      <button class="opt" data-value="Cuisine à domicile"><span class="ic">🍲</span><span class="tt">Cuisine à domicile<small>Repas du jour, batch cooking, régimes</small></span><span class="chk">✓</span></button>
+    </div>
+  </section>
+
+  <!-- 3 FREQUENCE -->
+  <section class="step" data-step="frequence">
+    <span class="kicker">Étape 3</span>
+    <h2>À quelle fréquence ?</h2>
+    <p class="sub">Sans engagement, ajustable ou en pause à tout moment.</p>
+    <div class="opts" data-key="frequence">
+      <button class="opt" data-value="hebdo"><span class="ic">📅</span><span class="tt">Chaque semaine<small>15 € de l'heure net</small></span><span class="tag">Populaire</span></button>
+      <button class="opt" data-value="2x"><span class="ic">🗓️</span><span class="tt">Deux fois par semaine<small>15 € de l'heure net</small></span></button>
+      <button class="opt" data-value="bimensuel"><span class="ic">📆</span><span class="tt">Toutes les deux semaines<small>15 € de l'heure net</small></span></button>
+      <button class="opt" data-value="ponctuel"><span class="ic">⭐</span><span class="tt">Ponctuel, une seule fois<small>Tarif ponctuel, 17,50 € de l'heure net</small></span></button>
+    </div>
+  </section>
+
+  <!-- 4 DUREE -->
+  <section class="step" data-step="duree">
+    <span class="kicker">Étape 4</span>
+    <h2>Combien de temps par passage ?</h2>
+    <p class="sub">Minimum 2h. Une estimation suffit, on ajustera ensemble.</p>
+    <div class="chips" data-key="duree">
+      <button class="chip" data-value="2">2h</button>
+      <button class="chip" data-value="2.5">2h30</button>
+      <button class="chip" data-value="3">3h</button>
+      <button class="chip" data-value="3.5">3h30</button>
+      <button class="chip" data-value="4">4h</button>
+      <button class="chip" data-value="4.5">4h30</button>
+      <button class="chip" data-value="5">5h</button>
+      <button class="chip" data-value="5.5">5h30</button>
+      <button class="chip" data-value="6">6h</button>
+      <button class="chip" data-value="6.5">6h30</button>
+      <button class="chip" data-value="7">7h</button>
+    </div>
+  </section>
+
+  <!-- 5 OPTIONS -->
+  <section class="step" data-step="options">
+    <span class="kicker">Étape 5</span>
+    <h2>Des besoins en plus ?</h2>
+    <p class="sub">Facultatif. Cochez ce dont vous avez besoin.</p>
+    <div class="opts" data-multi="options">
+      <button class="opt" data-value="repassage" data-add="1"><span class="ic">👕</span><span class="tt">Repassage<small>Le linge repassé et plié</small></span><span class="price-add">+1 €/h</span></button>
+      <button class="opt" data-value="produits" data-add="3"><span class="ic">🧴</span><span class="tt">Produits ménagers fournis<small>L'intervenante apporte le nécessaire</small></span><span class="price-add">+3 €/h</span></button>
+    </div>
+  </section>
+
+  <!-- 6 ANIMAUX -->
+  <section class="step" data-step="animaux">
+    <span class="kicker">Étape 6</span>
+    <h2>Avez-vous des animaux ?</h2>
+    <p class="sub">Cette information nous aide à éviter toute allergie côté intervenante.</p>
+    <div class="opts" data-key="animaux">
+      <button class="opt" data-value="Oui"><span class="ic">🐾</span><span class="tt">Oui</span></button>
+      <button class="opt" data-value="Non"><span class="ic">🚫</span><span class="tt">Non, aucun</span></button>
+    </div>
+  </section>
+
+  <!-- 7 PLANNING (calendar + time) -->
+  <section class="step" data-step="planning">
+    <span class="kicker">Étape 7</span>
+    <h2>Quand souhaitez-vous commencer ?</h2>
+    <p class="sub" id="planSub">Choisissez la date de votre première session.</p>
+    <div class="hint">🗓️ <span>Les dimanches et jours fériés sont majorés de 5 € de l'heure.</span></div>
+    <div class="cal">
+      <div class="cal-head">
+        <button type="button" id="calPrev" aria-label="Mois précédent">‹</button>
+        <span class="cal-title" id="calTitle"></span>
+        <button type="button" id="calNext" aria-label="Mois suivant">›</button>
+      </div>
+      <div class="cal-dow"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+    <p class="planline" id="planLine"><em>Sélectionnez un jour ci-dessus.</em></p>
+    <div style="margin-top:1.4rem">
+      <label style="max-width:520px">Horaire de la session</label>
+      <div class="hint" style="margin:.3rem 0 .6rem">⏰ <span>Créneaux 7h/7h30 et 20h à 22h majorés de 5 € de l'heure.</span></div>
+      <div class="times" id="timeGrid"></div>
+    </div>
+  </section>
+
+  <!-- 8 COORDONNEES (with recap) -->
+  <section class="step" data-step="coordonnees">
+    <span class="kicker">Dernière étape</span>
+    <h2>Votre devis</h2>
+    <p class="sub">Voici le récapitulatif. Laissez vos coordonnées, Huguette vous rappelle.</p>
+    <div class="recap" id="recap"></div>
+    <form id="devisForm">
+      <div class="two">
+        <div class="field" style="max-width:none;margin-bottom:0">
+          <label for="prenom">Prénom</label>
+          <input id="prenom" type="text" placeholder="Marie" required />
+        </div>
+        <div class="field" style="max-width:none;margin-bottom:0">
+          <label for="nom">Nom</label>
+          <input id="nom" type="text" placeholder="Durand" required />
+        </div>
+      </div>
+      <div class="field" style="margin-top:1rem">
+        <label for="tel">Téléphone</label>
+        <input id="tel" type="tel" inputmode="tel" placeholder="06 12 34 56 78" required />
+      </div>
+      <div class="field">
+        <label for="email">Email (facultatif)</label>
+        <input id="email" type="email" placeholder="marie.durand@email.fr" />
+      </div>
+      <div class="field">
+        <label for="message">Un détail à ajouter ? (facultatif)</label>
+        <textarea id="message" placeholder="Ex : maison de 90 m², accès par le portail bleu…"></textarea>
+      </div>
+      <div class="nav"><button type="submit" class="btn btn-primary" id="submitBtn">Envoyer ma demande</button></div>
+      <p class="form-status" id="formStatus"></p>
+    </form>
+  </section>
+
+  <!-- MERCI -->
+  <section class="step" data-step="merci" id="step-merci">
+    <div class="big">🌿</div>
+    <h2>Merci, c'est bien reçu !</h2>
+    <p class="sub">Huguette vous rappelle très vite avec votre devis, crédit d'impôt déduit. Vous pouvez aussi la joindre tout de suite sur WhatsApp.</p>
+    <a href="https://wa.me/33641946311?text=Bonjour%20Huguette%2C%20je%20viens%20de%20faire%20une%20demande%20de%20devis%20sur%20le%20site." class="btn btn-wa" target="_blank" rel="noopener">💬 Écrire sur WhatsApp</a>
+    <div style="margin-top:1.4rem"><a href="index.html" class="back">‹ Revenir au site</a></div>
+  </section>
+
+  <!-- shared nav -->
+  <div class="nav" id="mainNav">
+    <button class="btn btn-ghost" id="prevBtn" style="display:none">Retour</button>
+    <button class="btn btn-primary" id="nextBtn" disabled>Continuer</button>
   </div>
 
-  <!-- SUMMARY -->
-  <aside class="summary" id="summary">
-    <h3>Votre estimation</h3>
-    <div class="sline"><span>Commune</span><b id="s-commune">—</b></div>
-    <div class="sline"><span>Prestation</span><b id="s-prestation">—</b></div>
-    <div class="sline"><span>Fréquence</span><b id="s-frequence">—</b></div>
-    <div class="sline"><span>Durée</span><b id="s-duree">—</b></div>
-    <div class="sdiv"></div>
-    <div class="srow"><span>Prestation <em class="muted-em" id="s-presta-detail"></em></span><b id="s-presta">—</b></div>
-    <div class="srow"><span>Déplacement <em class="muted-em" id="s-depl-detail"></em></span><b id="s-depl">—</b></div>
-    <div class="stotal"><span>Total estimé<small>par passage, crédit d'impôt déduit</small></span><b id="s-total">—</b></div>
-    <div class="snote">🧾 <span>15 € de l'heure net et déplacement inclus dans la prestation, le crédit d'impôt de 50 % est déjà déduit.</span></div>
-  </aside>
 </div>
 
 <script>
-  var TARIF=15, TKM=0.50, FREE=5;
-  var order=['commune','prestation','frequence','duree','planning','coordonnees'];
+  var TKM=0.50, RAYON=5;
+  var order=['commune','prestation','frequence','duree','options','animaux','planning','coordonnees'];
   var idx=0;
-  var state={commune:'',communeLabel:'',km:null,prestation:'',frequence:'',duree:null,durLabel:'',date:'',creneau:''};
+  var state={commune:'',communeLabel:'',km:null,prestations:[],frequence:'',duree:null,durLabel:'',
+             options:[],animaux:'',anchors:[],heure:''};
+
+  var MONTHS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  var WD=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  var HOLIDAYS=new Set(['2026-01-01','2026-04-06','2026-05-01','2026-05-08','2026-05-14','2026-05-25','2026-07-14','2026-08-15','2026-11-01','2026-11-11','2026-12-25','2027-01-01','2027-03-29','2027-05-01','2027-05-06','2027-05-08','2027-05-17','2027-07-14','2027-08-15','2027-11-01','2027-11-11','2027-12-25']);
+  var TIMES=[]; for(var _h=7;_h<=22;_h++){ var _hh=(_h<10?'0':'')+_h; TIMES.push(_hh+':00'); if(_h<22) TIMES.push(_hh+':30'); }
+  var MAJTIMES=new Set(['07:00','07:30','20:00','20:30','21:00','21:30','22:00']);
+
+  var now=new Date();
+  var minDate=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1);
+  var viewYear=now.getFullYear(), viewMonth=now.getMonth();
+
+  function pad(n){return (n<10?'0':'')+n;}
+  function toStr(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+  function parseD(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function frDate(s){var d=parseD(s);return d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear();}
+  function fmtEuro(n){ if(n==null) return '—'; return (Number.isInteger(n)? n : (Math.round(n*100)/100).toFixed(2).replace('.',',')) + ' €'; }
 
   var steps=[].slice.call(document.querySelectorAll('.step'));
   var bar=document.getElementById('bar');
@@ -314,68 +358,56 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   var prevBtn=document.getElementById('prevBtn');
   var mainNav=document.getElementById('mainNav');
 
-  function fmtEuro(n){ if(n==null) return '—'; return (Number.isInteger(n)? n : n.toFixed(2).replace('.',',')) + ' €'; }
-  function frais(){ if(state.km==null) return null; return state.km<=FREE ? 0 : Math.round(state.km*2*TKM*0.5); }
+  /* ---------- pricing ---------- */
+  function baseRate(){ return state.frequence==='ponctuel'?35:30; }
+  function optionsAdd(){ var a=0; if(state.options.indexOf('repassage')>-1)a+=1; if(state.options.indexOf('produits')>-1)a+=3; return a; }
+  function dayMajor(){ return state.anchors.some(function(a){var d=parseD(a);return d.getDay()===0||HOLIDAYS.has(a);}); }
+  function timeMajor(){ return MAJTIMES.has(state.heure); }
+  function majoration(){ return (dayMajor()||timeMajor())?5:0; }
+  function rateGross(){ return baseRate()+optionsAdd()+majoration(); }
+  function prestaGross(){ return state.duree!=null? state.duree*rateGross():null; }
+  function deplGross(){ if(state.km==null) return null; return state.km<=RAYON?0:Math.round(state.km*2*TKM); }
+  function sousTotal(){ var p=prestaGross(); if(p==null) return null; return p+(deplGross()||0); }
 
+  /* ---------- generic steps ---------- */
   function show(name){
     steps.forEach(function(s){ s.classList.toggle('active', s.dataset.step===name); });
-    var isFlow = order.indexOf(name)>-1;
-    mainNav.style.display = (name==='coordonnees'||name==='merci') ? 'none' : 'flex';
-    prevBtn.style.display = (order.indexOf(name)>0) ? 'inline-flex' : 'none';
-    if(isFlow){ bar.style.width = ((order.indexOf(name)+1)/order.length*100)+'%'; }
-    if(name==='merci'){ bar.style.width='100%'; }
+    mainNav.style.display=(name==='coordonnees'||name==='merci')?'none':'flex';
+    prevBtn.style.display=(order.indexOf(name)>0)?'inline-flex':'none';
+    if(order.indexOf(name)>-1) bar.style.width=((order.indexOf(name)+1)/order.length*100)+'%';
+    if(name==='merci') bar.style.width='100%';
+    if(name==='planning') setupPlanning();
+    if(name==='coordonnees') fillRecap();
     validate();
     window.scrollTo({top:0,behavior:'smooth'});
   }
-
   function validate(){
-    var name=order[idx];
-    var ok=false;
-    if(name==='commune') ok = state.commune!=='' && state.km!=null;
-    else if(name==='prestation') ok = !!state.prestation;
-    else if(name==='frequence') ok = !!state.frequence;
-    else if(name==='duree') ok = state.duree!=null;
-    else if(name==='planning') ok = !!state.date && !!state.creneau;
-    nextBtn.disabled = !ok;
-    nextBtn.textContent = (name==='duree'||name==='planning'||name==='frequence') ? 'Continuer' : 'Continuer';
+    var n=order[idx], ok=false;
+    if(n==='commune') ok=state.commune!==''&&state.km!=null;
+    else if(n==='prestation') ok=state.prestations.length>0;
+    else if(n==='frequence') ok=!!state.frequence;
+    else if(n==='duree') ok=state.duree!=null;
+    else if(n==='options') ok=true;
+    else if(n==='animaux') ok=!!state.animaux;
+    else if(n==='planning') ok=state.anchors.length>=(state.frequence==='2x'?2:1)&&!!state.heure;
+    nextBtn.disabled=!ok;
   }
 
-  function updateSummary(){
-    document.getElementById('s-commune').textContent = state.communeLabel || '—';
-    document.getElementById('s-prestation').textContent = state.prestation || '—';
-    document.getElementById('s-frequence').textContent = state.frequence || '—';
-    document.getElementById('s-duree').textContent = state.durLabel || '—';
-    var presta = state.duree!=null ? state.duree*TARIF : null;
-    var depl = frais();
-    document.getElementById('s-presta-detail').textContent = state.duree!=null ? '('+state.durLabel+' × 15 €)' : '';
-    document.getElementById('s-presta').textContent = presta!=null ? fmtEuro(presta) : '—';
-    document.getElementById('s-depl-detail').textContent = state.km!=null ? '('+(state.km*2)+' km A/R)' : '';
-    document.getElementById('s-depl').textContent = depl==null ? '—' : (depl===0 ? 'offert' : fmtEuro(depl));
-    var total = (presta!=null) ? presta + (depl||0) : null;
-    document.getElementById('s-total').textContent = total!=null ? fmtEuro(total) : '—';
-  }
-
-  // Commune select
+  /* commune */
   var communeSel=document.getElementById('commune');
   var kmField=document.getElementById('kmField');
   var kmInput=document.getElementById('km');
   function readCommune(){
     var v=communeSel.value;
-    if(v==='custom'){
-      kmField.style.display='inline-block';
-      state.km=Math.max(0,Math.min(20,Number(kmInput.value)||0));
-      state.commune='custom'; state.communeLabel=state.km+' km de Cabannes';
-    } else if(v!==''){
-      kmField.style.display='none';
-      state.km=Number(v);
-      state.commune=v; state.communeLabel=communeSel.options[communeSel.selectedIndex].text.split(' · ')[0];
-    } else { state.commune=''; state.km=null; }
-    updateSummary(); validate();
+    if(v==='custom'){ kmField.style.display='block'; state.km=Math.max(0,Math.min(20,Number(kmInput.value)||0)); state.commune='custom'; state.communeLabel=state.km+' km de Cabannes'; }
+    else if(v!==''){ kmField.style.display='none'; state.km=Number(v); state.commune=v; state.communeLabel=communeSel.options[communeSel.selectedIndex].text.split(' · ')[0]; }
+    else { state.commune=''; state.km=null; }
+    validate();
   }
   communeSel.addEventListener('change',readCommune);
   kmInput.addEventListener('input',readCommune);
 
-  // Option cards & chips (single select)
+  /* single-select groups */
   document.querySelectorAll('[data-key]').forEach(function(group){
     var key=group.dataset.key;
     group.querySelectorAll('.opt,.chip').forEach(function(el){
@@ -383,29 +415,162 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
         group.querySelectorAll('.opt,.chip').forEach(function(o){o.classList.remove('sel');});
         el.classList.add('sel');
         if(key==='duree'){ state.duree=Number(el.dataset.value); state.durLabel=el.textContent.trim(); }
+        else if(key==='frequence'){ state.frequence=el.dataset.value; state.anchors=[]; }
         else { state[key]=el.dataset.value; }
-        updateSummary(); validate();
+        validate();
       });
     });
   });
 
-  // Date + créneau
-  document.getElementById('date').addEventListener('change',function(e){ state.date=e.target.value; validate(); });
-
-  // Nav
-  nextBtn.addEventListener('click',function(){ if(idx<order.length-1){ idx++; show(order[idx]); } });
-  prevBtn.addEventListener('click',function(){ if(idx>0){ idx--; show(order[idx]); } });
-  document.getElementById('backBtn').addEventListener('click',function(){
-    if(idx>0){ idx--; show(order[idx]); } else { window.location.href='index.html'; }
+  /* multi-select groups */
+  document.querySelectorAll('[data-multi]').forEach(function(group){
+    var key=group.dataset.multi;
+    group.querySelectorAll('.opt').forEach(function(el){
+      el.addEventListener('click',function(){
+        el.classList.toggle('sel');
+        var v=el.dataset.value;
+        var arr=state[key];
+        var i=arr.indexOf(v);
+        if(el.classList.contains('sel')){ if(i<0) arr.push(v); } else { if(i>-1) arr.splice(i,1); }
+        validate();
+      });
+    });
   });
 
-  // Submit
+  /* ---------- planning ---------- */
+  function isSelectedDay(dateObj,ds){
+    if(!state.anchors.length) return false;
+    var f=state.frequence;
+    if(f==='ponctuel') return state.anchors.indexOf(ds)>-1;
+    if(f==='2x'){
+      var wds=state.anchors.map(function(a){return parseD(a).getDay();});
+      var start=state.anchors.map(parseD).sort(function(a,b){return a-b;})[0];
+      return dateObj>=start && wds.indexOf(dateObj.getDay())>-1;
+    }
+    var a=parseD(state.anchors[0]);
+    if(dateObj.getDay()!==a.getDay()||dateObj<a) return false;
+    if(f==='bimensuel'){ var w=Math.round((dateObj-a)/(7*86400000)); return w%2===0; }
+    return true;
+  }
+  function renderCalendar(){
+    document.getElementById('calTitle').textContent=MONTHS[viewMonth]+' '+viewYear;
+    document.getElementById('calPrev').disabled=(viewYear<now.getFullYear())||(viewYear===now.getFullYear()&&viewMonth<=now.getMonth());
+    var grid=document.getElementById('calGrid');
+    var startDay=(new Date(viewYear,viewMonth,1).getDay()+6)%7;
+    var dim=new Date(viewYear,viewMonth+1,0).getDate();
+    var html='';
+    for(var i=0;i<startDay;i++) html+='<div class="cal-cell empty"></div>';
+    for(var d=1;d<=dim;d++){
+      var dObj=new Date(viewYear,viewMonth,d), ds=toStr(dObj);
+      var past=dObj<minDate, maj=(dObj.getDay()===0||HOLIDAYS.has(ds)), sel=isSelectedDay(dObj,ds);
+      var cls='cal-cell'+(past?' past':'')+(sel?' sel':'');
+      html+='<button type="button" class="'+cls+'" data-date="'+ds+'"'+(past?' disabled':'')+'>'+d+((maj&&!past)?'<span class="p5">+5€</span>':'')+'</button>';
+    }
+    grid.innerHTML=html;
+    grid.querySelectorAll('.cal-cell:not(.empty):not(.past)').forEach(function(c){
+      c.addEventListener('click',function(){ pickDay(c.dataset.date); });
+    });
+    updatePlanLine();
+  }
+  function pickDay(ds){
+    if(state.frequence==='2x'){
+      var i=state.anchors.indexOf(ds);
+      if(i>-1){ state.anchors.splice(i,1); }
+      else { var wd=parseD(ds).getDay(); state.anchors=state.anchors.filter(function(a){return parseD(a).getDay()!==wd;}); if(state.anchors.length>=2) state.anchors=[ds]; else state.anchors.push(ds); }
+    } else { state.anchors=[ds]; }
+    renderCalendar(); validate();
+  }
+  function scheduleText(){
+    if(!state.anchors.length) return '—';
+    var f=state.frequence;
+    if(f==='ponctuel') return 'Le '+frDate(state.anchors[0]);
+    if(f==='2x'){
+      var srt=state.anchors.slice().sort();
+      var wd=srt.map(function(a){return WD[parseD(a).getDay()];});
+      return 'Chaque '+wd.join(' et ')+', à partir du '+frDate(srt[0]);
+    }
+    var day=WD[parseD(state.anchors[0]).getDay()];
+    if(f==='bimensuel') return 'Un '+day+' sur deux, à partir du '+frDate(state.anchors[0]);
+    return 'Chaque '+day+', à partir du '+frDate(state.anchors[0]);
+  }
+  function updatePlanLine(){
+    var el=document.getElementById('planLine');
+    if(!state.anchors.length){ el.innerHTML='<em>'+(state.frequence==='2x'?'Sélectionnez deux jours ci-dessus.':'Sélectionnez un jour ci-dessus.')+'</em>'; }
+    else el.textContent=scheduleText();
+  }
+  function renderTimes(){
+    var g=document.getElementById('timeGrid');
+    g.innerHTML=TIMES.map(function(t){
+      return '<button type="button" class="time'+(state.heure===t?' sel':'')+'" data-t="'+t+'">'+t+(MAJTIMES.has(t)?'<small>+5€</small>':'')+'</button>';
+    }).join('');
+    g.querySelectorAll('.time').forEach(function(b){
+      b.addEventListener('click',function(){ state.heure=b.dataset.t; renderTimes(); validate(); });
+    });
+  }
+  function setupPlanning(){
+    document.getElementById('planSub').textContent = state.frequence==='2x'
+      ? 'Choisissez les deux jours de la semaine, ils se répètent chaque semaine.'
+      : (state.frequence==='ponctuel' ? 'Choisissez la date de votre intervention.'
+      : 'Choisissez un jour, il se répète '+(state.frequence==='bimensuel'?'toutes les deux semaines.':'chaque semaine.'));
+    renderCalendar(); renderTimes();
+  }
+  document.getElementById('calPrev').addEventListener('click',function(){
+    if(this.disabled) return; viewMonth--; if(viewMonth<0){viewMonth=11;viewYear--;} renderCalendar();
+  });
+  document.getElementById('calNext').addEventListener('click',function(){
+    viewMonth++; if(viewMonth>11){viewMonth=0;viewYear++;} renderCalendar();
+  });
+
+  /* ---------- recap ---------- */
+  function fillRecap(){
+    var rate=rateGross(), pg=prestaGross(), dp=deplGross(), st=sousTotal(), net=st/2;
+    var optTxt = state.options.length? state.options.map(function(o){return o==='repassage'?'repassage':'produits fournis';}).join(', ') : 'aucune';
+    var html='<h3>Votre estimation</h3>'
+      +row('Commune',state.communeLabel)
+      +row('Prestation(s)',state.prestations.join(', '))
+      +row('Fréquence',freqLabel())
+      +row('Planning',scheduleText())
+      +row('Horaire',state.heure||'—')
+      +row('Durée',state.durLabel)
+      +row('Options',optTxt)
+      +row('Animaux',state.animaux)
+      +'<div class="rdiv"></div>'
+      +row('Prestation <em style="color:rgba(251,248,242,.6);font-style:normal">('+state.durLabel+' × '+rate+' €/h)</em>',fmtEuro(pg))
+      +row('Déplacement'+(state.km!=null?' <em style="color:rgba(251,248,242,.6);font-style:normal">('+(state.km*2)+' km A/R)</em>':''), dp===0?'offert':fmtEuro(dp))
+      +'<div class="rl"><span>Sous-total</span><b class="rold">'+fmtEuro(st)+'</b></div>'
+      +'<div class="rl"><span class="rcred">Crédit d\'impôt 50 %</span><b class="rcred">- '+fmtEuro(st/2)+'</b></div>'
+      +'<div class="rtotal"><span>Total estimé<small>par passage, crédit d\'impôt déduit</small></span><b>'+fmtEuro(net)+'</b></div>';
+    if(majoration()>0) html+='<p class="rnote">Majoration de 5 € de l\'heure incluse (dimanche, jour férié ou créneau tôt/tard).</p>';
+    html+='<p class="rnote">Estimation indicative, ajustable ensemble. Déplacement inclus dans la prestation, également éligible au crédit d\'impôt.</p>';
+    document.getElementById('recap').innerHTML=html;
+  }
+  function row(label,val){ return '<div class="rl"><span>'+label+'</span><b>'+(val||'—')+'</b></div>'; }
+  function freqLabel(){ return {hebdo:'Chaque semaine','2x':'Deux fois par semaine',bimensuel:'Toutes les deux semaines',ponctuel:'Ponctuel'}[state.frequence]||'—'; }
+
+  /* ---------- nav ---------- */
+  nextBtn.addEventListener('click',function(){ if(idx<order.length-1){ idx++; show(order[idx]); } });
+  prevBtn.addEventListener('click',function(){ if(idx>0){ idx--; show(order[idx]); } });
+  document.getElementById('backBtn').addEventListener('click',function(){ if(idx>0){ idx--; show(order[idx]); } else window.location.href='index.html'; });
+
+  /* ---------- submit ---------- */
   var form=document.getElementById('devisForm');
   var statusEl=document.getElementById('formStatus');
   form.addEventListener('submit',async function(e){
     e.preventDefault();
     var submitBtn=document.getElementById('submitBtn');
     submitBtn.disabled=true; statusEl.style.color='var(--muted)'; statusEl.textContent='Envoi en cours…';
+    var st=sousTotal(), net=st/2, dp=deplGross();
+    var recap='Commune: '+state.communeLabel
+      +'\nPrestations: '+state.prestations.join(', ')
+      +'\nFréquence: '+freqLabel()
+      +'\nPlanning: '+scheduleText()
+      +'\nHoraire: '+state.heure
+      +'\nDurée: '+state.durLabel
+      +'\nOptions: '+(state.options.join(', ')||'aucune')
+      +'\nAnimaux: '+state.animaux
+      +'\nTarif horaire brut: '+rateGross()+' €/h'+(majoration()>0?' (majoration +5 incluse)':'')
+      +'\nEstimation: '+fmtEuro(net)+' net par passage (déplacement '+(dp===0?'offert':fmtEuro(dp))+', avant crédit '+fmtEuro(st)+')'
+      +'\n\nMessage: '+document.getElementById('message').value;
     var fd=new FormData();
     fd.append('access_key','ccb01bd2-78c2-464c-a16b-1c4373caf243');
     fd.append('subject','Nouvelle demande de devis (funnel) — Coup de Main Provence');
@@ -414,34 +579,17 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     fd.append('nom',document.getElementById('nom').value);
     fd.append('téléphone',document.getElementById('tel').value);
     fd.append('email',document.getElementById('email').value);
-    var depl=frais();
-    var total=(state.duree!=null)? state.duree*TARIF+(depl||0):null;
-    var recap='Commune: '+state.communeLabel+'\nPrestation: '+state.prestation+'\nFréquence: '+state.frequence
-      +'\nDurée: '+state.durLabel+'\nDate souhaitée: '+state.date+'\nMoment: '+state.creneau
-      +'\nEstimation: '+(total!=null?fmtEuro(total):'—')+' par passage (déplacement '+(depl===0?'offert':fmtEuro(depl))+')'
-      +'\n\nMessage: '+document.getElementById('message').value;
     fd.append('message',recap);
     try{
       var res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
       var json=await res.json();
-      if(json.success){
-        if(typeof fbq==='function') fbq('track','Lead');
-        idx=order.length; show('merci');
-      } else {
-        statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11.";
-        submitBtn.disabled=false;
-      }
-    }catch(err){
-      statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11.";
-      submitBtn.disabled=false;
-    }
+      if(json.success){ if(typeof fbq==='function') fbq('track','Lead'); idx=order.length; show('merci'); }
+      else { statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11."; submitBtn.disabled=false; }
+    }catch(err){ statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11."; submitBtn.disabled=false; }
   });
   document.addEventListener('click',function(e){var a=e.target.closest('a[href*="wa.me"]');if(a&&typeof fbq==='function')fbq('track','Contact');});
 
-  // init
-  var today=new Date(); today.setDate(today.getDate()+1);
-  document.getElementById('date').min=today.toISOString().split('T')[0];
-  updateSummary(); show('commune');
+  show('commune');
 </script>
 </body>
 </html>
