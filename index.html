@@ -79,6 +79,9 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   .hero-trust{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;font-size:.9rem;color:var(--muted)}
   .hero-trust span{display:flex;align-items:center;gap:.45rem}
   .hero-trust b{color:var(--olive-dark)}
+  .hero-visual{position:relative;min-height:540px}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow)}
+  .hero-visual .price-card{position:absolute;left:0;bottom:0;width:min(330px,92%)}
   /* price card */
   .price-card{background:#fff;border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);border:1px solid var(--line);position:relative}
   .price-card .ribbon{position:absolute;top:-14px;right:22px;background:var(--olive);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.05em;padding:.35rem .85rem;border-radius:999px;text-transform:uppercase}
@@ -89,15 +92,17 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   .price-list{list-style:none;margin:1.4rem 0 0;display:grid;gap:.7rem}
   .price-list li{display:flex;gap:.6rem;align-items:flex-start;font-size:.96rem}
   .price-list .chk{color:var(--olive);font-weight:700;flex:none}
-  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:2.5rem}.hero p.lead{max-width:none}}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:2.5rem}.hero p.lead{max-width:none}
+    .hero-visual{min-height:0}.hero-img{position:static;height:260px;width:100%}.hero-visual .price-card{position:static;width:auto;margin-top:1.1rem}}
 
   /* SERVICES */
   .sec-head{text-align:center;max-width:44rem;margin:0 auto 3rem}
   .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin:.6rem 0 .8rem}
   .sec-head p{color:var(--muted);font-size:1.08rem}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:2rem 1.8rem;transition:transform .18s ease,box-shadow .18s ease}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:2rem 1.8rem;transition:transform .18s ease,box-shadow .18s ease;overflow:hidden}
   .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .card>img{display:block;width:calc(100% + 3.6rem);height:200px;object-fit:cover;margin:-2rem -1.8rem 1.5rem}
   .card .ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;background:var(--sand-2);margin-bottom:1.1rem}
   .card h3{font-size:1.35rem;margin-bottom:.5rem;color:var(--olive-dark)}
   .card p{color:var(--muted);font-size:.98rem}
@@ -121,6 +126,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   /* ZONE */
   .zone-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
   .zone-map{background:var(--sand);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden}
+  .zone-map>img{display:block;width:calc(100% + 4rem);height:210px;object-fit:cover;margin:-2rem -2rem 1.5rem}
   .towns{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
   .towns span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.88rem;color:var(--muted)}
   .towns span.hub{background:var(--terracotta);color:#fff;border-color:var(--terracotta);font-weight:600}
@@ -265,7 +271,9 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
         <span>✅ <b>Organisme déclaré</b> SAP</span>
       </div>
     </div>
-    <div class="price-card">
+    <div class="hero-visual">
+      <img class="hero-img" src="img/hero.jpg" alt="Intérieur soigné, aide ménagère à domicile en Provence" />
+      <div class="price-card">
       <span class="ribbon">Avance immédiate</span>
       <div class="price-old">30 € / heure</div>
       <div class="price-now">15 €<small> / heure</small></div>
@@ -277,6 +285,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
         <li><span class="chk">✓</span> Intervenant·e attitré·e, à l'écoute de vos habitudes</li>
       </ul>
       <a href="devis.html" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1.4rem">Réserver mon ménage</a>
+      </div>
     </div>
   </div>
 </section>
@@ -290,7 +299,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     </div>
     <div class="cards">
       <div class="card">
-        <div class="ico">🧹</div>
+        <img src="img/svc-menage.jpg" alt="Ménage et repassage à domicile" />
         <h3>Ménage & repassage</h3>
         <p>Un intérieur net sans y penser, entretenu avec soin et régularité.</p>
         <ul>
@@ -301,7 +310,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
         </ul>
       </div>
       <div class="card">
-        <div class="ico">🛒</div>
+        <img src="img/svc-courses.jpg" alt="Courses et commissions" />
         <h3>Courses & commissions</h3>
         <p>On fait vos courses et vos petites démarches, vous gardez votre temps.</p>
         <ul>
@@ -312,7 +321,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
         </ul>
       </div>
       <div class="card">
-        <div class="ico">🍲</div>
+        <img src="img/svc-cuisine.jpg" alt="Cuisine à domicile" />
         <h3>Cuisine à domicile</h3>
         <p>Des repas maison, équilibrés et à votre goût, préparés chez vous.</p>
         <ul>
@@ -363,6 +372,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       <a href="devis.html" class="btn btn-primary" style="margin-top:1.6rem">Réserver mon ménage</a>
     </div>
     <div class="zone-map">
+      <img src="img/zone.jpg" alt="Village de Provence près de Cabannes" />
       <strong style="color:var(--olive-dark)">Communes desservies</strong>
       <div class="towns">
         <span class="hub">📍 Cabannes</span>
