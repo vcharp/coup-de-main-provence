@@ -439,7 +439,7 @@
         <div class="estim-total"><span>Total estimé <em>par intervention</em></span><b id="out-total">38 €</b></div>
         <p class="estim-note" id="estim-free" style="display:none">🎉 Déplacement offert : vous êtes à 5 km ou moins de Cabannes.</p>
         <a href="#" id="estim-wa" class="btn btn-wa" style="width:100%;justify-content:center;margin-top:1.2rem">💬 Réserver sur WhatsApp</a>
-        <p class="estim-mini">Estimation indicative. Déplacement : 0,50 €/km aller-retour, offert jusqu'à 5 km. Le crédit d'impôt de 50 % s'applique sur la prestation.</p>
+        <p class="estim-mini">Estimation nette, crédit d'impôt de 50 % déjà déduit sur la prestation comme sur le déplacement. Déplacement intégré au tarif : 0,50 €/km aller-retour avant crédit d'impôt, offert jusqu'à 5 km de Cabannes.</p>
       </div>
     </div>
   </div>
@@ -507,7 +507,7 @@
       </details>
       <details>
         <summary>Y a-t-il des frais de déplacement ?</summary>
-        <p>Ils sont offerts à Cabannes et dans un rayon de 5 km. Au-delà, un forfait déplacement de 0,50 €/km aller-retour s'applique par intervention, pour couvrir le temps de trajet, le véhicule et le carburant. Vous connaissez le montant à l'avance grâce à l'estimateur, sans surprise.</p>
+        <p>Ils sont offerts à Cabannes et dans un rayon de 5 km. Au-delà, un forfait de 0,50 €/km aller-retour couvre le temps de trajet, le véhicule et le carburant. Comme il est intégré à la prestation, il bénéficie lui aussi du crédit d'impôt de 50 %, donc son coût réel est divisé par deux. Vous connaissez le montant à l'avance grâce à l'estimateur, sans surprise.</p>
       </details>
       <details>
         <summary>Intervenez-vous dans ma commune ?</summary>
@@ -558,7 +558,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 Coup de Main Provence · Huguette Roudil · Organisme de services à la personne déclaré · SIREN 000 000 000</span>
-      <span>30 €/h, soit 15 €/h après crédit d'impôt (‑50 %) · + frais de déplacement 0,50 €/km, offerts jusqu'à 5 km.</span>
+      <span>30 €/h, soit 15 €/h après crédit d'impôt (‑50 %) · déplacement intégré à la prestation, également ‑50 %, offert jusqu'à 5 km.</span>
     </div>
   </div>
 </footer>
@@ -587,7 +587,8 @@
     if(commune.value==='custom') return Math.max(0,Math.min(20,Number(kmInput.value)||0));
     return Number(commune.value);
   }
-  function frais(km){ return km<=RAYON_OFFERT ? 0 : Math.round(km*2*TARIF_KM); }
+  // Déplacement intégré à la prestation, donc net de crédit d'impôt (-50 %)
+  function frais(km){ return km<=RAYON_OFFERT ? 0 : Math.round(km*2*TARIF_KM*0.5); }
 
   function render(){
     const km=distance();
