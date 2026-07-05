@@ -151,40 +151,14 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
 
 <div class="wrap stepwrap">
 
-  <!-- 1 COMMUNE -->
-  <section class="step active" data-step="commune">
+  <!-- 1 ADRESSE -->
+  <section class="step active" data-step="adresse">
     <span class="kicker">Étape 1</span>
     <h2>Où aurait lieu la prestation ?</h2>
-    <p class="sub">Votre commune sert à estimer les frais de déplacement.</p>
+    <p class="sub">Indiquez l'adresse où l'intervenante se rendra.</p>
     <div class="field">
-      <label for="commune">Votre commune</label>
-      <select id="commune">
-        <option value="" disabled selected>Choisir votre commune…</option>
-        <option value="0">Cabannes</option>
-        <option value="4">Saint-Andiol · 4 km</option>
-        <option value="4">Verquières · 4 km</option>
-        <option value="5">Mollégès · 5 km</option>
-        <option value="6">Noves · 6 km</option>
-        <option value="7">Plan-d'Orgon · 7 km</option>
-        <option value="8">Eyragues · 8 km</option>
-        <option value="9">Châteaurenard · 9 km</option>
-        <option value="10">Orgon · 10 km</option>
-        <option value="10">Rognonas · 10 km</option>
-        <option value="11">Graveson · 11 km</option>
-        <option value="11">Maillane · 11 km</option>
-        <option value="12">Cavaillon · 12 km</option>
-        <option value="12">Eygalières · 12 km</option>
-        <option value="13">Saint-Rémy-de-Provence · 13 km</option>
-        <option value="13">Sénas · 13 km</option>
-        <option value="15">Barbentane · 15 km</option>
-        <option value="16">Mas-Blanc-des-Alpilles · 16 km</option>
-        <option value="17">Tarascon · 17 km</option>
-        <option value="custom">Autre commune (≤ 20 km)…</option>
-      </select>
-    </div>
-    <div class="field small" id="kmField" style="display:none">
-      <label for="km">Distance depuis Cabannes (km)</label>
-      <input id="km" type="number" min="0" max="20" step="1" value="10" />
+      <label for="adresse">Adresse complète</label>
+      <input id="adresse" type="text" placeholder="12 rue des Oliviers, 13440 Cabannes" autocomplete="off" />
     </div>
   </section>
 
@@ -272,8 +246,8 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     </div>
     <p class="planline" id="planLine"><em>Sélectionnez un jour ci-dessus.</em></p>
     <div style="margin-top:1.4rem">
-      <label style="max-width:520px">Horaire de la session</label>
-      <div class="hint" style="margin:.3rem 0 .6rem">⏰ <span>Créneaux 7h/7h30 et 20h à 22h majorés de 5 € de l'heure.</span></div>
+      <label style="max-width:520px">Vos créneaux horaires</label>
+      <div class="hint" style="margin:.3rem 0 .6rem">⏰ <span>Sélectionnez un ou plusieurs créneaux, c'est plus simple pour trouver votre intervenante. Créneaux 7h/7h30 et 20h à 22h majorés de 5 € de l'heure.</span></div>
       <div class="times" id="timeGrid"></div>
     </div>
   </section>
@@ -285,6 +259,13 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     <p class="sub">Voici le récapitulatif. Laissez vos coordonnées, Huguette vous rappelle.</p>
     <div class="recap" id="recap"></div>
     <form id="devisForm">
+      <div class="field">
+        <label>Civilité</label>
+        <div class="chips" data-key="civilite">
+          <button type="button" class="chip" data-value="Madame">Madame</button>
+          <button type="button" class="chip" data-value="Monsieur">Monsieur</button>
+        </div>
+      </div>
       <div class="two">
         <div class="field" style="max-width:none;margin-bottom:0">
           <label for="prenom">Prénom</label>
@@ -330,11 +311,10 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
 </div>
 
 <script>
-  var TKM=0.50, RAYON=5;
-  var order=['commune','prestation','frequence','duree','options','animaux','planning','coordonnees'];
+  var order=['adresse','prestation','frequence','duree','options','animaux','planning','coordonnees'];
   var idx=0;
-  var state={commune:'',communeLabel:'',km:null,prestations:[],frequence:'',duree:null,durLabel:'',
-             options:[],animaux:'',anchors:[],heure:''};
+  var state={adresse:'',civilite:'',prestations:[],frequence:'',duree:null,durLabel:'',
+             options:[],animaux:'',anchors:[],heures:[]};
 
   var MONTHS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
   var WD=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
@@ -362,12 +342,11 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   function baseRate(){ return state.frequence==='ponctuel'?35:30; }
   function optionsAdd(){ var a=0; if(state.options.indexOf('repassage')>-1)a+=1; if(state.options.indexOf('produits')>-1)a+=3; return a; }
   function dayMajor(){ return state.anchors.some(function(a){var d=parseD(a);return d.getDay()===0||HOLIDAYS.has(a);}); }
-  function timeMajor(){ return MAJTIMES.has(state.heure); }
+  function timeMajor(){ return state.heures.length>0 && state.heures.every(function(t){return MAJTIMES.has(t);}); }
   function majoration(){ return (dayMajor()?5:0)+(timeMajor()?5:0); }
   function rateGross(){ return baseRate()+optionsAdd()+majoration(); }
   function prestaGross(){ return state.duree!=null? state.duree*rateGross():null; }
-  function deplGross(){ if(state.km==null) return null; return state.km<=RAYON?0:Math.round(state.km*2*TKM); }
-  function sousTotal(){ var p=prestaGross(); if(p==null) return null; return p+(deplGross()||0); }
+  function sousTotal(){ return prestaGross(); }
 
   /* ---------- generic steps ---------- */
   function show(name){
@@ -383,29 +362,19 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   }
   function validate(){
     var n=order[idx], ok=false;
-    if(n==='commune') ok=state.commune!==''&&state.km!=null;
+    if(n==='adresse') ok=state.adresse.trim().length>3;
     else if(n==='prestation') ok=state.prestations.length>0;
     else if(n==='frequence') ok=!!state.frequence;
     else if(n==='duree') ok=state.duree!=null;
     else if(n==='options') ok=true;
     else if(n==='animaux') ok=!!state.animaux;
-    else if(n==='planning') ok=state.anchors.length>=(state.frequence==='2x'?2:1)&&!!state.heure;
+    else if(n==='planning') ok=state.anchors.length>=(state.frequence==='2x'?2:1)&&state.heures.length>0;
     nextBtn.disabled=!ok;
   }
 
-  /* commune */
-  var communeSel=document.getElementById('commune');
-  var kmField=document.getElementById('kmField');
-  var kmInput=document.getElementById('km');
-  function readCommune(){
-    var v=communeSel.value;
-    if(v==='custom'){ kmField.style.display='block'; state.km=Math.max(0,Math.min(20,Number(kmInput.value)||0)); state.commune='custom'; state.communeLabel=state.km+' km de Cabannes'; }
-    else if(v!==''){ kmField.style.display='none'; state.km=Number(v); state.commune=v; state.communeLabel=communeSel.options[communeSel.selectedIndex].text.split(' · ')[0]; }
-    else { state.commune=''; state.km=null; }
-    validate();
-  }
-  communeSel.addEventListener('change',readCommune);
-  kmInput.addEventListener('input',readCommune);
+  /* adresse */
+  var adresseInput=document.getElementById('adresse');
+  adresseInput.addEventListener('input',function(){ state.adresse=adresseInput.value; validate(); });
 
   /* single-select groups */
   document.querySelectorAll('[data-key]').forEach(function(group){
@@ -501,10 +470,10 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   function renderTimes(){
     var g=document.getElementById('timeGrid');
     g.innerHTML=TIMES.map(function(t){
-      return '<button type="button" class="time'+(state.heure===t?' sel':'')+'" data-t="'+t+'">'+t+(MAJTIMES.has(t)?'<small>+5€</small>':'')+'</button>';
+      return '<button type="button" class="time'+(state.heures.indexOf(t)>-1?' sel':'')+'" data-t="'+t+'">'+t+(MAJTIMES.has(t)?'<small>+5€</small>':'')+'</button>';
     }).join('');
     g.querySelectorAll('.time').forEach(function(b){
-      b.addEventListener('click',function(){ state.heure=b.dataset.t; renderTimes(); validate(); });
+      b.addEventListener('click',function(){ var t=b.dataset.t; var i=state.heures.indexOf(t); if(i>-1) state.heures.splice(i,1); else state.heures.push(t); renderTimes(); validate(); });
     });
   }
   function setupPlanning(){
@@ -523,25 +492,24 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
 
   /* ---------- recap ---------- */
   function fillRecap(){
-    var rate=rateGross(), pg=prestaGross(), dp=deplGross(), st=sousTotal(), net=st/2;
+    var rate=rateGross(), pg=prestaGross(), st=sousTotal(), net=st/2;
     var optTxt = state.options.length? state.options.map(function(o){return o==='repassage'?'repassage':'produits fournis';}).join(', ') : 'aucune';
     var html='<h3>Votre estimation</h3>'
-      +row('Commune',state.communeLabel)
+      +row('Adresse',state.adresse)
       +row('Prestation(s)',state.prestations.join(', '))
       +row('Fréquence',freqLabel())
       +row('Planning',scheduleText())
-      +row('Horaire',state.heure||'—')
+      +row('Créneaux',state.heures.join(', ')||'—')
       +row('Durée',state.durLabel)
       +row('Options',optTxt)
       +row('Animaux',state.animaux)
       +'<div class="rdiv"></div>'
       +row('Prestation <em style="color:rgba(251,248,242,.6);font-style:normal">('+state.durLabel+' × '+rate+' €/h)</em>',fmtEuro(pg))
-      +row('Déplacement'+(state.km!=null?' <em style="color:rgba(251,248,242,.6);font-style:normal">('+(state.km*2)+' km A/R)</em>':''), dp===0?'offert':fmtEuro(dp))
       +'<div class="rl"><span>Sous-total</span><b class="rold">'+fmtEuro(st)+'</b></div>'
       +'<div class="rl"><span class="rcred">Crédit d\'impôt 50 %</span><b class="rcred">- '+fmtEuro(st/2)+'</b></div>'
       +'<div class="rtotal"><span>Total estimé<small>par passage, crédit d\'impôt déduit</small></span><b>'+fmtEuro(net)+'</b></div>';
     if(majoration()>0){ var mr=[]; if(dayMajor())mr.push('dimanche ou jour férié'); if(timeMajor())mr.push('créneau tôt ou tard'); html+='<p class="rnote">Majoration de '+majoration()+' € de l\'heure incluse ('+mr.join(' + ')+').</p>'; }
-    html+='<p class="rnote">Estimation indicative, ajustable ensemble. Déplacement inclus dans la prestation, également éligible au crédit d\'impôt.</p>';
+    html+='<p class="rnote">Estimation indicative, ajustable ensemble.</p>';
     document.getElementById('recap').innerHTML=html;
   }
   function row(label,val){ return '<div class="rl"><span>'+label+'</span><b>'+(val||'—')+'</b></div>'; }
@@ -559,22 +527,24 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     e.preventDefault();
     var submitBtn=document.getElementById('submitBtn');
     submitBtn.disabled=true; statusEl.style.color='var(--muted)'; statusEl.textContent='Envoi en cours…';
-    var st=sousTotal(), net=st/2, dp=deplGross();
-    var recap='Commune: '+state.communeLabel
+    var st=sousTotal(), net=st/2;
+    var recap='Civilité: '+(state.civilite||'—')
+      +'\nAdresse: '+state.adresse
       +'\nPrestations: '+state.prestations.join(', ')
       +'\nFréquence: '+freqLabel()
       +'\nPlanning: '+scheduleText()
-      +'\nHoraire: '+state.heure
+      +'\nCréneaux: '+state.heures.join(', ')
       +'\nDurée: '+state.durLabel
       +'\nOptions: '+(state.options.join(', ')||'aucune')
       +'\nAnimaux: '+state.animaux
-      +'\nTarif horaire brut: '+rateGross()+' €/h'+(majoration()>0?' (majoration +5 incluse)':'')
-      +'\nEstimation: '+fmtEuro(net)+' net par passage (déplacement '+(dp===0?'offert':fmtEuro(dp))+', avant crédit '+fmtEuro(st)+')'
+      +'\nTarif horaire brut: '+rateGross()+' €/h'+(majoration()>0?' (majoration incluse)':'')
+      +'\nEstimation: '+fmtEuro(net)+' net par passage (avant crédit '+fmtEuro(st)+')'
       +'\n\nMessage: '+document.getElementById('message').value;
     var fd=new FormData();
     fd.append('access_key','ccb01bd2-78c2-464c-a16b-1c4373caf243');
     fd.append('subject','Nouvelle demande de devis (funnel) — Coup de Main Provence');
     fd.append('from_name','Funnel Coup de Main Provence');
+    fd.append('civilité',state.civilite||'');
     fd.append('prénom',document.getElementById('prenom').value);
     fd.append('nom',document.getElementById('nom').value);
     fd.append('téléphone',document.getElementById('tel').value);
@@ -589,7 +559,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   });
   document.addEventListener('click',function(e){var a=e.target.closest('a[href*="wa.me"]');if(a&&typeof fbq==='function')fbq('track','Contact');});
 
-  show('commune');
+  show('adresse');
 </script>
 </body>
 </html>
