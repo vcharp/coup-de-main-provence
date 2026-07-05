@@ -82,6 +82,12 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--olive)}
   textarea{min-height:90px;resize:vertical}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:520px}
+  .ac-wrap{position:relative;max-width:520px}
+  .ac-list{position:absolute;left:0;right:0;top:100%;background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:5px;box-shadow:var(--shadow);z-index:6;overflow:hidden;display:none}
+  .ac-list.open{display:block}
+  .ac-item{padding:.7rem 1rem;cursor:pointer;font-size:.94rem;border-bottom:1px solid var(--line)}
+  .ac-item:last-child{border-bottom:0}
+  .ac-item:hover,.ac-item.active{background:var(--sand)}
 
   /* calendar */
   .cal{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.1rem;max-width:520px}
@@ -156,9 +162,10 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     <span class="kicker">Étape 1</span>
     <h2>Où aurait lieu la prestation ?</h2>
     <p class="sub">Indiquez l'adresse où l'intervenante se rendra.</p>
-    <div class="field">
+    <div class="field ac-wrap">
       <label for="adresse">Adresse complète</label>
       <input id="adresse" type="text" placeholder="12 rue des Oliviers, 13440 Cabannes" autocomplete="off" />
+      <div class="ac-list" id="acList"></div>
     </div>
   </section>
 
@@ -371,9 +378,39 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     nextBtn.disabled=!ok;
   }
 
-  /* adresse */
+  /* adresse + autocomplétion (API Adresse gouv, Base Adresse Nationale) */
   var adresseInput=document.getElementById('adresse');
-  adresseInput.addEventListener('input',function(){ state.adresse=adresseInput.value; validate(); });
+  var acList=document.getElementById('acList');
+  var acTimer=null;
+  function closeAc(){ acList.classList.remove('open'); acList.innerHTML=''; }
+  adresseInput.addEventListener('input',function(){
+    state.adresse=adresseInput.value; validate();
+    var q=adresseInput.value.trim();
+    clearTimeout(acTimer);
+    if(q.length<3){ closeAc(); return; }
+    acTimer=setTimeout(function(){ fetchAdresse(q); }, 250);
+  });
+  async function fetchAdresse(q){
+    try{
+      var res=await fetch('https://api-adresse.data.gouv.fr/search/?limit=5&q='+encodeURIComponent(q));
+      var json=await res.json();
+      var feats=json.features||[];
+      if(!feats.length){ closeAc(); return; }
+      acList.innerHTML=feats.map(function(ft){
+        var l=ft.properties.label.replace(/"/g,'&quot;');
+        return '<div class="ac-item" data-label="'+l+'">'+ft.properties.label+'</div>';
+      }).join('');
+      acList.classList.add('open');
+      acList.querySelectorAll('.ac-item').forEach(function(it){
+        it.addEventListener('mousedown',function(e){
+          e.preventDefault();
+          adresseInput.value=it.dataset.label; state.adresse=it.dataset.label;
+          closeAc(); validate();
+        });
+      });
+    }catch(e){ closeAc(); /* la saisie libre reste valable */ }
+  }
+  adresseInput.addEventListener('blur',function(){ setTimeout(closeAc,150); });
 
   /* single-select groups */
   document.querySelectorAll('[data-key]').forEach(function(group){
