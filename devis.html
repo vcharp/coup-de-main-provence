@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demande de devis | Coup de Main Provence</title>
+<meta name="description" content="Estimez et demandez votre devis d'aide à domicile (ménage, courses, cuisine) à Cabannes et 20 km autour. 15 € de l'heure après crédit d'impôt." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E" />
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '945702371856818');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+  :root{
+    --olive:#5a6b4a; --olive-dark:#404e35; --olive-light:#7d8f68;
+    --sand:#f6f1e7; --sand-2:#efe7d6; --cream:#fbf8f2;
+    --terracotta:#c9714b; --terracotta-dark:#b45f3b;
+    --ink:#2b2a25; --muted:#6f6a5f; --line:#e5ddcd;
+    --shadow:0 18px 50px -20px rgba(64,78,53,.35); --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1.12}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1080px,92vw);margin-inline:auto}
+
+  /* top bar */
+  header{position:sticky;top:0;z-index:20;background:rgba(251,248,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+  .brand{display:flex;align-items:center;gap:.5rem;font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;color:var(--olive-dark)}
+  .brand .l{font-size:1.35rem}
+  .back{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);font-weight:600;font-size:.92rem;background:none;border:0;cursor:pointer}
+  .back:hover{color:var(--olive-dark)}
+  .progress{height:5px;background:var(--sand-2)}
+  .progress .bar{height:100%;background:var(--terracotta);width:16%;transition:width .35s ease;border-radius:0 3px 3px 0}
+
+  /* layout */
+  .grid{display:grid;grid-template-columns:1fr 360px;gap:2.4rem;align-items:start;padding:2.6rem 0 4rem}
+  .stepwrap{min-height:60vh}
+  .step{display:none;animation:fade .35s ease}
+  .step.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
+  .step h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin:.5rem 0 .4rem}
+  .step .sub{color:var(--muted);margin-bottom:1.6rem;font-size:1.02rem}
+
+  /* option cards */
+  .opts{display:grid;gap:.8rem;max-width:560px}
+  .opt{display:flex;align-items:center;gap:1rem;background:#fff;border:2px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;cursor:pointer;transition:border .15s,transform .1s,box-shadow .15s;text-align:left;width:100%;font:inherit;color:inherit}
+  .opt:hover{border-color:var(--olive-light);transform:translateY(-1px)}
+  .opt.sel{border-color:var(--terracotta);box-shadow:0 12px 30px -18px rgba(201,113,75,.7)}
+  .opt .ic{font-size:1.5rem;flex:none;width:44px;height:44px;border-radius:11px;background:var(--sand);display:grid;place-items:center}
+  .opt .tt{font-weight:600;font-size:1.05rem}
+  .opt .tt small{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:.15rem}
+  .opt .tag{margin-left:auto;background:#eef1e8;color:var(--olive-dark);font-size:.72rem;font-weight:700;padding:.3rem .6rem;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:.7rem;max-width:560px}
+  .chip{background:#fff;border:2px solid var(--line);border-radius:12px;padding:.85rem 1.3rem;cursor:pointer;font-weight:600;font-size:1rem;transition:border .15s,transform .1s;font-family:inherit;color:inherit}
+  .chip:hover{border-color:var(--olive-light);transform:translateY(-1px)}
+  .chip.sel{border-color:var(--terracotta);background:#fff;box-shadow:0 10px 24px -16px rgba(201,113,75,.7)}
+
+  /* fields */
+  .field{margin-bottom:1rem;max-width:520px}
+  .field.small{max-width:280px;display:inline-block;margin-right:1rem}
+  label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.35rem}
+  input,select,textarea{width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fff;color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--olive)}
+  textarea{min-height:90px;resize:vertical}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:520px}
+
+  /* nav buttons */
+  .nav{display:flex;gap:.8rem;margin-top:2rem;align-items:center}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;font-size:1rem;padding:.95rem 1.8rem;border-radius:999px;cursor:pointer;border:2px solid transparent;font-family:inherit;transition:transform .12s,background .15s,opacity .15s}
+  .btn-primary{background:var(--terracotta);color:#fff;box-shadow:0 14px 30px -14px rgba(201,113,75,.8)}
+  .btn-primary:hover{background:var(--terracotta-dark);transform:translateY(-2px)}
+  .btn-primary:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--olive)}
+  .btn-wa{background:#25D366;color:#0b3d24}
+
+  /* summary */
+  .summary{position:sticky;top:96px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.6rem;font-size:.95rem}
+  .summary h3{font-size:1.15rem;text-align:center;margin-bottom:1rem}
+  .sline{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;color:var(--muted)}
+  .sline b{color:var(--ink);font-weight:600;text-align:right}
+  .sdiv{border-top:1px solid var(--line);margin:.6rem 0}
+  .srow{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.35rem 0}
+  .srow .old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--terracotta)}
+  .srow .cred{color:var(--olive-dark);font-weight:600}
+  .stotal{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.5rem;padding-top:.7rem;border-top:2px solid var(--line)}
+  .stotal span{font-weight:700}
+  .stotal b{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:var(--olive-dark)}
+  .stotal small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
+  .snote{margin-top:1rem;background:#eef1e8;border-radius:12px;padding:.7rem .9rem;font-size:.82rem;color:var(--olive-dark);display:flex;gap:.5rem}
+  .muted-em{color:var(--muted);font-style:normal}
+
+  /* merci */
+  #step-merci{text-align:center;max-width:600px;margin:2rem auto}
+  #step-merci .big{font-size:3.5rem}
+  #step-merci h2{margin:1rem 0}
+  .form-status{margin-top:1rem;font-weight:600;min-height:1.4em}
+
+  @media(max-width:860px){
+    .grid{grid-template-columns:1fr;gap:1.4rem;padding:1.6rem 0 6rem}
+    .summary{position:static;order:-1}
+    .stepwrap{min-height:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <a href="index.html" class="brand"><span class="l">🌿</span> Coup de Main Provence</a>
+    <button class="back" id="backBtn">‹ Retour</button>
+  </div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+</header>
+
+<div class="wrap grid">
+  <div class="stepwrap">
+
+    <!-- 1. COMMUNE -->
+    <section class="step active" data-step="commune">
+      <span class="kicker">Étape 1</span>
+      <h2>Où aurait lieu la prestation ?</h2>
+      <p class="sub">Votre commune nous permet de calculer votre estimation, frais de déplacement compris.</p>
+      <div class="field">
+        <label for="commune">Votre commune</label>
+        <select id="commune">
+          <option value="" data-label="" disabled selected>Choisir votre commune…</option>
+          <option value="0">Cabannes</option>
+          <option value="4">Saint-Andiol · 4 km</option>
+          <option value="4">Verquières · 4 km</option>
+          <option value="5">Mollégès · 5 km</option>
+          <option value="6">Noves · 6 km</option>
+          <option value="7">Plan-d'Orgon · 7 km</option>
+          <option value="8">Eyragues · 8 km</option>
+          <option value="9">Châteaurenard · 9 km</option>
+          <option value="10">Orgon · 10 km</option>
+          <option value="10">Rognonas · 10 km</option>
+          <option value="11">Graveson · 11 km</option>
+          <option value="11">Maillane · 11 km</option>
+          <option value="12">Cavaillon · 12 km</option>
+          <option value="12">Eygalières · 12 km</option>
+          <option value="13">Saint-Rémy-de-Provence · 13 km</option>
+          <option value="13">Sénas · 13 km</option>
+          <option value="15">Barbentane · 15 km</option>
+          <option value="16">Mas-Blanc-des-Alpilles · 16 km</option>
+          <option value="17">Tarascon · 17 km</option>
+          <option value="custom">Autre commune (≤ 20 km)…</option>
+        </select>
+      </div>
+      <div class="field small" id="kmField" style="display:none">
+        <label for="km">Distance depuis Cabannes (km)</label>
+        <input id="km" type="number" min="0" max="20" step="1" value="10" />
+      </div>
+    </section>
+
+    <!-- 2. PRESTATION -->
+    <section class="step" data-step="prestation">
+      <span class="kicker">Étape 2</span>
+      <h2>Quelle prestation souhaitez-vous ?</h2>
+      <p class="sub">15 € de l'heure net, après le crédit d'impôt de 50 % déduit tout de suite.</p>
+      <div class="opts" data-key="prestation">
+        <button class="opt" data-value="Ménage & repassage"><span class="ic">🧹</span><span class="tt">Ménage & repassage<small>Entretien courant, sols, sanitaires, linge</small></span></button>
+        <button class="opt" data-value="Courses & commissions"><span class="ic">🛒</span><span class="tt">Courses & commissions<small>Courses, pharmacie, marché, rangement</small></span></button>
+        <button class="opt" data-value="Cuisine à domicile"><span class="ic">🍲</span><span class="tt">Cuisine à domicile<small>Repas du jour, batch cooking, régimes</small></span></button>
+        <button class="opt" data-value="Plusieurs prestations"><span class="ic">✨</span><span class="tt">Plusieurs prestations<small>Un mélange sur mesure, on en parle</small></span></button>
+      </div>
+    </section>
+
+    <!-- 3. FREQUENCE -->
+    <section class="step" data-step="frequence">
+      <span class="kicker">Étape 3</span>
+      <h2>À quelle fréquence ?</h2>
+      <p class="sub">Sans engagement, vous pouvez ajuster ou mettre en pause à tout moment.</p>
+      <div class="opts" data-key="frequence">
+        <button class="opt" data-value="Chaque semaine"><span class="ic">📅</span><span class="tt">Chaque semaine</span><span class="tag">Populaire</span></button>
+        <button class="opt" data-value="Toutes les deux semaines"><span class="ic">🗓️</span><span class="tt">Toutes les deux semaines</span></button>
+        <button class="opt" data-value="Une fois par mois"><span class="ic">📆</span><span class="tt">Une fois par mois</span></button>
+        <button class="opt" data-value="Ponctuel"><span class="ic">⭐</span><span class="tt">Ponctuel, une seule fois</span></button>
+      </div>
+    </section>
+
+    <!-- 4. DUREE -->
+    <section class="step" data-step="duree">
+      <span class="kicker">Étape 4</span>
+      <h2>Combien de temps par passage ?</h2>
+      <p class="sub">Une estimation suffit, on ajustera ensemble selon vos besoins.</p>
+      <div class="chips" data-key="duree">
+        <button class="chip" data-value="2">2h</button>
+        <button class="chip" data-value="2.5">2h30</button>
+        <button class="chip" data-value="3">3h</button>
+        <button class="chip" data-value="3.5">3h30</button>
+        <button class="chip" data-value="4">4h</button>
+        <button class="chip" data-value="5">5h</button>
+        <button class="chip" data-value="6">6h</button>
+      </div>
+    </section>
+
+    <!-- 5. PLANNING -->
+    <section class="step" data-step="planning">
+      <span class="kicker">Étape 5</span>
+      <h2>Quand souhaitez-vous commencer ?</h2>
+      <p class="sub">Indiquez une date idéale et un moment de la journée. Rien n'est figé.</p>
+      <div class="field small">
+        <label for="date">Date souhaitée</label>
+        <input id="date" type="date" />
+      </div>
+      <div style="margin-top:.4rem">
+        <label style="max-width:520px">Moment de la journée</label>
+        <div class="chips" data-key="creneau">
+          <button class="chip" data-value="Le matin">🌅 Le matin</button>
+          <button class="chip" data-value="L'après-midi">☀️ L'après-midi</button>
+          <button class="chip" data-value="Je suis flexible">🕐 Je suis flexible</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. COORDONNEES -->
+    <section class="step" data-step="coordonnees">
+      <span class="kicker">Dernière étape</span>
+      <h2>Vos coordonnées</h2>
+      <p class="sub">Huguette vous rappelle rapidement avec votre devis. Sans engagement.</p>
+      <form id="devisForm">
+        <div class="two">
+          <div class="field" style="max-width:none;margin-bottom:0">
+            <label for="prenom">Prénom</label>
+            <input id="prenom" name="prénom" type="text" placeholder="Marie" required />
+          </div>
+          <div class="field" style="max-width:none;margin-bottom:0">
+            <label for="nom">Nom</label>
+            <input id="nom" name="nom" type="text" placeholder="Durand" required />
+          </div>
+        </div>
+        <div class="field" style="margin-top:1rem">
+          <label for="tel">Téléphone</label>
+          <input id="tel" name="téléphone" type="tel" inputmode="tel" placeholder="06 12 34 56 78" required />
+        </div>
+        <div class="field">
+          <label for="email">Email (facultatif)</label>
+          <input id="email" name="email" type="email" placeholder="marie.durand@email.fr" />
+        </div>
+        <div class="field">
+          <label for="message">Un détail à ajouter ? (facultatif)</label>
+          <textarea id="message" name="message" placeholder="Ex : maison de 90 m², un chat, accès par le portail bleu…"></textarea>
+        </div>
+        <div class="nav">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Envoyer ma demande</button>
+        </div>
+        <p class="form-status" id="formStatus"></p>
+      </form>
+    </section>
+
+    <!-- MERCI -->
+    <section class="step" data-step="merci" id="step-merci">
+      <div class="big">🌿</div>
+      <h2>Merci, c'est bien reçu !</h2>
+      <p class="sub">Huguette vous rappelle très vite avec votre devis, crédit d'impôt déduit. Vous pouvez aussi la joindre tout de suite sur WhatsApp.</p>
+      <a href="https://wa.me/33641946311?text=Bonjour%20Huguette%2C%20je%20viens%20de%20faire%20une%20demande%20de%20devis%20sur%20le%20site." class="btn btn-wa" target="_blank" rel="noopener">💬 Écrire sur WhatsApp</a>
+      <div style="margin-top:1.4rem"><a href="index.html" class="back">‹ Revenir au site</a></div>
+    </section>
+
+    <!-- nav (shared, hidden on merci) -->
+    <div class="nav" id="mainNav">
+      <button class="btn btn-ghost" id="prevBtn" style="display:none">Retour</button>
+      <button class="btn btn-primary" id="nextBtn" disabled>Continuer</button>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <aside class="summary" id="summary">
+    <h3>Votre estimation</h3>
+    <div class="sline"><span>Commune</span><b id="s-commune">—</b></div>
+    <div class="sline"><span>Prestation</span><b id="s-prestation">—</b></div>
+    <div class="sline"><span>Fréquence</span><b id="s-frequence">—</b></div>
+    <div class="sline"><span>Durée</span><b id="s-duree">—</b></div>
+    <div class="sdiv"></div>
+    <div class="srow"><span>Prestation <em class="muted-em" id="s-presta-detail"></em></span><b id="s-presta">—</b></div>
+    <div class="srow"><span>Déplacement <em class="muted-em" id="s-depl-detail"></em></span><b id="s-depl">—</b></div>
+    <div class="stotal"><span>Total estimé<small>par passage, crédit d'impôt déduit</small></span><b id="s-total">—</b></div>
+    <div class="snote">🧾 <span>15 € de l'heure net et déplacement inclus dans la prestation, le crédit d'impôt de 50 % est déjà déduit.</span></div>
+  </aside>
+</div>
+
+<script>
+  var TARIF=15, TKM=0.50, FREE=5;
+  var order=['commune','prestation','frequence','duree','planning','coordonnees'];
+  var idx=0;
+  var state={commune:'',communeLabel:'',km:null,prestation:'',frequence:'',duree:null,durLabel:'',date:'',creneau:''};
+
+  var steps=[].slice.call(document.querySelectorAll('.step'));
+  var bar=document.getElementById('bar');
+  var nextBtn=document.getElementById('nextBtn');
+  var prevBtn=document.getElementById('prevBtn');
+  var mainNav=document.getElementById('mainNav');
+
+  function fmtEuro(n){ if(n==null) return '—'; return (Number.isInteger(n)? n : n.toFixed(2).replace('.',',')) + ' €'; }
+  function frais(){ if(state.km==null) return null; return state.km<=FREE ? 0 : Math.round(state.km*2*TKM*0.5); }
+
+  function show(name){
+    steps.forEach(function(s){ s.classList.toggle('active', s.dataset.step===name); });
+    var isFlow = order.indexOf(name)>-1;
+    mainNav.style.display = (name==='coordonnees'||name==='merci') ? 'none' : 'flex';
+    prevBtn.style.display = (order.indexOf(name)>0) ? 'inline-flex' : 'none';
+    if(isFlow){ bar.style.width = ((order.indexOf(name)+1)/order.length*100)+'%'; }
+    if(name==='merci'){ bar.style.width='100%'; }
+    validate();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function validate(){
+    var name=order[idx];
+    var ok=false;
+    if(name==='commune') ok = state.commune!=='' && state.km!=null;
+    else if(name==='prestation') ok = !!state.prestation;
+    else if(name==='frequence') ok = !!state.frequence;
+    else if(name==='duree') ok = state.duree!=null;
+    else if(name==='planning') ok = !!state.date && !!state.creneau;
+    nextBtn.disabled = !ok;
+    nextBtn.textContent = (name==='duree'||name==='planning'||name==='frequence') ? 'Continuer' : 'Continuer';
+  }
+
+  function updateSummary(){
+    document.getElementById('s-commune').textContent = state.communeLabel || '—';
+    document.getElementById('s-prestation').textContent = state.prestation || '—';
+    document.getElementById('s-frequence').textContent = state.frequence || '—';
+    document.getElementById('s-duree').textContent = state.durLabel || '—';
+    var presta = state.duree!=null ? state.duree*TARIF : null;
+    var depl = frais();
+    document.getElementById('s-presta-detail').textContent = state.duree!=null ? '('+state.durLabel+' × 15 €)' : '';
+    document.getElementById('s-presta').textContent = presta!=null ? fmtEuro(presta) : '—';
+    document.getElementById('s-depl-detail').textContent = state.km!=null ? '('+(state.km*2)+' km A/R)' : '';
+    document.getElementById('s-depl').textContent = depl==null ? '—' : (depl===0 ? 'offert' : fmtEuro(depl));
+    var total = (presta!=null) ? presta + (depl||0) : null;
+    document.getElementById('s-total').textContent = total!=null ? fmtEuro(total) : '—';
+  }
+
+  // Commune select
+  var communeSel=document.getElementById('commune');
+  var kmField=document.getElementById('kmField');
+  var kmInput=document.getElementById('km');
+  function readCommune(){
+    var v=communeSel.value;
+    if(v==='custom'){
+      kmField.style.display='inline-block';
+      state.km=Math.max(0,Math.min(20,Number(kmInput.value)||0));
+      state.commune='custom'; state.communeLabel=state.km+' km de Cabannes';
+    } else if(v!==''){
+      kmField.style.display='none';
+      state.km=Number(v);
+      state.commune=v; state.communeLabel=communeSel.options[communeSel.selectedIndex].text.split(' · ')[0];
+    } else { state.commune=''; state.km=null; }
+    updateSummary(); validate();
+  }
+  communeSel.addEventListener('change',readCommune);
+  kmInput.addEventListener('input',readCommune);
+
+  // Option cards & chips (single select)
+  document.querySelectorAll('[data-key]').forEach(function(group){
+    var key=group.dataset.key;
+    group.querySelectorAll('.opt,.chip').forEach(function(el){
+      el.addEventListener('click',function(){
+        group.querySelectorAll('.opt,.chip').forEach(function(o){o.classList.remove('sel');});
+        el.classList.add('sel');
+        if(key==='duree'){ state.duree=Number(el.dataset.value); state.durLabel=el.textContent.trim(); }
+        else { state[key]=el.dataset.value; }
+        updateSummary(); validate();
+      });
+    });
+  });
+
+  // Date + créneau
+  document.getElementById('date').addEventListener('change',function(e){ state.date=e.target.value; validate(); });
+
+  // Nav
+  nextBtn.addEventListener('click',function(){ if(idx<order.length-1){ idx++; show(order[idx]); } });
+  prevBtn.addEventListener('click',function(){ if(idx>0){ idx--; show(order[idx]); } });
+  document.getElementById('backBtn').addEventListener('click',function(){
+    if(idx>0){ idx--; show(order[idx]); } else { window.location.href='index.html'; }
+  });
+
+  // Submit
+  var form=document.getElementById('devisForm');
+  var statusEl=document.getElementById('formStatus');
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var submitBtn=document.getElementById('submitBtn');
+    submitBtn.disabled=true; statusEl.style.color='var(--muted)'; statusEl.textContent='Envoi en cours…';
+    var fd=new FormData();
+    fd.append('access_key','ccb01bd2-78c2-464c-a16b-1c4373caf243');
+    fd.append('subject','Nouvelle demande de devis (funnel) — Coup de Main Provence');
+    fd.append('from_name','Funnel Coup de Main Provence');
+    fd.append('prénom',document.getElementById('prenom').value);
+    fd.append('nom',document.getElementById('nom').value);
+    fd.append('téléphone',document.getElementById('tel').value);
+    fd.append('email',document.getElementById('email').value);
+    var depl=frais();
+    var total=(state.duree!=null)? state.duree*TARIF+(depl||0):null;
+    var recap='Commune: '+state.communeLabel+'\nPrestation: '+state.prestation+'\nFréquence: '+state.frequence
+      +'\nDurée: '+state.durLabel+'\nDate souhaitée: '+state.date+'\nMoment: '+state.creneau
+      +'\nEstimation: '+(total!=null?fmtEuro(total):'—')+' par passage (déplacement '+(depl===0?'offert':fmtEuro(depl))+')'
+      +'\n\nMessage: '+document.getElementById('message').value;
+    fd.append('message',recap);
+    try{
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
+      var json=await res.json();
+      if(json.success){
+        if(typeof fbq==='function') fbq('track','Lead');
+        idx=order.length; show('merci');
+      } else {
+        statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11.";
+        submitBtn.disabled=false;
+      }
+    }catch(err){
+      statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11.";
+      submitBtn.disabled=false;
+    }
+  });
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href*="wa.me"]');if(a&&typeof fbq==='function')fbq('track','Contact');});
+
+  // init
+  var today=new Date(); today.setDate(today.getDate()+1);
+  document.getElementById('date').min=today.toISOString().split('T')[0];
+  updateSummary(); show('commune');
+</script>
+</body>
+</html>
