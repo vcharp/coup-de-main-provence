@@ -363,7 +363,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   function optionsAdd(){ var a=0; if(state.options.indexOf('repassage')>-1)a+=1; if(state.options.indexOf('produits')>-1)a+=3; return a; }
   function dayMajor(){ return state.anchors.some(function(a){var d=parseD(a);return d.getDay()===0||HOLIDAYS.has(a);}); }
   function timeMajor(){ return MAJTIMES.has(state.heure); }
-  function majoration(){ return (dayMajor()||timeMajor())?5:0; }
+  function majoration(){ return (dayMajor()?5:0)+(timeMajor()?5:0); }
   function rateGross(){ return baseRate()+optionsAdd()+majoration(); }
   function prestaGross(){ return state.duree!=null? state.duree*rateGross():null; }
   function deplGross(){ if(state.km==null) return null; return state.km<=RAYON?0:Math.round(state.km*2*TKM); }
@@ -540,7 +540,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       +'<div class="rl"><span>Sous-total</span><b class="rold">'+fmtEuro(st)+'</b></div>'
       +'<div class="rl"><span class="rcred">Crédit d\'impôt 50 %</span><b class="rcred">- '+fmtEuro(st/2)+'</b></div>'
       +'<div class="rtotal"><span>Total estimé<small>par passage, crédit d\'impôt déduit</small></span><b>'+fmtEuro(net)+'</b></div>';
-    if(majoration()>0) html+='<p class="rnote">Majoration de 5 € de l\'heure incluse (dimanche, jour férié ou créneau tôt/tard).</p>';
+    if(majoration()>0){ var mr=[]; if(dayMajor())mr.push('dimanche ou jour férié'); if(timeMajor())mr.push('créneau tôt ou tard'); html+='<p class="rnote">Majoration de '+majoration()+' € de l\'heure incluse ('+mr.join(' + ')+').</p>'; }
     html+='<p class="rnote">Estimation indicative, ajustable ensemble. Déplacement inclus dans la prestation, également éligible au crédit d\'impôt.</p>';
     document.getElementById('recap').innerHTML=html;
   }
