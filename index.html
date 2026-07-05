@@ -181,6 +181,10 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:3rem;align-items:start}
   .contact h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin:.6rem 0 1rem}
   .contact .lead{color:var(--muted);font-size:1.06rem;margin-bottom:1.5rem}
+  .contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:3rem 2rem;max-width:46rem;margin:0 auto;text-align:center}
+  .contact-card .lead{max-width:34rem;margin:0 auto 1.6rem}
+  .contact-cta{font-size:1.15rem;padding:1.1rem 2.4rem}
+  .contact-card .contact-info{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;text-align:left}
   .contact-wa{font-size:1.02rem;padding:1rem 1.5rem}
   .contact-info{display:grid;gap:.9rem;margin-top:1.8rem}
   .contact-info a,.contact-info>div{display:flex;gap:.8rem;align-items:center;font-weight:500}
@@ -267,8 +271,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       <a href="#faq">FAQ</a>
     </nav>
     <div class="nav-cta">
-      <a href="tel:+33641946311" class="btn btn-ghost">06 41 94 63 11</a>
-      <a href="https://wa.me/33641946311?text=Bonjour%20Huguette%2C%20je%20souhaite%20un%20devis%20pour%20une%20aide%20%C3%A0%20domicile." class="btn btn-primary" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a href="devis.html" class="btn btn-primary">Réserver mon ménage</a>
     </div>
   </div>
 </header>
@@ -281,8 +284,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       <h1>Le ménage, les courses et la cuisine, <em>on s'en occupe</em>.</h1>
       <p class="lead">Une aide à domicile de confiance pour vous libérer du quotidien, à Cabannes et dans un rayon de 20 km.</p>
       <div class="hero-cta">
-        <a href="devis.html" class="btn btn-primary">Demander un devis gratuit</a>
-        <a href="https://wa.me/33641946311?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20aide%20%C3%A0%20domicile" class="btn btn-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a href="devis.html" class="btn btn-primary">Réserver mon ménage</a>
       </div>
       <div class="hero-trust">
         <span>🧾 <b>Crédit d'impôt 50%</b> déduit tout de suite</span>
@@ -302,7 +304,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
         <li><span class="chk">✓</span> Intervenant·e attitré·e, à l'écoute de vos habitudes</li>
         <li><span class="chk">🚗</span> + frais de déplacement selon la distance depuis Cabannes <b>(offerts jusqu'à 5 km)</b></li>
       </ul>
-      <a href="#estimateur" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1.4rem">Estimer mon tarif</a>
+      <a href="devis.html" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1.4rem">Réserver mon ménage</a>
     </div>
   </div>
 </section>
@@ -386,7 +388,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       <span class="eyebrow">Zone d'intervention</span>
       <h2 style="font-size:clamp(1.9rem,3.4vw,2.6rem);margin:.6rem 0 1rem">Cabannes et tout le pays autour, jusqu'à 20 km</h2>
       <p style="color:var(--muted);font-size:1.05rem">Basés à Cabannes, nous nous déplaçons dans les villages et villes des alentours, au cœur des Alpilles et de la vallée de la Durance. Une question sur votre commune ? Demandez-nous.</p>
-      <a href="devis.html" class="btn btn-primary" style="margin-top:1.6rem">Vérifier ma commune</a>
+      <a href="devis.html" class="btn btn-primary" style="margin-top:1.6rem">Réserver mon ménage</a>
     </div>
     <div class="zone-map">
       <strong style="color:var(--olive-dark)">Communes desservies</strong>
@@ -468,7 +470,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
         <div class="estim-row"><span>Déplacement <em id="out-km">16 km aller-retour</em></span><b id="out-depl">8 €</b></div>
         <div class="estim-total"><span>Total estimé <em>par intervention</em></span><b id="out-total">38 €</b></div>
         <p class="estim-note" id="estim-free" style="display:none">🎉 Déplacement offert : vous êtes à 5 km ou moins de Cabannes.</p>
-        <a href="#" id="estim-wa" class="btn btn-wa" style="width:100%;justify-content:center;margin-top:1.2rem">💬 Réserver sur WhatsApp</a>
+        <a href="devis.html" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1.2rem">Réserver mon ménage</a>
         <p class="estim-mini">Estimation nette, crédit d'impôt de 50 % déjà déduit sur la prestation comme sur le déplacement. Déplacement intégré au tarif : 0,50 €/km aller-retour avant crédit d'impôt, offert jusqu'à 5 km de Cabannes.</p>
       </div>
     </div>
@@ -548,56 +550,17 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
 </section>
 
 <section id="contact" class="contact">
-  <div class="wrap contact-grid">
-    <div class="contact-intro">
+  <div class="wrap">
+    <div class="contact-card">
       <span class="eyebrow">Devis gratuit & sans engagement</span>
-      <h2>Demandez votre devis</h2>
-      <p class="lead">Laissez vos coordonnées, Huguette vous rappelle rapidement avec une estimation claire, crédit d'impôt déduit. Vous préférez discuter tout de suite ? Écrivez sur WhatsApp.</p>
-      <a href="https://wa.me/33641946311?text=Bonjour%20Huguette%2C%20je%20souhaite%20un%20devis%20pour%20une%20aide%20%C3%A0%20domicile%20%28m%C3%A9nage%2Fcourses%2Fcuisine%29.%20Ma%20commune%20%3A%20" class="btn btn-wa contact-wa" target="_blank" rel="noopener">💬 Écrire à Huguette sur WhatsApp</a>
+      <h2>Prêt à vous libérer du quotidien ?</h2>
+      <p class="lead">Réservez en quelques clics. Huguette vous rappelle rapidement avec votre devis, crédit d'impôt déduit.</p>
+      <a href="devis.html" class="btn btn-primary contact-cta">Réserver mon ménage</a>
       <div class="contact-info">
         <a href="tel:+33641946311"><span class="ico">📞</span> <div><b>06 41 94 63 11</b><small>Huguette Roudil</small></div></a>
         <div><span class="ico">📍</span> <div><b>Cabannes (13440)</b><small>& 20 km autour</small></div></div>
       </div>
     </div>
-    <form id="devis-form" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="ccb01bd2-78c2-464c-a16b-1c4373caf243" />
-      <input type="hidden" name="subject" value="Nouvelle demande de devis — Coup de Main Provence" />
-      <input type="hidden" name="from_name" value="Site Coup de Main Provence" />
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-      <div class="form-row">
-        <div class="field">
-          <label for="nom">Prénom & nom</label>
-          <input id="nom" name="nom" type="text" placeholder="Marie Durand" required />
-        </div>
-        <div class="field">
-          <label for="tel">Téléphone</label>
-          <input id="tel" name="téléphone" type="tel" inputmode="tel" placeholder="06 12 34 56 78" required />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label for="ville">Commune</label>
-          <input id="ville" name="commune" type="text" placeholder="Cabannes, Noves…" required />
-        </div>
-        <div class="field">
-          <label for="service">Prestation souhaitée</label>
-          <select id="service" name="prestation" required>
-            <option value="" disabled selected>Choisir…</option>
-            <option>Ménage & repassage</option>
-            <option>Courses & commissions</option>
-            <option>Cuisine à domicile</option>
-            <option>Plusieurs prestations</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="msg">Votre besoin (facultatif)</label>
-        <textarea id="msg" name="message" placeholder="Ex : ménage 3h par semaine + courses le vendredi…"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Recevoir mon devis gratuit</button>
-      <p class="form-note">Réponse sous 24 h ouvrées. Vos coordonnées servent uniquement à vous recontacter.</p>
-      <p class="form-status" id="form-status"></p>
-    </form>
   </div>
 </section>
 
@@ -619,7 +582,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       <div>
         <strong style="color:#fff;display:block;margin-bottom:.7rem">Contact</strong>
         <div style="display:grid;gap:.4rem">
-          <a href="https://wa.me/33641946311" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a href="devis.html">Réserver mon ménage</a>
           <a href="tel:+33641946311">06 41 94 63 11</a>
           <span>Huguette Roudil · Cabannes (13440)</span>
         </div>
@@ -633,8 +596,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
 </footer>
 
 <div class="mobile-cta">
-  <a href="tel:+33641946311" class="btn btn-ghost">📞 Appeler</a>
-  <a href="https://wa.me/33641946311?text=Bonjour%20Huguette%2C%20je%20souhaite%20un%20devis%20pour%20une%20aide%20%C3%A0%20domicile." class="btn btn-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a href="devis.html" class="btn btn-primary">Réserver mon ménage</a>
 </div>
 
 <script>
@@ -671,11 +633,6 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     document.getElementById('out-depl').textContent=depl===0?'offert':depl+' €';
     document.getElementById('out-total').textContent=total+' €';
     document.getElementById('estim-free').style.display=(km<=RAYON_OFFERT)?'block':'none';
-    const label=commune.value==='custom'?(km+' km de Cabannes'):commune.options[commune.selectedIndex].text;
-    const msg='Bonjour Huguette, je souhaite un devis. Commune : '+label
-      +' · '+heures+' h de prestation'
-      +' · estimation '+total+' € (dont déplacement '+(depl===0?'offert':depl+' €')+').';
-    document.getElementById('estim-wa').href='https://wa.me/33641946311?text='+encodeURIComponent(msg);
   }
 
   commune.addEventListener('change',()=>{
@@ -686,37 +643,6 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   document.getElementById('minus').addEventListener('click',()=>{heures=Math.max(1,heures-1);render();});
   document.getElementById('plus').addEventListener('click',()=>{heures=Math.min(8,heures+1);render();});
   render();
-
-  // Événement Meta "Contact" sur tout clic vers WhatsApp
-  document.addEventListener('click',(e)=>{
-    const a=e.target.closest('a[href*="wa.me"]');
-    if(a && typeof fbq==='function') fbq('track','Contact');
-  });
-
-  // Formulaire de devis (Web3Forms) + événement Meta "Lead"
-  const form=document.getElementById('devis-form');
-  const status=document.getElementById('form-status');
-  form.addEventListener('submit',async(e)=>{
-    e.preventDefault();
-    status.textContent='Envoi en cours…';status.style.color='var(--muted)';
-    const data=new FormData(form);
-    try{
-      const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});
-      const json=await res.json();
-      if(json.success){
-        status.textContent='Merci ! Votre demande est bien reçue, Huguette vous rappelle très vite.';
-        status.style.color='var(--olive-dark)';
-        if(typeof fbq==='function') fbq('track','Lead');
-        form.reset();
-      }else{
-        status.textContent="Oups, l'envoi a échoué. Appelez-nous au 06 41 94 63 11.";
-        status.style.color='var(--terracotta-dark)';
-      }
-    }catch(err){
-      status.textContent="Oups, l'envoi a échoué. Appelez-nous au 06 41 94 63 11.";
-      status.style.color='var(--terracotta-dark)';
-    }
-  });
 </script>
 </body>
 </html>

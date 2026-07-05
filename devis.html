@@ -297,8 +297,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   <section class="step" data-step="merci" id="step-merci">
     <div class="big">🌿</div>
     <h2>Merci, c'est bien reçu !</h2>
-    <p class="sub">Huguette vous rappelle très vite avec votre devis, crédit d'impôt déduit. Vous pouvez aussi la joindre tout de suite sur WhatsApp.</p>
-    <a href="https://wa.me/33641946311?text=Bonjour%20Huguette%2C%20je%20viens%20de%20faire%20une%20demande%20de%20devis%20sur%20le%20site." class="btn btn-wa" target="_blank" rel="noopener">💬 Écrire sur WhatsApp</a>
+    <p class="sub">Huguette vous rappelle très vite avec votre devis, crédit d'impôt déduit.</p>
     <div style="margin-top:1.4rem"><a href="index.html" class="back">‹ Revenir au site</a></div>
   </section>
 
@@ -557,7 +556,6 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       else { statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11."; submitBtn.disabled=false; }
     }catch(err){ statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11."; submitBtn.disabled=false; }
   });
-  document.addEventListener('click',function(e){var a=e.target.closest('a[href*="wa.me"]');if(a&&typeof fbq==='function')fbq('track','Contact');});
 
   show('adresse');
 </script>
