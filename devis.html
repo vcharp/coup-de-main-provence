@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Réserver mon ménage | Coup de Main Provence</title>
-<meta name="description" content="Réservez votre aide à domicile (ménage, courses, cuisine) à Cabannes et 20 km autour. Estimation immédiate, crédit d'impôt déduit." />
+<title>Réserver une aide à domicile | Coup de Main Provence</title>
+<meta name="description" content="Réservez ménage, repas de la semaine, papiers ou formule pour un parent à Aix-en-Provence et Marseille. Estimation immédiate, crédit d'impôt déduit." />
 <meta name="robots" content="noindex" />
 <meta name="theme-color" content="#fbf8f2" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -13,23 +13,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://data.geopf.fr" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400..700&display=swap" rel="stylesheet" />
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel : chargé seulement après accord dans le bandeau cookies -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '945702371856818');
-fbq('track', 'PageView');
+(function(){
+  var v=null; try{ var c=JSON.parse(localStorage.getItem('cdm_consent')||'null'); if(c && Date.now()-c.t<182*864e5) v=c.v; }catch(e){}
+  window.cdmConsent=v;
+  window.cdmLoadPixel=function(){
+    if(window.fbq) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','945702371856818'); fbq('track','PageView');
+  };
+  if(v==='oui') window.cdmLoadPixel();
+})();
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+<!-- Fin Meta Pixel -->
 <style>
   :root{
     --olive-900:#2c3524; --olive-800:#343f2b; --olive-700:#404e35; --olive-600:#4d5d40; --olive-500:#5a6b4a; --olive-400:#7d8f68;
@@ -261,7 +258,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   .err.shake{animation:shake .35s ease}
   @keyframes shake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
   .actions{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;gap:.6rem;align-items:center;padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -10px 30px -20px rgba(52,63,43,.4)}
-  .actions .btn-next{flex:1}
+  .actions .btn-next{flex:1;min-width:0;white-space:normal;line-height:1.2;padding:0 1rem}
   .btn-back{width:54px;height:54px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--olive-700);flex:none;-webkit-tap-highlight-color:transparent}
   .btn-back .i{width:20px;height:20px}
   .btn-back span{display:none}
@@ -319,6 +316,24 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   .merci-links a{color:var(--terra-600);font-weight:700}
 
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+  /* AIX MARSEILLE : formules, durées par prestation, consentement */
+  .grp[hidden]{display:none}
+  .drow{background:#fff;border:1px solid var(--line);border-radius:18px;padding:.95rem 1rem 1rem;margin-bottom:.75rem}
+  .drow-h{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.6rem}
+  .drow-h b{color:var(--olive-900);font-size:1rem}
+  .drow-h small{color:var(--muted);font-size:.84rem;white-space:nowrap}
+  .drow .chips{grid-template-columns:repeat(4,1fr)}
+  .info{display:flex;gap:.6rem;align-items:flex-start;background:var(--sage-50);border:1px solid var(--sage-100);border-radius:14px;padding:.75rem .9rem;font-size:.88rem;color:var(--olive-800);line-height:1.45}
+  .info[hidden]{display:none}
+  .info .i{width:17px;height:17px;margin-top:.12rem;color:var(--olive-500)}
+  .consent{display:flex;gap:.7rem;align-items:flex-start;font-size:.92rem;color:var(--ink-2);line-height:1.45;cursor:pointer;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:.8rem .9rem}
+  .consent input{width:22px;height:22px;flex:none;margin:.05rem 0 0;accent-color:var(--terra-500)}
+  .consent.bad{border-color:var(--terra-500);background:#fffaf7}
+  .field[hidden]{display:none}
+  .no-maj .cal-cell.major{background:var(--stone-50);color:var(--ink);align-items:center;padding-top:0}
+  .no-maj .cal-cell .p5,.no-maj .time small,.no-maj .hint-maj,.no-maj .lg-maj{display:none}
+  .no-maj .time.maj{background:#fff}
 </style>
 </head>
 <body>
@@ -351,6 +366,12 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4"/></symbol>
     <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
     <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/><path d="M8 13h8M8 16.5h5"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.9 15.5a2 2 0 0 0-1.4-1.4l-6.1-1.6a.5.5 0 0 1 0-1l6.1-1.6a2 2 0 0 0 1.4-1.4l1.6-6.1a.5.5 0 0 1 1 0l1.6 6.1a2 2 0 0 0 1.4 1.4l6.1 1.6a.5.5 0 0 1 0 1l-6.1 1.6a2 2 0 0 0-1.4 1.4l-1.6 6.1a.5.5 0 0 1-1 0z"/></symbol>
+    <symbol id="i-window" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 3v18M3 12h18"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
   </defs>
 </svg>
 
@@ -360,20 +381,20 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       <svg aria-hidden="true"><use href="#sprig"/></svg>
       <span class="logo-word">Coup de Main Provence</span>
     </a>
-    <p class="fh-step" id="stepCount" aria-live="polite">Étape 1 sur 8<small>Votre adresse</small></p>
+    <p class="fh-step" id="stepCount" aria-live="polite">Étape 1<small>Votre adresse</small></p>
     <a href="index.html" class="fh-close" aria-label="Quitter la réservation"><svg class="i"><use href="#i-x"/></svg></a>
   </div>
   <div class="progress" aria-hidden="true"><span id="bar"></span></div>
 </header>
 
-<main class="wrap fw">
-  <h1 class="sr-only">Réserver mon ménage</h1>
+<main class="wrap fw" id="fw">
+  <h1 class="sr-only">Réserver une aide à domicile</h1>
   <div class="fw-grid">
     <div class="fw-main">
 
       <section class="step" data-step="adresse" aria-labelledby="q-adresse">
         <h2 class="q" id="q-adresse" tabindex="-1">Où aura lieu la prestation&nbsp;?</h2>
-        <p class="sub">On vérifie tout de suite que vous êtes dans notre zone, pour vous proposer une intervenante proche de chez vous.</p>
+        <p class="sub">On vérifie tout de suite que l'adresse est dans notre zone, à Aix, à Marseille ou dans les communes voisines.</p>
         <div class="addr">
           <label class="lbl" for="adresse">Adresse complète</label>
           <div class="addr-field" id="addrField">
@@ -384,18 +405,41 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
           <div class="ac" id="acList" role="listbox" aria-label="Suggestions d'adresses"></div>
           <p class="zone-msg" id="zoneMsg" aria-live="polite"></p>
         </div>
-        <p class="fineprint"><svg class="i"><use href="#i-lock"/></svg><span>Votre adresse sert uniquement à organiser la prestation.</span></p>
+        <p class="fineprint"><svg class="i"><use href="#i-lock"/></svg><span>L'adresse sert uniquement à organiser la prestation.</span></p>
+      </section>
+
+      <section class="step" data-step="type" aria-labelledby="q-type">
+        <p class="ctx" id="ctxAddr" hidden><svg class="i"><use href="#i-pin"/></svg><span></span><button type="button" data-goto="adresse">Modifier</button></p>
+        <h2 class="q" id="q-type" tabindex="-1">Quel coup de main vous faut-il&nbsp;?</h2>
+        <p class="sub">Vous verrez votre prix, crédit d'impôt déduit, avant d'envoyer quoi que ce soit.</p>
+        <div class="opts" data-single="type" role="group" aria-label="Formule">
+          <button type="button" class="opt" data-value="reguliere" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-repeat"/></svg></span><span class="tt">Une aide régulière<small>Ménage, repas, papiers, chaque semaine, deux fois par semaine ou toutes les deux semaines</small></span><span class="radio"></span></button>
+          <button type="button" class="opt" data-value="serenite" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-heart"/></svg></span><span class="tt">Formule Sérénité pour un parent<small>Deux passages par semaine et un compte rendu de prestation après chacun</small></span><span class="tag">Pour vos parents</span><span class="radio"></span></button>
+          <button type="button" class="opt" data-value="ponctuel" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-star"/></svg></span><span class="tt">Un coup de main ponctuel<small>Grand ménage, vitres, ménage ou papiers, une seule fois</small></span><span class="radio"></span></button>
+          <button type="button" class="opt" data-value="retour" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-bed"/></svg></span><span class="tt">Un retour à la maison<small>Après une hospitalisation, environ 12&nbsp;h d'aide sur 3 semaines</small></span><span class="radio"></span></button>
+        </div>
+        <h3 class="q2">C'est pour qui&nbsp;?</h3>
+        <div class="seg" data-single="pourqui" role="group" aria-label="Bénéficiaire">
+          <button type="button" data-value="moi" aria-pressed="false">Pour moi</button>
+          <button type="button" data-value="parent" aria-pressed="false">Pour un proche</button>
+        </div>
       </section>
 
       <section class="step" data-step="prestations" aria-labelledby="q-prestations">
-        <p class="ctx" id="ctxAddr" hidden><svg class="i"><use href="#i-pin"/></svg><span></span><button type="button" data-goto="0">Modifier</button></p>
         <h2 class="q" id="q-prestations" tabindex="-1">De quoi avez-vous besoin&nbsp;?</h2>
-        <p class="sub">Une ou plusieurs prestations, au même tarif horaire.</p>
-        <div class="opts" data-multi="prestations" role="group" aria-label="Prestations">
-          <button type="button" class="opt" data-value="Ménage" aria-pressed="false"><img src="img/thumb-menage.webp" alt="" width="58" height="58" /><span class="tt">Ménage<small>Entretien courant, sols, sanitaires, poussières</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
-          <button type="button" class="opt" data-value="Courses &amp; commissions" aria-pressed="false"><img src="img/thumb-courses.webp" alt="" width="58" height="58" /><span class="tt">Courses &amp; commissions<small>Courses, pharmacie, marché, rangement</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
-          <button type="button" class="opt" data-value="Cuisine à domicile" aria-pressed="false"><img src="img/thumb-cuisine.webp" alt="" width="58" height="58" /><span class="tt">Cuisine à domicile<small>Repas du jour, batch cooking, régimes</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+        <p class="sub" id="prestaSub">Une ou plusieurs prestations, au même tarif horaire, sur un même passage.</p>
+        <div class="opts grp" id="grpReg" data-multi="prestations" role="group" aria-label="Prestations régulières">
+          <button type="button" class="opt" data-value="Ménage" aria-pressed="false"><img src="img/thumb-menage.webp" alt="" width="58" height="58" /><span class="tt">Ménage &amp; repassage<small>Entretien courant, sols, sanitaires, linge</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+          <button type="button" class="opt" data-value="Repas de la semaine" aria-pressed="false"><img src="img/thumb-cuisine.webp" alt="" width="58" height="58" /><span class="tt">Repas de la semaine<small>Plats maison cuisinés sur place, courses pour les repas faites par l'intervenante</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+          <button type="button" class="opt" data-value="Papiers et courrier" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-folder"/></svg></span><span class="tt">Papiers &amp; courrier<small>Tri du courrier, classement, formulaires courants</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
         </div>
+        <div class="opts grp" id="grpPonc" data-multi="prestations" role="group" aria-label="Prestations ponctuelles" hidden>
+          <button type="button" class="opt" data-value="Grand ménage de saison" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-sparkles"/></svg></span><span class="tt">Grand ménage de saison<small>Remise en état complète, 4&nbsp;h minimum</small></span><span class="price-add">36&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+          <button type="button" class="opt" data-value="Vitres et baies" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-window"/></svg></span><span class="tt">Vitres et baies<small>Accessibles depuis le sol, 2&nbsp;h minimum</small></span><span class="price-add">35&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+          <button type="button" class="opt" data-value="Ménage ponctuel" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-home"/></svg></span><span class="tt">Ménage ponctuel<small>Une fois, 2&nbsp;h minimum</small></span><span class="price-add">35&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+          <button type="button" class="opt" data-value="Papiers en ordre" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-folder"/></svg></span><span class="tt">Papiers en ordre<small>Tri, classement, classeur des papiers importants</small></span><span class="price-add">38&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+        </div>
+        <p class="note" id="prestaNote"><svg class="i"><use href="#i-check"/></svg><span>Sans engagement, ajustable à tout moment.</span></p>
       </section>
 
       <section class="step" data-step="frequence" aria-labelledby="q-frequence">
@@ -405,44 +449,51 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
           <button type="button" class="opt" data-value="hebdo" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-repeat"/></svg></span><span class="tt">Chaque semaine<small>15&nbsp;€ de l'heure après crédit d'impôt</small></span><span class="tag">Recommandé</span><span class="radio"></span></button>
           <button type="button" class="opt" data-value="2x" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-cal2"/></svg></span><span class="tt">Deux fois par semaine<small>15&nbsp;€ de l'heure après crédit d'impôt</small></span><span class="radio"></span></button>
           <button type="button" class="opt" data-value="bimensuel" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-calendar"/></svg></span><span class="tt">Toutes les deux semaines<small>15&nbsp;€ de l'heure après crédit d'impôt</small></span><span class="radio"></span></button>
-          <button type="button" class="opt" data-value="ponctuel" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-star"/></svg></span><span class="tt">Une seule fois<small>Tarif ponctuel, 17,50&nbsp;€ de l'heure après crédit d'impôt</small></span><span class="radio"></span></button>
         </div>
         <p class="note"><svg class="i"><use href="#i-check"/></svg>Sans engagement, ajustable ou en pause à tout moment.</p>
       </section>
 
       <section class="step" data-step="duree" aria-labelledby="q-duree">
         <h2 class="q" id="q-duree" tabindex="-1">Combien de temps par passage&nbsp;?</h2>
-        <p class="sub">Minimum 2&nbsp;h. Une estimation suffit, on ajustera ensemble après le premier passage.</p>
-        <p class="mini-lbl">Selon votre logement</p>
-        <div class="presets" role="group" aria-label="Durée selon le logement">
-          <button type="button" class="preset" data-dur="2" aria-pressed="false"><svg class="i"><use href="#i-flat"/></svg><b>Appartement</b><small>2&nbsp;h</small></button>
-          <button type="button" class="preset" data-dur="3" aria-pressed="false"><svg class="i"><use href="#i-home"/></svg><b>Maison</b><small>3&nbsp;h</small></button>
-          <button type="button" class="preset" data-dur="4" aria-pressed="false"><svg class="i"><use href="#i-house"/></svg><b>Grande maison</b><small>4&nbsp;h</small></button>
+        <div id="durReg">
+          <p class="sub">Minimum 2&nbsp;h. Une estimation suffit, on ajustera ensemble après le premier passage.</p>
+          <p class="mini-lbl">Selon le logement</p>
+          <div class="presets" role="group" aria-label="Durée selon le logement">
+            <button type="button" class="preset" data-dur="2" aria-pressed="false"><svg class="i"><use href="#i-flat"/></svg><b>Appartement</b><small>2&nbsp;h</small></button>
+            <button type="button" class="preset" data-dur="3" aria-pressed="false"><svg class="i"><use href="#i-home"/></svg><b>Maison</b><small>3&nbsp;h</small></button>
+            <button type="button" class="preset" data-dur="4" aria-pressed="false"><svg class="i"><use href="#i-house"/></svg><b>Grande maison</b><small>4&nbsp;h</small></button>
+          </div>
+          <p class="mini-lbl">Ou choisissez la durée</p>
+          <div class="chips" data-single="duree" role="group" aria-label="Durée par passage">
+            <button type="button" class="chip" data-value="2" aria-pressed="false">2h</button>
+            <button type="button" class="chip" data-value="2.5" aria-pressed="false">2h30</button>
+            <button type="button" class="chip" data-value="3" aria-pressed="false">3h</button>
+            <button type="button" class="chip" data-value="3.5" aria-pressed="false">3h30</button>
+            <button type="button" class="chip" data-value="4" aria-pressed="false">4h</button>
+            <button type="button" class="chip" data-value="4.5" aria-pressed="false">4h30</button>
+            <button type="button" class="chip" data-value="5" aria-pressed="false">5h</button>
+            <button type="button" class="chip" data-value="5.5" aria-pressed="false">5h30</button>
+            <button type="button" class="chip" data-value="6" aria-pressed="false">6h</button>
+            <button type="button" class="chip" data-value="6.5" aria-pressed="false">6h30</button>
+            <button type="button" class="chip" data-value="7" aria-pressed="false">7h</button>
+          </div>
         </div>
-        <p class="mini-lbl">Ou choisissez la durée</p>
-        <div class="chips" data-single="duree" role="group" aria-label="Durée par passage">
-          <button type="button" class="chip" data-value="2" aria-pressed="false">2h</button>
-          <button type="button" class="chip" data-value="2.5" aria-pressed="false">2h30</button>
-          <button type="button" class="chip" data-value="3" aria-pressed="false">3h</button>
-          <button type="button" class="chip" data-value="3.5" aria-pressed="false">3h30</button>
-          <button type="button" class="chip" data-value="4" aria-pressed="false">4h</button>
-          <button type="button" class="chip" data-value="4.5" aria-pressed="false">4h30</button>
-          <button type="button" class="chip" data-value="5" aria-pressed="false">5h</button>
-          <button type="button" class="chip" data-value="5.5" aria-pressed="false">5h30</button>
-          <button type="button" class="chip" data-value="6" aria-pressed="false">6h</button>
-          <button type="button" class="chip" data-value="6.5" aria-pressed="false">6h30</button>
-          <button type="button" class="chip" data-value="7" aria-pressed="false">7h</button>
+        <div id="durPonc" hidden>
+          <p class="sub">Une durée par prestation. Une estimation suffit, Huguette l'ajuste avec vous au téléphone.</p>
+          <div id="durRows"></div>
         </div>
       </section>
 
       <section class="step" data-step="options" aria-labelledby="q-options">
-        <h2 class="q" id="q-options" tabindex="-1">Des besoins en plus&nbsp;?</h2>
-        <p class="sub">Facultatif. Les options s'ajoutent au tarif horaire.</p>
-        <div class="opts" data-multi="options" role="group" aria-label="Options">
-          <button type="button" class="opt" data-value="repassage" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-shirt"/></svg></span><span class="tt">Repassage<small>Le linge repassé et plié</small></span><span class="price-add">+1&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
-          <button type="button" class="opt" data-value="produits" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-drop"/></svg></span><span class="tt">Produits ménagers fournis<small>L'intervenante apporte le nécessaire</small></span><span class="price-add">+3&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+        <div id="optBlock">
+          <h2 class="q" id="q-options" tabindex="-1">Des besoins en plus&nbsp;?</h2>
+          <p class="sub">Facultatif. Les options s'ajoutent au tarif horaire.</p>
+          <div class="opts" data-multi="options" role="group" aria-label="Options">
+            <button type="button" class="opt" data-value="repassage" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-shirt"/></svg></span><span class="tt">Repassage<small>Le linge repassé et plié</small></span><span class="price-add">+1&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+            <button type="button" class="opt" data-value="produits" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-drop"/></svg></span><span class="tt">Produits ménagers fournis<small>L'intervenante apporte le nécessaire, hors crédit d'impôt</small></span><span class="price-add">+3&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+          </div>
         </div>
-        <h3 class="q2">Des animaux à la maison&nbsp;?</h3>
+        <h3 class="q2" id="q-animaux" tabindex="-1">Des animaux à la maison&nbsp;?</h3>
         <p class="sub sm">Cela nous aide à éviter toute allergie côté intervenante.</p>
         <div class="seg" data-single="animaux" role="group" aria-label="Animaux">
           <button type="button" data-value="Oui" aria-pressed="false"><svg class="i"><use href="#i-paw"/></svg>Oui</button>
@@ -452,8 +503,8 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
 
       <section class="step" data-step="jours" aria-labelledby="q-jours">
         <h2 class="q" id="q-jours" tabindex="-1">Quel jour vous arrange&nbsp;?</h2>
-        <p class="sub" id="planSub">Choisissez la date de votre premier passage.</p>
-        <p class="hint"><svg class="i"><use href="#i-alert"/></svg><span>Les jours en orange (dimanches et jours fériés) sont majorés de 5&nbsp;€ de l'heure.</span></p>
+        <p class="sub" id="planSub">Choisissez la date du premier passage.</p>
+        <p class="hint hint-maj"><svg class="i"><use href="#i-alert"/></svg><span>Les jours en orange (dimanches et jours fériés) sont majorés de 5&nbsp;€ de l'heure, seulement pour les passages qui tombent ces jours-là.</span></p>
         <div class="cal">
           <div class="cal-head">
             <button type="button" id="calPrev" aria-label="Mois précédent"><svg class="i"><use href="#i-left"/></svg></button>
@@ -462,7 +513,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
           </div>
           <div class="cal-dow" aria-hidden="true"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
           <div class="cal-grid" id="calGrid"></div>
-          <div class="cal-legend" aria-hidden="true"><span><i style="background:var(--terra-500)"></i>Votre passage</span><span id="lgRep"><i style="background:var(--terra-100);border:1px solid #f0c9b3"></i>Passages suivants</span><span><i style="background:#fbdcc6"></i>+5&nbsp;€/h</span></div>
+          <div class="cal-legend" aria-hidden="true"><span><i style="background:var(--terra-500)"></i><span id="lgSel">Votre passage</span></span><span id="lgRep"><i style="background:var(--terra-100);border:1px solid #f0c9b3"></i>Passages suivants</span><span class="lg-maj"><i style="background:#fbdcc6"></i>+5&nbsp;€/h</span></div>
         </div>
         <p class="planline empty" id="planLine"><svg class="i"><use href="#i-calendar"/></svg><span>Sélectionnez un jour ci-dessus.</span></p>
       </section>
@@ -470,14 +521,14 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       <section class="step" data-step="horaires" aria-labelledby="q-horaires">
         <h2 class="q" id="q-horaires" tabindex="-1">À quelle heure peut-elle arriver&nbsp;?</h2>
         <p class="sub">Cochez toutes les heures d'arrivée qui vous conviennent&nbsp;: plus vous en proposez, plus c'est simple de trouver votre intervenante.</p>
-        <p class="hint"><svg class="i"><use href="#i-alert"/></svg><span>Arrivée à 7h, 7h30 ou à partir de 20h&nbsp;: majoration de 5&nbsp;€ de l'heure.</span></p>
+        <p class="hint hint-maj"><svg class="i"><use href="#i-alert"/></svg><span>Si toutes vos heures d'arrivée sont à 7h, 7h30 ou à partir de 20h&nbsp;: majoration de 5&nbsp;€ de l'heure.</span></p>
         <div id="timeGroups"></div>
         <p class="nudge" id="nudge" aria-live="polite"></p>
       </section>
 
       <section class="step" data-step="coordonnees" aria-labelledby="q-coord">
         <h2 class="q" id="q-coord" tabindex="-1">Votre estimation est prête</h2>
-        <p class="sub">Laissez vos coordonnées&nbsp;: Huguette vous rappelle pour confirmer le devis. Rien à payer maintenant.</p>
+        <p class="sub">Laissez vos coordonnées&nbsp;: Huguette vous rappelle pour confirmer le devis. Rien à payer maintenant, tout est facturé après la prestation.</p>
         <div class="est" id="est"></div>
         <form id="devisForm" class="form-grid" novalidate>
           <div class="field">
@@ -492,10 +543,14 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
             <div class="field" id="f-nom"><label for="nom">Nom</label><input id="nom" name="nom" type="text" autocomplete="family-name" enterkeyhint="next" /><span class="ferr"></span></div>
           </div>
           <div class="field" id="f-tel"><label for="tel">Téléphone</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" enterkeyhint="next" /><span class="ferr"></span></div>
-          <div class="field" id="f-email"><label for="email">Email <small>(facultatif)</small></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="marie.durand@email.fr" enterkeyhint="send" /><span class="ferr"></span></div>
-          <div class="field"><label for="message">Un détail à ajouter&nbsp;? <small>(facultatif)</small></label><textarea id="message" name="message" placeholder="Ex. maison de 90 m², accès par le portail bleu…"></textarea></div>
+          <div class="field" id="f-email"><label for="email">Email <small>(facultatif)</small></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="marie.durand@email.fr" enterkeyhint="next" /><span class="ferr"></span></div>
+          <div class="field" id="f-proche" hidden><label for="proche">Prénom et nom de votre proche <small>(facultatif)</small></label><input id="proche" name="proche" type="text" autocomplete="off" enterkeyhint="next" /></div>
+          <p class="info" id="infoParent" hidden><svg class="i"><use href="#i-info"/></svg><span>Le contrat et les factures seront au nom de votre proche&nbsp;: c'est lui ou elle qui bénéficie du crédit d'impôt, même sans être imposable. Vous restez notre interlocuteur, avec son accord écrit. S'il touche l'APA ou la PCH, nous n'intervenons pas sur les heures financées par ces aides, et l'avance immédiate n'est pas encore ouverte à leurs bénéficiaires.</span></p>
+          <div class="field"><label for="message">Un détail à ajouter&nbsp;? <small>(facultatif)</small></label><textarea id="message" name="message" placeholder="Ex. appartement de 70 m² au 3e avec ascenseur, accès par le portail bleu…"></textarea></div>
           <div class="hp" aria-hidden="true"><label>Ne pas remplir <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" /></label></div>
-          <p class="privacy"><svg class="i"><use href="#i-lock"/></svg><span>Vos coordonnées servent uniquement à vous recontacter au sujet de cette demande. Gratuit et sans engagement.</span></p>
+          <label class="consent" id="f-consent"><input type="checkbox" id="consent" /><span>J'accepte d'être rappelé par Coup de Main Provence au sujet de cette demande.</span></label>
+          <span class="ferr" id="consentErr"></span>
+          <p class="privacy"><svg class="i"><use href="#i-lock"/></svg><span>Vos coordonnées servent uniquement à vous recontacter au sujet de cette demande (<a href="confidentialite.html" style="text-decoration:underline">confidentialité</a>). Gratuit et sans engagement, 14 jours de rétractation après signature.</span></p>
           <p class="form-status" id="formStatus" role="alert"></p>
         </form>
       </section>
@@ -507,11 +562,11 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
           <p class="sub" id="merciSub">Huguette vous rappelle très vite pour confirmer votre devis, crédit d'impôt déduit.</p>
           <ol class="next-steps">
             <li><span><b>Huguette vous appelle</b>Elle valide avec vous le devis, les jours et les horaires.</span></li>
-            <li><span><b>On active votre avance immédiate</b>Gratuitement, en cinq minutes, pour ne payer que 50&nbsp;%.</span></li>
-            <li><span><b>Votre intervenante arrive</b>Au jour et à l'heure convenus. Vous ne réglez que la moitié.</span></li>
+            <li><span><b>On vous inscrit à l'avance immédiate</b>Gratuitement. Vous activez votre espace URSSAF, Huguette peut vous accompagner.</span></li>
+            <li><span><b>L'intervenante arrive</b>Au jour et à l'heure convenus. La facture vient après la prestation.</span></li>
           </ol>
           <div class="merci-links">
-            <span>Une question d'ici là&nbsp;? <a href="tel:+33641946311" id="merciTel">06 41 94 63 11</a></span>
+            <span>Une question d'ici là&nbsp;? <a href="tel:+33641946311" data-contact>06 41 94 63 11</a></span>
             <a href="index.html">Revenir au site</a>
           </div>
         </div>
@@ -553,20 +608,37 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
 
 <script>
 (function(){
-  var ORDER=['adresse','prestations','frequence','duree','options','jours','horaires','coordonnees'];
-  var TITLES={adresse:'Votre adresse',prestations:'Vos prestations',frequence:'La fréquence',duree:'La durée',options:'Options',jours:'Le jour',horaires:'Les horaires',coordonnees:'Votre estimation'};
-  var CAB={lat:43.857203,lon:4.957922};
-  var SERVED=['Cabannes','Saint-Andiol','Noves','Verquières','Mollégès','Plan-d\'Orgon','Orgon','Cavaillon','Châteaurenard','Eyragues','Graveson','Maillane','Saint-Rémy-de-Provence','Eygalières','Barbentane','Rognonas','Tarascon','Sénas','Mas-Blanc-des-Alpilles'];
-  var PRESTA_PARAM={menage:'Ménage',courses:'Courses & commissions',cuisine:'Cuisine à domicile'};
-  var FREQ_LABEL={hebdo:'Chaque semaine','2x':'Deux fois par semaine',bimensuel:'Toutes les deux semaines',ponctuel:'Une seule fois'};
+  /* ---------- formules et prestations ---------- */
+  var ORDERS={
+    reguliere:['adresse','type','prestations','frequence','duree','options','jours','horaires','coordonnees'],
+    serenite:['adresse','type','prestations','duree','options','jours','horaires','coordonnees'],
+    ponctuel:['adresse','type','prestations','duree','options','jours','horaires','coordonnees'],
+    retour:['adresse','type','options','jours','horaires','coordonnees']
+  };
+  var TITLES={adresse:'Votre adresse',type:'La formule',prestations:'Les prestations',frequence:'La fréquence',duree:'La durée',options:'Options',jours:'Le jour',horaires:'Les horaires',coordonnees:'Votre estimation'};
+  var TYPE_LABEL={reguliere:'Aide régulière',serenite:'Formule Sérénité',ponctuel:'Coup de main ponctuel',retour:'Retour à la maison'};
+  var TASKS={
+    'Ménage':{grp:'reg',clean:true,rep:true},
+    'Repas de la semaine':{grp:'reg'},
+    'Papiers et courrier':{grp:'reg'},
+    'Grand ménage de saison':{grp:'ponc',rate:36,clean:true,durs:[4,5,6,8],def:4},
+    'Vitres et baies':{grp:'ponc',rate:35,clean:true,durs:[2,3,4],def:2},
+    'Ménage ponctuel':{grp:'ponc',rate:35,clean:true,rep:true,durs:[2,2.5,3,3.5,4,5,6],def:2},
+    'Papiers en ordre':{grp:'ponc',rate:38,durs:[1.5,2,3,4],def:1.5}
+  };
+  var PMAP={reguliere:{menage:'Ménage',repas:'Repas de la semaine',papiers:'Papiers et courrier'},ponctuel:{menage:'Ménage ponctuel',grandmenage:'Grand ménage de saison',vitres:'Vitres et baies',papiers:'Papiers en ordre'}};
+  var FREQ_LABEL={hebdo:'Chaque semaine','2x':'Deux fois par semaine',bimensuel:'Toutes les deux semaines',ponctuel:'Une seule fois',retour:'Environ 12 h sur 3 semaines'};
   var PER_MONTH={hebdo:52/12,'2x':104/12,bimensuel:26/12};
   var OPT_LABEL={repassage:'Repassage',produits:'Produits fournis'};
+  var RETOUR_HOURS=12, RETOUR_RATE=32;
+  var HUBS=[{lat:43.5263,lon:5.4474},{lat:43.2965,lon:5.3880}], MID={lat:43.41,lon:5.42};
+  var SERVED=['Aix-en-Provence','Marseille','Venelles','Éguilles','Le Tholonet','Saint-Marc-Jaumegarde','Meyreuil','Bouc-Bel-Air','Cabriès','Allauch','Plan-de-Cuques'];
   var MONTHS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
   var WD=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
   var NBSP=' ';
 
-  function fresh(){ return {adresse:'',lat:null,lon:null,ville:'',prestations:[],frequence:'',duree:null,options:[],animaux:'',anchors:[],heures:[],civilite:''}; }
-  var state=fresh(), idx=0;
+  function fresh(){ return {adresse:'',lat:null,lon:null,ville:'',cp:'',type:'',pourqui:'',prestations:[],frequence:'',duree:null,durees:{},options:[],animaux:'',anchors:[],heures:[],civilite:''}; }
+  var state=fresh(), cur='adresse';
 
   /* ---------- utilitaires ---------- */
   function $(id){ return document.getElementById(id); }
@@ -579,8 +651,11 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   function durLabel(d){ if(d==null) return ''; var h=Math.floor(d), m=Math.round((d-h)*60); return h+'h'+(m?pad(m):''); }
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function track(ev,data,custom){ try{ if(typeof fbq==='function') fbq(custom?'trackCustom':'track',ev,data||{}); }catch(e){} }
+  function order(){ return ORDERS[state.type]||ORDERS.reguliere; }
+  function freq(){ return state.type==='serenite'? '2x' : (state.type==='ponctuel'? 'ponctuel' : (state.type==='retour'? 'retour' : state.frequence)); }
+  function grpOf(){ return state.type==='ponctuel'? 'ponc' : 'reg'; }
 
-  /* ---------- jours fériés (calculés, Pâques incluse) ---------- */
+  /* ---------- jours fériés ---------- */
   function easter(y){ var a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1; return new Date(y,mo-1,da); }
   function holidays(y){ var e=easter(y); function add(n){ var d=new Date(e); d.setDate(d.getDate()+n); return toStr(d); } return [y+'-01-01',add(1),y+'-05-01',y+'-05-08',add(39),add(50),y+'-07-14',y+'-08-15',y+'-11-01',y+'-11-11',y+'-12-25']; }
   var now=new Date(), HOLIDAYS=new Set([].concat(holidays(now.getFullYear()),holidays(now.getFullYear()+1)));
@@ -593,31 +668,68 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   var MAJTIMES=new Set(['07:00','07:30','20:00','20:30','21:00','21:30','22:00']);
   var GROUPS=[{k:'Matin',ic:'#i-sunrise',from:7,to:11.5},{k:'Après-midi',ic:'#i-sun',from:12,to:17.5},{k:'Soirée',ic:'#i-moon',from:18,to:22}];
 
-  /* ---------- tarifs (inchangés) ---------- */
-  function baseRate(){ return state.frequence==='ponctuel'?35:30; }
-  function optionsAdd(){ var a=0; if(state.options.indexOf('repassage')>-1) a+=1; if(state.options.indexOf('produits')>-1) a+=3; return a; }
-  function dayMajor(){ return state.anchors.some(function(a){ var d=parseD(a); return d.getDay()===0||HOLIDAYS.has(a); }); }
+  /* ---------- tarifs ---------- */
+  function sunday(a){ return parseD(a).getDay()===0; }
   function timeMajor(){ return state.heures.length>0 && state.heures.every(function(t){ return MAJTIMES.has(t); }); }
-  function majoration(){ return (dayMajor()?5:0)+(timeMajor()?5:0); }
-  function rateGross(){ return baseRate()+optionsAdd()+majoration(); }
-  function grossPerVisit(){ return state.duree!=null? state.duree*rateGross() : 0; }
-
-  /* ---------- zone ---------- */
-  function km(lat,lon){ var r=Math.PI/180, dp=(lat-CAB.lat)*r, dl=(lon-CAB.lon)*r; var a=Math.sin(dp/2)*Math.sin(dp/2)+Math.cos(CAB.lat*r)*Math.cos(lat*r)*Math.sin(dl/2)*Math.sin(dl/2); return 12742*Math.asin(Math.sqrt(a)); }
-  function distance(){ return (state.lat!=null && state.lon!=null)? km(state.lat,state.lon) : null; }
-  function zoneInfo(){
-    var d=distance(); if(d==null) return null;
-    var k=Math.max(1,Math.round(d)), c=state.ville||'votre commune';
-    if(SERVED.indexOf(c)>-1 || d<=3) return {cls:'ok',ic:'#i-check',txt:'Bonne nouvelle, nous intervenons à '+c+'.'};
-    if(d<=20) return {cls:'ok',ic:'#i-check',txt:c+' est à '+k+NBSP+'km de Cabannes, dans notre rayon de 20'+NBSP+'km.'};
-    if(d<=25) return {cls:'warn',ic:'#i-pin',txt:c+' est en limite de zone ('+k+NBSP+'km). Continuez, Huguette vous confirme.'};
-    return {cls:'far',ic:'#i-pin',txt:c+' est à '+k+NBSP+'km de Cabannes, au-delà de notre zone habituelle. Vous pouvez continuer, Huguette vous dira si c\'est possible.'};
+  function dayMajHourly(){
+    if(state.type==='retour' || !state.anchors.length) return 0;
+    if(freq()==='ponctuel'){ var a=state.anchors[0]; return (sunday(a)||HOLIDAYS.has(a))? 5 : 0; }
+    return 5*state.anchors.filter(sunday).length/state.anchors.length;
+  }
+  function dayMajor(){ return dayMajHourly()>0; }
+  function firstHoliday(){
+    if(state.type==='retour' || freq()==='ponctuel' || !state.anchors.length) return '';
+    var a=state.anchors.slice().sort()[0]; return (!sunday(a) && HOLIDAYS.has(a))? a : '';
+  }
+  function majoration(){ return state.type==='retour'? 0 : dayMajHourly()+(timeMajor()?5:0); }
+  function hasOpt(o){ return state.options.indexOf(o)>-1; }
+  function regRate(){ return (state.type==='serenite'?32:30)+(hasOpt('repassage')?1:0)+majoration(); }
+  function taskRate(t){ var d=TASKS[t]; return d.rate+(hasOpt('repassage')&&d.rep?1:0)+majoration(); }
+  function parts(){
+    if(state.type==='retour') return {svc:RETOUR_HOURS*RETOUR_RATE, prod:0};
+    if(state.type==='ponctuel'){
+      var svc=0, prod=0;
+      state.prestations.forEach(function(t){ var h=state.durees[t]||0; svc+=h*taskRate(t); if(hasOpt('produits')&&TASKS[t].clean) prod+=h*3; });
+      return {svc:svc, prod:prod};
+    }
+    var h=state.duree||0; return {svc:h*regRate(), prod:hasOpt('produits')? h*3 : 0};
+  }
+  function gross(){ var p=parts(); return p.svc+p.prod; }
+  function netPrice(){ var p=parts(); return p.svc/2+p.prod; }
+  function monthlyNet(){
+    var pm= state.type==='serenite'? PER_MONTH['2x'] : (state.type==='reguliere'? PER_MONTH[state.frequence] : 0);
+    if(!pm) return 0;
+    return netPrice()*pm+(state.type==='serenite'? 16 : 0);
   }
 
-  /* ---------- sauvegarde ---------- */
-  function save(){ try{ sessionStorage.setItem('cdm_devis',JSON.stringify({s:state,i:idx,t:Date.now()})); }catch(e){} }
-  function load(){ try{ var o=JSON.parse(sessionStorage.getItem('cdm_devis')||'null'); if(o && o.s && Date.now()-o.t<6*3600e3) return o; }catch(e){} return null; }
-  function clearSave(){ try{ sessionStorage.removeItem('cdm_devis'); }catch(e){} }
+  /* ---------- options disponibles selon les prestations ---------- */
+  function availableOptions(){
+    if(state.type==='retour') return [];
+    var o=[];
+    if(state.type==='ponctuel'){
+      if(state.prestations.some(function(t){ return TASKS[t]&&TASKS[t].rep; })) o.push('repassage');
+      if(state.prestations.some(function(t){ return TASKS[t]&&TASKS[t].clean; })) o.push('produits');
+    } else if(state.prestations.indexOf('Ménage')>-1){ o.push('repassage','produits'); }
+    return o;
+  }
+  function pruneOptions(){ var av=availableOptions(); state.options=state.options.filter(function(x){ return av.indexOf(x)>-1; }); }
+
+  /* ---------- zone ---------- */
+  function dist(h,lat,lon){ var r=Math.PI/180, dp=(lat-h.lat)*r, dl=(lon-h.lon)*r; var a=Math.sin(dp/2)*Math.sin(dp/2)+Math.cos(h.lat*r)*Math.cos(lat*r)*Math.sin(dl/2)*Math.sin(dl/2); return 12742*Math.asin(Math.sqrt(a)); }
+  function km(lat,lon){ return Math.min(dist(HUBS[0],lat,lon),dist(HUBS[1],lat,lon)); }
+  function place(city,cp){ if(city==='Marseille' && /^130(0[1-9]|1[0-6])$/.test(cp||'')){ var n=+cp.slice(3); return 'Marseille '+n+(n===1?'er':'e'); } return city||'votre commune'; }
+  function zoneInfo(){
+    if(state.lat==null || state.lon==null) return null;
+    var lbl=place(state.ville,state.cp), d=km(state.lat,state.lon);
+    if(SERVED.indexOf(state.ville)>-1) return {cls:'ok',ic:'#i-check',txt:'Bonne nouvelle, nous intervenons à '+lbl+'.'};
+    if(d<=16) return {cls:'warn',ic:'#i-pin',txt:lbl+' est en limite de notre zone. Continuez, Huguette vous confirme.'};
+    return {cls:'far',ic:'#i-pin',txt:lbl+' est au-delà de notre zone habituelle, autour d\'Aix et de Marseille. Vous pouvez continuer, Huguette vous dira si c\'est possible.'};
+  }
+
+  /* ---------- sauvegarde et provenance ---------- */
+  function save(){ try{ sessionStorage.setItem('cdm_devis2',JSON.stringify({s:state,step:cur,t:Date.now()})); }catch(e){} }
+  function load(){ try{ var o=JSON.parse(sessionStorage.getItem('cdm_devis2')||'null'); if(o && o.s && Date.now()-o.t<6*3600e3) return o; }catch(e){} return null; }
+  function clearSave(){ try{ sessionStorage.removeItem('cdm_devis2'); }catch(e){} }
   function source(){
     var src={};
     try{ src=JSON.parse(sessionStorage.getItem('cdm_src')||'{}')||{}; }catch(e){}
@@ -629,12 +741,15 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   /* ---------- validation ---------- */
   function errorFor(name){
     switch(name){
-      case 'adresse': return state.adresse.trim().length>3? '' : 'Indiquez votre adresse pour continuer.';
+      case 'adresse': return state.adresse.trim().length>3? '' : 'Indiquez l\'adresse pour continuer.';
+      case 'type': return !state.type? 'Choisissez une formule.' : (!state.pourqui? 'Dites-nous si c\'est pour vous ou pour un proche.' : '');
       case 'prestations': return state.prestations.length? '' : 'Choisissez au moins une prestation.';
       case 'frequence': return state.frequence? '' : 'Choisissez une fréquence.';
-      case 'duree': return state.duree!=null? '' : 'Choisissez une durée.';
-      case 'options': return state.animaux? '' : 'Dites-nous si vous avez des animaux.';
-      case 'jours': var need=state.frequence==='2x'?2:1; return state.anchors.length>=need? '' : (need===2?'Choisissez deux jours de la semaine.':'Choisissez un jour dans le calendrier.');
+      case 'duree':
+        if(state.type==='ponctuel') return state.prestations.every(function(t){ return state.durees[t]; })? '' : 'Choisissez une durée pour chaque prestation.';
+        return state.duree!=null? '' : 'Choisissez une durée.';
+      case 'options': return state.animaux? '' : 'Dites-nous s\'il y a des animaux.';
+      case 'jours': var need=freq()==='2x'?2:1; return state.anchors.length>=need? '' : (need===2?'Choisissez deux jours de la semaine.':'Choisissez un jour dans le calendrier.');
       case 'horaires': return state.heures.length? '' : 'Choisissez au moins une heure d\'arrivée.';
     }
     return '';
@@ -655,81 +770,149 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     });
     document.querySelectorAll('.preset').forEach(function(b){ b.setAttribute('aria-pressed', String(Number(b.dataset.dur)===state.duree)); });
   }
-
   function refreshNext(){
-    var name=ORDER[idx];
-    var bad = name && name!=='coordonnees' && !!errorFor(name);
+    var bad = cur!=='coordonnees' && cur!=='merci' && !!errorFor(cur);
     nextBtn.setAttribute('aria-disabled', String(bad));
     if(!bad) errEl.textContent='';
   }
+  function setNoMaj(){ $('fw').classList.toggle('no-maj', state.type==='retour'); }
 
-  function show(name,dir){
-    steps.forEach(function(s){ var on=s.dataset.step===name; s.classList.toggle('active',on); s.classList.toggle('from-back',on && dir==='back'); });
-    var i=ORDER.indexOf(name), done=name==='merci';
-    $('bar').style.width=(done?100:((i+1)/ORDER.length*100))+'%';
-    $('stepCount').innerHTML= done? 'Demande envoyée' : 'Étape '+(i+1)+' sur '+ORDER.length+'<small>'+TITLES[name]+'</small>';
+  function updateHeader(){
+    var ord=order(), i=ord.indexOf(cur), done=cur==='merci';
+    $('bar').style.width=(done?100:((i+1)/ord.length*100))+'%';
+    $('stepCount').innerHTML= done? 'Demande envoyée' : 'Étape '+(i+1)+' sur '+ord.length+'<small>'+((cur==='options' && !availableOptions().length)? 'Les animaux' : TITLES[cur])+'</small>';
     actions.classList.toggle('hidden',done);
     prevBtn.style.display=(i>0)?'':'none';
-    $('nextLbl').textContent= name==='coordonnees'? 'Envoyer ma demande' : (name==='horaires'? 'Voir mon estimation' : 'Continuer');
+    var nextName=ord[i+1];
+    $('nextLbl').textContent= cur==='coordonnees'? 'Envoyer ma demande' : (nextName==='coordonnees'? 'Voir mon estimation' : 'Continuer');
+  }
+  function show(name,dir){
+    cur=name;
+    steps.forEach(function(s){ var on=s.dataset.step===name; s.classList.toggle('active',on); s.classList.toggle('from-back',on && dir==='back'); });
+    var ord=order(), i=ord.indexOf(name), done=name==='merci';
+    updateHeader();
     errEl.textContent='';
-    if(name==='prestations') renderCtx();
+    setNoMaj();
+    if(name==='type') renderCtx();
+    if(name==='prestations') setupPrestations();
+    if(name==='duree') setupDuree();
+    if(name==='options') setupOptions();
     if(name==='jours') setupJours();
     if(name==='horaires') renderTimes();
-    if(name==='coordonnees') renderEstimate();
+    if(name==='coordonnees') setupCoord();
     syncPressed(); refreshNext(); renderSummary();
     window.scrollTo(0,0);
-    var h=document.querySelector('.step.active .q'); if(h) setTimeout(function(){ try{ h.focus({preventScroll:true}); }catch(e){} },60);
-    if(!done){ track('EtapeDevis',{etape:name,numero:i+1},true); save(); }
+    var h=[].slice.call(document.querySelectorAll('.step.active .q, .step.active .q2')).filter(function(x){ return x.offsetParent!==null; })[0]; if(h) setTimeout(function(){ try{ h.focus({preventScroll:true}); }catch(e){} },60);
+    if(!done){ track('EtapeDevis',{etape:name},true); save(); }
   }
-
-  function goTo(i,opts){
+  function goTo(name,opts){
     opts=opts||{};
-    var dir= i<idx? 'back' : 'fwd';
-    idx=Math.max(0,Math.min(ORDER.length-1,i));
-    if(!opts.fromPop){ if(opts.replace) history.replaceState({cdm:1,i:idx},''); else history.pushState({cdm:1,i:idx},''); }
-    show(ORDER[idx],dir);
+    var ord=order(), dir= ord.indexOf(name)<ord.indexOf(cur)? 'back' : 'fwd';
+    if(!opts.fromPop){ if(opts.replace) history.replaceState({cdm:2,s:name},''); else history.pushState({cdm:2,s:name},''); }
+    show(name,dir);
   }
-  function goNext(){ if(idx<ORDER.length-1) goTo(idx+1); }
-
+  function goNext(){ var ord=order(), i=ord.indexOf(cur); if(i<ord.length-1) goTo(ord[i+1]); }
   window.addEventListener('popstate',function(e){
-    if(e.state && e.state.cdm){
-      if($('creneauModal').classList.contains('open')) $('creneauModal').classList.remove('open');
-      if(document.querySelector('.step.active').dataset.step==='merci'){ return; }
-      goTo(e.state.i,{fromPop:true});
-    }
+    if(!(e.state && e.state.cdm===2)) return;
+    if($('creneauModal').classList.contains('open')) $('creneauModal').classList.remove('open');
+    if(cur==='merci'){ location.href='index.html'; return; }
+    var ord=order(), s=e.state.s; if(ord.indexOf(s)<0) s='type';
+    for(var k=0;k<ord.indexOf(s);k++){ if(errorFor(ord[k])){ s=ord[k]; history.replaceState({cdm:2,s:s},''); break; } }
+    goTo(s,{fromPop:true});
   });
 
-  /* ---------- récapitulatif latéral ---------- */
+  /* ---------- récapitulatif ---------- */
   function scheduleText(){
     if(!state.anchors.length) return '';
-    var f=state.frequence;
+    var f=freq();
+    if(f==='retour') return 'Retour prévu le '+WD[parseD(state.anchors[0]).getDay()]+' '+frDate(state.anchors[0]);
     if(f==='ponctuel') return 'Le '+WD[parseD(state.anchors[0]).getDay()]+' '+frDate(state.anchors[0]);
-    if(f==='2x'){ var srt=state.anchors.slice().sort(), days=state.anchors.map(function(a){ return parseD(a).getDay(); }).sort(function(x,y){ return ((x+6)%7)-((y+6)%7); }); return 'Chaque '+days.map(function(d){ return WD[d]; }).join(' et ')+', à partir du '+frDate(srt[0]); }
+    if(f==='2x'){ if(state.anchors.length<2) return ''; var srt=state.anchors.slice().sort(), days=state.anchors.map(function(a){ return parseD(a).getDay(); }).sort(function(x,y){ return ((x+6)%7)-((y+6)%7); }); return 'Chaque '+days.map(function(d){ return WD[d]; }).join(' et ')+', premiers passages le '+srt.map(function(a){ var d=parseD(a); return WD[d.getDay()]+' '+d.getDate()+(d.getDate()===1?'er':'')+' '+MONTHS[d.getMonth()]; }).join(' et le '); }
     var day=WD[parseD(state.anchors[0]).getDay()];
     if(f==='bimensuel') return 'Un '+day+' sur deux, à partir du '+frDate(state.anchors[0]);
     return 'Chaque '+day+', à partir du '+frDate(state.anchors[0]);
   }
   function heuresText(){ return state.heures.slice().sort().map(hLabel).join(', '); }
-  function optionsText(){ return state.options.length? state.options.map(function(o){ return OPT_LABEL[o]; }).join(', ') : (idx>4?'Aucune':''); }
+  function prestaText(){
+    if(state.type==='retour') return 'Logement préparé, ménage, linge, repas';
+    if(state.type==='ponctuel') return state.prestations.map(function(t){ return t+(state.durees[t]? ' ('+durLabel(state.durees[t])+')' : ''); }).join(', ');
+    return state.prestations.join(', ')+(state.type==='serenite'&&state.prestations.length? ', 1 h de papiers par mois' : '');
+  }
+  function optionsText(){ return state.options.length? state.options.map(function(o){ return OPT_LABEL[o]; }).join(', ') : ''; }
   function renderSummary(){
-    var rows=[['Adresse',state.adresse],['Prestations',state.prestations.join(', ')],['Fréquence',FREQ_LABEL[state.frequence]||''],['Durée',state.duree!=null? durLabel(state.duree)+' par passage':''],['Options',optionsText()],['Animaux',state.animaux],['Planning',scheduleText()],['Arrivée',heuresText()]];
+    var ord=order(), past=function(s){ return ord.indexOf(cur)>ord.indexOf(s); };
+    var rows=[['Adresse',state.adresse],
+      ['Formule',state.type? TYPE_LABEL[state.type]+(state.pourqui==='parent'?', pour un proche':'') : ''],
+      ['Prestations',state.prestations.length||state.type==='retour'? prestaText() : ''],
+      ['Rythme',state.type&&state.type!=='reguliere'? FREQ_LABEL[freq()] : (FREQ_LABEL[state.frequence]||'')],
+      ['Durée',state.type==='ponctuel'||state.type==='retour'? '' : (state.duree!=null? durLabel(state.duree)+' par passage' : '')],
+      ['Options',optionsText()||(past('options')&&availableOptions().length?'Aucune':'')],
+      ['Animaux',state.animaux],['Planning',scheduleText()],['Arrivée',heuresText()]];
+    rows=rows.filter(function(r){ return !(r[0]==='Durée' && (state.type==='ponctuel'||state.type==='retour')) && !(r[0]==='Options' && (state.type==='retour' || (state.prestations.length && !availableOptions().length))); });
     $('sum').innerHTML=rows.map(function(r){ return '<div><dt>'+r[0]+'</dt><dd class="'+(r[1]?'':'empty')+'">'+(r[1]? esc(r[1]) : 'À compléter')+'</dd></div>'; }).join('');
   }
-  function renderCtx(){
-    var c=$('ctxAddr');
-    if(state.adresse){ c.hidden=false; c.querySelector('span').textContent=state.adresse; } else c.hidden=true;
+  function renderCtx(){ var c=$('ctxAddr'); if(state.adresse){ c.hidden=false; c.querySelector('span').textContent=state.adresse; } else c.hidden=true; }
+
+  /* ---------- étapes dynamiques ---------- */
+  function setupPrestations(){
+    var g=grpOf();
+    $('grpReg').hidden= g!=='reg'; $('grpPonc').hidden= g!=='ponc';
+    if(state.type==='serenite' && !state.prestations.length) state.prestations=['Ménage','Repas de la semaine'];
+    $('q-prestations').innerHTML= state.type==='serenite'? (state.pourqui==='moi'? 'Que faut-il faire chez vous&nbsp;?' : 'Que faut-il faire chez votre proche&nbsp;?') : (state.type==='ponctuel'? 'Quel coup de main&nbsp;?' : 'De quoi avez-vous besoin&nbsp;?');
+    $('prestaSub').textContent= g==='ponc'? 'Une ou plusieurs prestations, chacune à son tarif horaire.' : 'Une ou plusieurs prestations, au même tarif horaire, sur un même passage.';
+    $('prestaNote').querySelector('span').textContent= state.type==='serenite'? 'Une heure de papiers et de courrier par mois est comprise dans la formule.' : 'Sans engagement, ajustable à tout moment.';
+  }
+  function setupDuree(){
+    var ponc=state.type==='ponctuel';
+    $('durReg').hidden=ponc; $('durPonc').hidden=!ponc;
+    $('q-duree').innerHTML= ponc? 'Combien de temps pour chaque prestation&nbsp;?' : 'Combien de temps par passage&nbsp;?';
+    if(state.type==='serenite' && state.duree==null) state.duree=2;
+    if(ponc){
+      state.prestations.forEach(function(t){ if(!state.durees[t]) state.durees[t]=TASKS[t].def; });
+      $('durRows').innerHTML=state.prestations.map(function(t){
+        var d=TASKS[t];
+        return '<div class="drow"><div class="drow-h"><b>'+esc(t)+'</b><small>'+d.rate+NBSP+'€/h, '+durLabel(d.durs[0])+' minimum</small></div><div class="chips" role="group" aria-label="Durée '+esc(t)+'">'+d.durs.map(function(h){ return '<button type="button" class="chip" data-task="'+esc(t)+'" data-h="'+h+'" aria-pressed="'+(state.durees[t]===h)+'">'+durLabel(h)+'</button>'; }).join('')+'</div></div>';
+      }).join('');
+    }
+  }
+  $('durRows').addEventListener('click',function(e){
+    var b=e.target.closest('[data-task]'); if(!b) return;
+    state.durees[b.dataset.task]=Number(b.dataset.h);
+    b.parentNode.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed',String(c===b)); });
+    refreshNext(); renderSummary(); save();
+  });
+  function setupOptions(){
+    pruneOptions();
+    var av=availableOptions();
+    $('optBlock').hidden=!av.length;
+    document.querySelectorAll('[data-multi="options"] [data-value]').forEach(function(b){ b.hidden=av.indexOf(b.dataset.value)<0; });
+    $('q-animaux').className= av.length? 'q2' : 'q';
+  }
+  function setupCoord(){
+    var parent=state.pourqui==='parent';
+    $('f-proche').hidden=!parent; $('infoParent').hidden=!parent;
+    renderEstimate();
   }
 
   /* ---------- choix ---------- */
   var autoTimer=null;
-  function autoAdvance(fromStep){ clearTimeout(autoTimer); autoTimer=setTimeout(function(){ if(ORDER[idx]===fromStep && !errorFor(fromStep)) goNext(); },280); }
-
+  function autoAdvance(fromStep){ clearTimeout(autoTimer); autoTimer=setTimeout(function(){ if(cur===fromStep && !errorFor(fromStep)) goNext(); },300); }
+  function setType(v){
+    if(state.type===v) return;
+    var oldGrp=grpOf(), oldFreq=freq();
+    state.type=v;
+    if(grpOf()!==oldGrp || v==='retour') state.prestations=[];
+    if(v==='serenite' && !state.prestations.length) state.prestations=['Ménage','Repas de la semaine'];
+    if(freq()!==oldFreq) state.anchors=[];
+    pruneOptions();
+  }
   document.querySelectorAll('[data-multi]').forEach(function(g){
     var key=g.dataset.multi;
     g.addEventListener('click',function(e){
       var b=e.target.closest('[data-value]'); if(!b) return;
       var arr=state[key], v=b.dataset.value, k=arr.indexOf(v);
       if(k>-1) arr.splice(k,1); else arr.push(v);
+      if(key==='prestations') pruneOptions();
       syncPressed(); refreshNext(); renderSummary(); save();
     });
   });
@@ -738,16 +921,18 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     g.addEventListener('click',function(e){
       var b=e.target.closest('[data-value]'); if(!b) return;
       var v= key==='duree'? Number(b.dataset.value) : b.dataset.value;
-      if(key==='frequence' && state.frequence!==v) state.anchors=[];
-      state[key]=v;
+      if(key==='type') setType(v);
+      else { if(key==='frequence' && state.frequence!==v) state.anchors=[]; state[key]=v; }
       syncPressed(); refreshNext(); renderSummary(); save();
-      if(key==='frequence'||key==='duree') autoAdvance(ORDER[idx]);
+      if(key==='frequence'||key==='duree') autoAdvance(cur);
+      if((key==='type'||key==='pourqui') && state.type && state.pourqui) autoAdvance('type');
+      if(key==='type') updateHeader();
     });
   });
   document.querySelectorAll('.preset').forEach(function(b){
     b.addEventListener('click',function(){ state.duree=Number(b.dataset.dur); syncPressed(); refreshNext(); renderSummary(); save(); autoAdvance('duree'); });
   });
-  document.querySelectorAll('[data-goto]').forEach(function(b){ b.addEventListener('click',function(){ goTo(Number(b.dataset.goto)); }); });
+  document.querySelectorAll('[data-goto]').forEach(function(b){ b.addEventListener('click',function(){ goTo(b.dataset.goto); }); });
 
   /* ---------- adresse ---------- */
   var adr=$('adresse'), acList=$('acList'), zoneMsg=$('zoneMsg'), addrField=$('addrField');
@@ -768,7 +953,7 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     adr.setAttribute('aria-activedescendant', acActive>-1? 'ac-'+acActive : '');
   }
   async function geocode(q){
-    var p='q='+encodeURIComponent(q)+'&limit=10&autocomplete=1&lat='+CAB.lat+'&lon='+CAB.lon;
+    var p='q='+encodeURIComponent(q)+'&limit=10&autocomplete=1&lat='+MID.lat+'&lon='+MID.lon;
     var urls=['https://data.geopf.fr/geocodage/search?'+p,'https://api-adresse.data.gouv.fr/search/?'+p];
     for(var i=0;i<urls.length;i++){
       try{
@@ -776,18 +961,18 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
         var j=await res.json();
         var list=(j.features||[]).map(function(f){ var pr=f.properties; return {label:pr.label,name:pr.name,city:pr.city||pr.municipality||'',postcode:pr.postcode||'',type:pr.type,lat:f.geometry.coordinates[1],lon:f.geometry.coordinates[0]}; });
         list.forEach(function(s){ s.d=km(s.lat,s.lon); });
-        list.sort(function(a,b){ return (a.d<=30?0:1)-(b.d<=30?0:1); });
+        list.sort(function(a,b){ return (a.d<=25?0:1)-(b.d<=25?0:1); });
         return list.slice(0,5);
       }catch(e){}
     }
     return [];
   }
   function pickAddr(s){
-    state.adresse=s.label; state.lat=s.lat; state.lon=s.lon; state.ville=s.city;
+    state.adresse=s.label; state.lat=s.lat; state.lon=s.lon; state.ville=s.city; state.cp=s.postcode||'';
     adr.value=s.label; closeAc(); renderZone(); refreshNext(); renderSummary(); save();
   }
   adr.addEventListener('input',function(){
-    state.adresse=adr.value; state.lat=null; state.lon=null; state.ville='';
+    state.adresse=adr.value; state.lat=null; state.lon=null; state.ville=''; state.cp='';
     addrField.classList.toggle('has',!!adr.value); renderZone(); refreshNext(); renderSummary(); save();
     var q=adr.value.trim(); clearTimeout(acTimer);
     if(q.length<3){ acItems=[]; closeAc(); return; }
@@ -804,30 +989,30 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   });
   acList.addEventListener('mousedown',function(e){ var it=e.target.closest('.ac-item'); if(!it) return; e.preventDefault(); pickAddr(acItems[+it.dataset.i]); });
   adr.addEventListener('blur',function(){ setTimeout(closeAc,150); });
-  $('addrClear').addEventListener('click',function(){ adr.value=''; state.adresse=''; state.lat=state.lon=null; state.ville=''; addrField.classList.remove('has'); closeAc(); renderZone(); refreshNext(); renderSummary(); save(); adr.focus(); });
+  $('addrClear').addEventListener('click',function(){ adr.value=''; state.adresse=''; state.lat=state.lon=null; state.ville=''; state.cp=''; addrField.classList.remove('has'); closeAc(); renderZone(); refreshNext(); renderSummary(); save(); adr.focus(); });
 
   /* ---------- calendrier ---------- */
   function cellState(d,ds){
     if(!state.anchors.length) return '';
-    var f=state.frequence;
+    var f=freq();
     if(state.anchors.indexOf(ds)>-1) return 'sel';
-    if(f==='ponctuel') return '';
+    if(f==='ponctuel'||f==='retour') return '';
     var srt=state.anchors.map(parseD).sort(function(a,b){ return a-b; }), start=srt[0];
     if(d<start) return '';
-    if(f==='2x'){ return state.anchors.some(function(a){ return parseD(a).getDay()===d.getDay(); })? 'rep' : ''; }
-    var a=srt[0];
-    if(d.getDay()!==a.getDay()) return '';
-    if(f==='bimensuel'){ var w=Math.round((d-a)/(7*86400000)); return w%2===0? 'rep' : ''; }
+    if(f==='2x') return state.anchors.some(function(a){ var p=parseD(a); return p.getDay()===d.getDay() && d>p; })? 'rep' : '';
+    if(d.getDay()!==start.getDay()) return '';
+    if(f==='bimensuel'){ var w=Math.round((d-start)/(7*86400000)); return w%2===0? 'rep' : ''; }
     return 'rep';
   }
   function renderCalendar(){
     $('calTitle').textContent=MONTHS[viewMonth]+' '+viewYear;
     $('calPrev').disabled=(viewYear<minDate.getFullYear())||(viewYear===minDate.getFullYear()&&viewMonth<=minDate.getMonth());
     $('calNext').disabled=new Date(viewYear,viewMonth+1,1)>maxMonth;
+    var noMaj=state.type==='retour';
     var startDay=(new Date(viewYear,viewMonth,1).getDay()+6)%7, dim=new Date(viewYear,viewMonth+1,0).getDate(), html='';
     for(var i=0;i<startDay;i++) html+='<span class="cal-cell empty" aria-hidden="true"></span>';
     for(var d=1;d<=dim;d++){
-      var dObj=new Date(viewYear,viewMonth,d), ds=toStr(dObj), past=dObj<minDate, maj=!past&&(dObj.getDay()===0||HOLIDAYS.has(ds)), st=past?'':cellState(dObj,ds);
+      var dObj=new Date(viewYear,viewMonth,d), ds=toStr(dObj), past=dObj<minDate, maj=!past&&!noMaj&&(dObj.getDay()===0||HOLIDAYS.has(ds)), st=past?'':cellState(dObj,ds);
       var cls='cal-cell'+(past?' past':'')+(maj?' major':'')+(st?' '+st:'');
       var lbl=WD[dObj.getDay()]+' '+d+' '+MONTHS[viewMonth]+(maj?', majoré de 5 euros de l\'heure':'')+(past?', indisponible':'');
       html+='<button type="button" class="'+cls+'" data-date="'+ds+'" aria-label="'+lbl+'" aria-pressed="'+(st==='sel')+'"'+(past?' disabled':'')+'>'+d+(maj?'<span class="p5">+5'+NBSP+'€</span>':'')+'</button>';
@@ -835,12 +1020,12 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     $('calGrid').innerHTML=html;
     var pl=$('planLine'), t=scheduleText();
     pl.classList.toggle('empty',!t);
-    pl.querySelector('span').textContent= t || (state.frequence==='2x'?'Sélectionnez deux jours ci-dessus.':'Sélectionnez un jour ci-dessus.');
+    pl.querySelector('span').textContent= t || (freq()==='2x'? (state.anchors.length===1?'Choisissez un second jour ci-dessus.':'Sélectionnez deux jours ci-dessus.') : 'Sélectionnez un jour ci-dessus.');
   }
   $('calGrid').addEventListener('click',function(e){
     var c=e.target.closest('.cal-cell'); if(!c || c.disabled || c.classList.contains('empty')) return;
     var ds=c.dataset.date;
-    if(state.frequence==='2x'){
+    if(freq()==='2x'){
       var k=state.anchors.indexOf(ds);
       if(k>-1) state.anchors.splice(k,1);
       else { var wd=parseD(ds).getDay(); state.anchors=state.anchors.filter(function(a){ return parseD(a).getDay()!==wd; }); if(state.anchors.length>=2) state.anchors=[ds]; else state.anchors.push(ds); }
@@ -848,10 +1033,15 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     renderCalendar(); refreshNext(); renderSummary(); save();
   });
   function setupJours(){
-    var f=state.frequence;
-    $('q-jours').innerHTML= f==='2x'? 'Quels jours vous arrangent&nbsp;?' : (f==='ponctuel'? 'Quel jour vous arrange&nbsp;?' : 'Quel jour de la semaine&nbsp;?');
-    $('planSub').textContent= f==='2x'? 'Choisissez deux jours de la semaine : ils se répètent chaque semaine.' : (f==='ponctuel'? 'Choisissez la date de votre intervention.' : 'Choisissez la date du premier passage : le même jour se répète '+(f==='bimensuel'?'toutes les deux semaines.':'chaque semaine.'));
-    $('lgRep').style.display= f==='ponctuel'? 'none' : '';
+    var f=freq();
+    var T={'2x':['Quels jours vous arrangent&nbsp;?','Choisissez deux jours de la semaine\u00a0: ils se répètent chaque semaine.'],
+      ponctuel:['Quel jour vous arrange&nbsp;?','Choisissez la date de l\'intervention.'],
+      retour:['Quand a lieu le retour à la maison&nbsp;?','Indiquez la date de sortie prévue\u00a0: on prépare le logement juste avant, puis on cale les passages des trois semaines suivantes.'],
+      hebdo:['Quel jour de la semaine&nbsp;?','Choisissez la date du premier passage\u00a0: le même jour se répète chaque semaine.'],
+      bimensuel:['Quel jour de la semaine&nbsp;?','Choisissez la date du premier passage\u00a0: le même jour se répète toutes les deux semaines.']}[f]||['Quel jour vous arrange&nbsp;?',''];
+    $('q-jours').innerHTML=T[0]; $('planSub').textContent=T[1];
+    $('lgRep').style.display= (f==='ponctuel'||f==='retour')? 'none' : '';
+    $('lgSel').textContent= f==='retour'? 'Date de retour' : 'Votre passage';
     if(state.anchors.length){ var first=state.anchors.map(parseD).sort(function(a,b){return a-b;})[0]; viewYear=first.getFullYear(); viewMonth=first.getMonth(); }
     renderCalendar();
   }
@@ -860,10 +1050,11 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
 
   /* ---------- heures ---------- */
   function renderTimes(){
+    var noMaj=state.type==='retour';
     $('timeGroups').innerHTML=GROUPS.map(function(g){
       var items=TIMES.filter(function(t){ var v=parseInt(t,10)+(t.slice(3)==='30'?.5:0); return v>=g.from && v<=g.to; });
       return '<div class="tgroup"><h3><svg class="i"><use href="'+g.ic+'"/></svg>'+g.k+'</h3><div class="times">'+items.map(function(t){
-        var on=state.heures.indexOf(t)>-1, maj=MAJTIMES.has(t);
+        var on=state.heures.indexOf(t)>-1, maj=!noMaj&&MAJTIMES.has(t);
         return '<button type="button" class="time'+(maj?' maj':'')+'" data-t="'+t+'" aria-pressed="'+on+'" aria-label="'+hLabel(t)+(maj?', majoré de 5 euros de l\'heure':'')+'">'+hLabel(t)+(maj?'<small>+5'+NBSP+'€</small>':'')+'</button>';
       }).join('')+'</div></div>';
     }).join('');
@@ -884,49 +1075,56 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   }
 
   /* ---------- estimation ---------- */
+  function rl(k,v){ return '<div class="rl"><dt>'+esc(k)+'</dt><dd>'+esc(v||'Non renseigné')+'</dd></div>'; }
   function renderEstimate(){
-    var rate=rateGross(), gross=grossPerVisit(), net=gross/2, pm=PER_MONTH[state.frequence];
-    var html='<span class="est-lbl">Votre estimation</span>'
-      +'<div class="est-price"><b>'+euro(net)+'</b><span>par passage</span></div>'
-      +'<p class="est-sub"><s>'+euro(gross)+'</s>crédit d\'impôt de 50'+NBSP+'% déduit</p>'
-      +(pm? '<span class="est-month"><svg class="i"><use href="#i-calendar"/></svg>Soit environ '+euro(Math.round(net*pm))+' par mois</span>' : '')
-      +'<details><summary>Détail de votre demande<svg class="i"><use href="#i-down"/></svg></summary><dl>'
-      +rl('Prestations',state.prestations.join(', '))
-      +rl('Fréquence',FREQ_LABEL[state.frequence])
+    var pr=parts(), g=pr.svc+pr.prod, net=netPrice(), mn=monthlyNet(), t=state.type, html='';
+    var unit= t==='ponctuel'? 'pour l\'intervention' : (t==='retour'? 'pour les 3 semaines' : (t==='serenite'||state.frequence==='2x'? 'par passage, en moyenne' : 'par passage'));
+    html+='<span class="est-lbl">Votre estimation</span>'
+      +'<div class="est-price"><b>'+euro(net)+'</b><span>'+unit+'</span></div>'
+      +'<p class="est-sub">Prix '+euro(g)+' TTC, dont '+euro(pr.svc/2)+' de crédit d\'impôt déduit'+(pr.prod? ' (produits non déductibles)' : '')+'</p>';
+    if(mn) html+='<span class="est-month"><svg class="i"><use href="#i-calendar"/></svg>Soit environ '+euro(Math.round(mn))+' par mois'+(t==='serenite'?', papiers compris':'')+'</span>';
+    html+='<details><summary>Détail de votre demande<svg class="i"><use href="#i-down"/></svg></summary><dl>'
+      +rl('Formule',TYPE_LABEL[t]+(state.pourqui==='parent'?', pour un proche':''))
+      +rl('Prestations',prestaText())
+      +rl('Rythme',FREQ_LABEL[freq()])
       +rl('Planning',scheduleText())
-      +rl('Arrivée possible',heuresText())
-      +rl('Options',state.options.length? state.options.map(function(o){ return OPT_LABEL[o]; }).join(', ') : 'Aucune')
-      +rl('Animaux',state.animaux)
-      +'<div class="rdiv"></div>'
-      +rl('Tarif horaire',rate+NBSP+'€/h'+(majoration()>0?' (majoration incluse)':''))
-      +rl('Durée',durLabel(state.duree)+' × '+rate+NBSP+'€',true)
-      +rl('Prix par passage',euro(gross))
-      +rl('Crédit d\'impôt 50'+NBSP+'%','moins '+euro(gross/2))
-      +rl('Vous payez',euro(net))
-      +'</dl>';
-    if(majoration()>0){ var mr=[]; if(dayMajor()) mr.push('dimanche ou jour férié'); if(timeMajor()) mr.push('arrivée tôt ou en soirée'); html+='<p class="rnote">Majoration de '+majoration()+NBSP+'€ de l\'heure incluse ('+mr.join(' et ')+').</p>'; }
-    html+='<p class="rnote">Estimation indicative, confirmée par Huguette au téléphone. Sans frais de déplacement.</p></details>';
+      +rl('Arrivée possible',heuresText());
+    if(t!=='retour') html+=rl('Options',optionsText()||'Aucune');
+    html+=rl('Animaux',state.animaux)+'<div class="rdiv"></div>';
+    if(t==='ponctuel'){
+      state.prestations.forEach(function(x){ html+=rl(x,durLabel(state.durees[x])+' × '+euro(taskRate(x))); });
+    } else if(t==='retour'){
+      html+=rl('Formule','environ '+RETOUR_HOURS+' h × '+RETOUR_RATE+NBSP+'€');
+    } else {
+      html+=rl('Tarif horaire',euro(regRate())+'/h'+(majoration()>0?', majoration comprise':''))+rl('Durée',durLabel(state.duree)+' par passage');
+    }
+    if(pr.prod) html+=rl('Produits fournis',euro(pr.prod)+', hors crédit d\'impôt');
+    html+=rl('Prix TTC',euro(g))+rl('Crédit d\'impôt 50'+NBSP+'%','moins '+euro(pr.svc/2))+rl('Vous payez',euro(net))+'</dl>';
+    var notes=[];
+    if(majoration()>0){ var mr=[]; if(dayMajor()) mr.push(freq()==='ponctuel'?'dimanche ou jour férié':'passages du dimanche'); if(timeMajor()) mr.push('arrivée tôt ou en soirée'); notes.push('Majoration incluse pour '+mr.join(' et ')+'.'); }
+    var fh=firstHoliday(); if(fh) notes.push('Premier passage le '+frDate(fh)+', jour férié\u00a0: +5'+NBSP+'€ de l\'heure ce jour-là.');
+    if(t==='retour') notes.push('Facturé à l\'heure réalisée.');
+    notes.push('Estimation indicative, confirmée par Huguette au téléphone. Sans frais de déplacement dans notre zone, facturation après la prestation.');
+    html+=notes.map(function(n){ return '<p class="rnote">'+n+'</p>'; }).join('')+'</details>';
     $('est').innerHTML=html;
   }
-  function rl(k,v){ return '<div class="rl"><dt>'+esc(k)+'</dt><dd>'+esc(v||'Non renseigné')+'</dd></div>'; }
 
   /* ---------- navigation ---------- */
   var modal=$('creneauModal');
   function openModal(){ modal.classList.add('open'); setTimeout(function(){ $('modalAdd').focus(); },50); }
   function closeModal(){ modal.classList.remove('open'); }
   nextBtn.addEventListener('click',function(){
-    var name=ORDER[idx];
-    if(name==='coordonnees'){ submitForm(); return; }
-    var m=errorFor(name);
+    if(cur==='coordonnees'){ submitForm(); return; }
+    var m=errorFor(cur);
     if(m){ errEl.innerHTML='<svg class="i"><use href="#i-alert"/></svg>'+esc(m); errEl.classList.remove('shake'); void errEl.offsetWidth; errEl.classList.add('shake'); var r=errEl.getBoundingClientRect(); if(r.bottom>window.innerHeight-90||r.top<70) errEl.scrollIntoView({block:'center',behavior:'smooth'}); return; }
-    if(name==='horaires' && state.heures.length<3){ openModal(); return; }
+    if(cur==='horaires' && state.heures.length<3){ openModal(); return; }
     goNext();
   });
   prevBtn.addEventListener('click',function(){
-    if(idx<=0) return;
-    var before=idx;
-    if(history.state && history.state.cdm && history.state.i===idx) history.back();
-    setTimeout(function(){ if(idx===before) goTo(before-1,{replace:true}); },350);
+    var ord=order(), i=ord.indexOf(cur); if(i<=0) return;
+    var before=cur;
+    if(history.state && history.state.cdm===2 && history.state.s===cur) history.back();
+    setTimeout(function(){ if(cur===before) goTo(ord[i-1],{replace:true}); },350);
   });
   $('modalAdd').addEventListener('click',closeModal);
   $('modalContinue').addEventListener('click',function(){ closeModal(); goNext(); });
@@ -938,15 +1136,17 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
   var form=$('devisForm'), statusEl=$('formStatus');
   form.addEventListener('submit',function(e){ e.preventDefault(); submitForm(); });
   ['prenom','nom','tel','email'].forEach(function(id){ $(id).addEventListener('input',function(){ setFieldErr(id,''); }); });
+  $('consent').addEventListener('change',function(){ $('f-consent').classList.remove('bad'); $('consentErr').textContent=''; });
   var FLOW=['prenom','nom','tel','email'];
-  FLOW.forEach(function(id,i){ $(id).addEventListener('keydown',function(e){ if(e.key!=='Enter') return; e.preventDefault(); if(i<FLOW.length-1) $(FLOW[i+1]).focus(); else submitForm(); }); });
+  FLOW.forEach(function(id,i){ $(id).addEventListener('keydown',function(e){ if(e.key!=='Enter') return; e.preventDefault(); var nx=FLOW[i+1]; if(id==='email' && !$('f-proche').hidden) nx='proche'; if(nx) $(nx).focus(); else submitForm(); }); });
+  $('proche').addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); $('message').focus(); } });
   function setFieldErr(id,m){ var f=$('f-'+id); if(!f) return; f.classList.toggle('bad',!!m); f.querySelector('.ferr').textContent=m; $(id).setAttribute('aria-invalid',String(!!m)); }
   function telDigits(v){ var d=v.replace(/\D/g,''); if(d.indexOf('0033')===0) d='0'+d.slice(4); else if(d.indexOf('33')===0 && d.length===11) d='0'+d.slice(2); return d; }
   function telPretty(d){ return d.replace(/(\d{2})(?=\d)/g,'$1 '); }
   var sending=false;
   async function submitForm(){
     if(sending) return;
-    var prenom=$('prenom').value.trim(), nom=$('nom').value.trim(), telRaw=$('tel').value.trim(), email=$('email').value.trim(), msg=$('message').value.trim();
+    var prenom=$('prenom').value.trim(), nom=$('nom').value.trim(), telRaw=$('tel').value.trim(), email=$('email').value.trim(), msg=$('message').value.trim(), proche=$('proche').value.trim();
     var tel=telDigits(telRaw), first=null;
     setFieldErr('prenom', prenom? '' : 'Indiquez votre prénom.'); if(!prenom) first=first||'prenom';
     setFieldErr('nom', nom? '' : 'Indiquez votre nom.'); if(!nom) first=first||'nom';
@@ -954,31 +1154,39 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
     setFieldErr('tel', telOk? '' : 'Un numéro à 10 chiffres, par exemple 06 12 34 56 78.'); if(!telOk) first=first||'tel';
     var mailOk=!email || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
     setFieldErr('email', mailOk? '' : 'Cette adresse email semble incomplète.'); if(!mailOk) first=first||'email';
+    var consentOk=$('consent').checked;
+    $('f-consent').classList.toggle('bad',!consentOk);
+    $('consentErr').textContent= consentOk? '' : 'Cochez la case pour qu\'Huguette puisse vous rappeler.';
     if(first){ $(first).focus(); return; }
+    if(!consentOk){ $('consent').focus(); return; }
     if($('botcheck').checked) return;
 
     sending=true; nextBtn.setAttribute('disabled',''); $('nextLbl').textContent='Envoi en cours…';
     statusEl.className='form-status'; statusEl.textContent='';
-    var gross=grossPerVisit(), net=gross/2, d=distance(), pm=PER_MONTH[state.frequence];
+    var pr=parts(), g=pr.svc+pr.prod, net=netPrice(), mn=monthlyNet(), d=(state.lat!=null&&state.lon!=null)? km(state.lat,state.lon) : null;
+    var lieu=state.ville? place(state.ville,state.cp) : '';
     var srcTxt=Object.keys(SRC).filter(function(k){ return k!=='fbclid' && k!=='landing'; }).map(function(k){ return k+'='+SRC[k]; }).join(', ');
     if(SRC.fbclid) srcTxt+=(srcTxt?', ':'')+'clic Meta';
-    var recap='Civilité : '+(state.civilite||'Non renseignée')
+    var recap='Formule : '+TYPE_LABEL[state.type]
+      +'\nPour : '+(state.pourqui==='parent'? 'un proche'+(proche? ' ('+proche+')' : '') : 'la personne qui réserve')
+      +'\nCivilité : '+(state.civilite||'Non renseignée')
       +'\nAdresse : '+state.adresse
-      +(d!=null? '\nDistance de Cabannes : '+Math.round(d)+' km'+(state.ville? ' ('+state.ville+')' : '') : '')
-      +'\nPrestations : '+state.prestations.join(', ')
-      +'\nFréquence : '+(FREQ_LABEL[state.frequence]||'')
+      +(lieu? '\nCommune : '+lieu+(d!=null? ', '+Math.round(d)+' km du centre le plus proche (Aix ou Marseille)' : '') : '')
+      +'\nPrestations : '+prestaText()
+      +'\nRythme : '+FREQ_LABEL[freq()]
       +'\nPlanning : '+scheduleText()
       +'\nHeures d\'arrivée possibles : '+heuresText()
-      +'\nDurée : '+durLabel(state.duree)+' par passage'
-      +'\nOptions : '+(state.options.length? state.options.map(function(o){ return OPT_LABEL[o]; }).join(', ') : 'aucune')
+      +(state.type==='reguliere'||state.type==='serenite'? '\nDurée : '+durLabel(state.duree)+' par passage' : '')
+      +(state.type!=='retour'? '\nOptions : '+(optionsText()||'aucune') : '')
       +'\nAnimaux : '+state.animaux
-      +'\nTarif horaire brut : '+rateGross()+' €/h'+(majoration()>0?' (majoration incluse)':'')
-      +'\nEstimation : '+euro(net)+' net par passage (avant crédit '+euro(gross)+')'+(pm? ', environ '+euro(Math.round(net*pm))+' par mois' : '')
+      +(state.type==='reguliere'||state.type==='serenite'? '\nTarif horaire : '+euro(regRate())+'/h'+(majoration()>0?' (majoration comprise)':'')+(pr.prod?' + 3 €/h de produits':'') : '')
+      +'\nEstimation : '+euro(net)+' à payer'+(state.type==='ponctuel'?' pour l\'intervention':(state.type==='retour'?' pour les 3 semaines':' par passage'))+' (prix TTC '+euro(g)+', crédit d\'impôt '+euro(pr.svc/2)+')'+(mn? ', environ '+euro(Math.round(mn))+' par mois' : '')+(firstHoliday()? ', premier passage un jour férié (+5 €/h ce jour-là)' : '')
+      +'\nConsentement au rappel : oui'
       +'\nProvenance : '+(srcTxt||'directe ou inconnue')
       +'\n\nMessage : '+(msg||'aucun');
     var fd=new FormData();
     fd.append('access_key','ccb01bd2-78c2-464c-a16b-1c4373caf243');
-    fd.append('subject','Devis '+state.prestations.join(' + ')+' · '+prenom+' '+nom+(state.ville? ' · '+state.ville : ''));
+    fd.append('subject','Devis '+TYPE_LABEL[state.type]+' · '+prenom+' '+nom+(lieu? ' · '+lieu : ''));
     fd.append('from_name','Funnel Coup de Main Provence');
     fd.append('civilité',state.civilite||'');
     fd.append('prénom',prenom);
@@ -990,38 +1198,82 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
       var res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd,headers:{Accept:'application/json'}});
       var json=await res.json();
       if(json.success){
-        track('Lead',{value:Math.round(net),currency:'EUR',content_name:state.prestations.join(', ')});
+        track('Lead', state.type==='retour'? {} : {value:Math.round(net),currency:'EUR'});
         $('q-merci').innerHTML='Merci '+esc(prenom)+', c\'est bien reçu&nbsp;!';
         $('merciSub').textContent='Huguette vous rappelle très vite au '+telPretty(tel)+' pour confirmer votre devis, crédit d\'impôt déduit.';
         clearSave();
-        history.replaceState({cdm:1,i:ORDER.length,done:1},'');
+        history.replaceState({cdm:2,s:'merci',done:1},'');
         show('merci');
       } else throw new Error(json.message||'échec');
     }catch(err){
       statusEl.className='form-status bad';
       statusEl.innerHTML='L\'envoi n\'a pas fonctionné. Réessayez, ou appelez Huguette au <a href="tel:+33641946311" style="text-decoration:underline">06 41 94 63 11</a>.';
     }finally{
-      sending=false; nextBtn.removeAttribute('disabled'); if(ORDER[idx]==='coordonnees') $('nextLbl').textContent='Envoyer ma demande';
+      sending=false; nextBtn.removeAttribute('disabled'); if(cur==='coordonnees') $('nextLbl').textContent='Envoyer ma demande';
     }
   }
 
   /* ---------- démarrage ---------- */
-  var params=new URLSearchParams(location.search), start=0, saved=load();
-  if(saved){ state=Object.assign(fresh(),saved.s); start=Math.min(saved.i||0,ORDER.length-1); }
-  var pAdr=params.get('adresse'), pPresta=PRESTA_PARAM[params.get('p')];
-  if(pAdr){
-    state.adresse=pAdr; state.lat=null; state.lon=null; state.ville='';
-    var la=parseFloat(params.get('lat')), lo=parseFloat(params.get('lon'));
-    if(!isNaN(la) && !isNaN(lo)){ state.lat=la; state.lon=lo; state.ville=params.get('ville')||''; }
-    start=1;
+  var params=new URLSearchParams(location.search), start='adresse', saved=load(), reloaded=!!(history.state && history.state.cdm===2);
+  if(saved){ state=Object.assign(fresh(),saved.s); start=saved.step||'adresse'; }
+  state.anchors=state.anchors.filter(function(a){ return parseD(a)>=minDate; });
+  var pT=params.get('t'), pP=params.get('p'), pre=null;
+  if(pT==='maison') pT='retour';
+  if(pT && !ORDERS[pT]) pT='';
+  if(!pT && pP){ if(PMAP.reguliere[pP]) pT='reguliere'; else if(PMAP.ponctuel[pP]) pT='ponctuel'; }
+  try{ pre=JSON.parse(sessionStorage.getItem('cdm_prefill')||'null'); sessionStorage.removeItem('cdm_prefill'); }catch(e){}
+  if(pT){
+    setType(pT);
+    var task=PMAP[grpOf()==='ponc'?'ponctuel':'reguliere'][pP];
+    if(task && pT!=='retour') state.prestations=[task];
+    start='adresse';
   }
-  if(pPresta){ if(state.prestations.indexOf(pPresta)<0) state.prestations.push(pPresta); if(!pAdr) start=0; }
-  for(var k=0;k<start;k++){ if(errorFor(ORDER[k])){ start=k; break; } }
+  if(pre && pre.adresse){
+    state.adresse=pre.adresse; state.lat=null; state.lon=null; state.ville=''; state.cp='';
+    if(typeof pre.lat==='number' && typeof pre.lon==='number'){ state.lat=pre.lat; state.lon=pre.lon; state.ville=pre.ville||''; state.cp=pre.cp||''; start='type'; }
+    else start='adresse';
+  }
+  if(pT && state.adresse && state.lat!=null) start='type';
+  var ord=order(); if(ord.indexOf(start)<0) start='type';
+  if(reloaded && !pT && !pre && ord.indexOf(history.state.s)>-1) start=history.state.s;
+  for(var k=0;k<ord.indexOf(start);k++){ if(errorFor(ord[k])){ start=ord[k]; break; } }
   adr.value=state.adresse; addrField.classList.toggle('has',!!state.adresse); renderZone();
-  history.replaceState({cdm:1,i:0},'',location.pathname);
-  for(var j=1;j<=start;j++) history.pushState({cdm:1,i:j},'');
-  idx=start;
-  show(ORDER[idx]);
+  if(reloaded && !pT && !pre){ history.replaceState({cdm:2,s:start},''); }
+  else {
+    history.replaceState({cdm:2,s:'adresse'},'',location.pathname);
+    for(var j=1;j<=ord.indexOf(start);j++) history.pushState({cdm:2,s:ord[j]},'');
+  }
+  cur=start;
+  show(start);
+})();
+</script>
+<div class="ck" id="ck" role="dialog" aria-label="Cookies" hidden>
+  <p><b>Cookies.</b> Avec votre accord, nous utilisons un traceur de Meta pour mesurer l'efficacité de nos publicités. Sans accord, rien n'est déposé. <a href="confidentialite.html">En savoir plus</a></p>
+  <div class="ck-btns"><button type="button" class="ck-b" data-ck="non">Refuser</button><button type="button" class="ck-b" data-ck="oui">Accepter</button></div>
+</div>
+<style>
+  .ck{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:90;max-width:560px;margin:0 auto;background:#fff;border:1px solid #e4dccb;border-radius:18px;box-shadow:0 20px 50px -20px rgba(36,35,30,.45);padding:14px 16px;font:400 14px/1.45 Inter,system-ui,sans-serif;color:#3d3b33}
+  .ck[hidden]{display:none}
+  .ck p{margin:0 0 10px}
+  .ck a{color:#b45f3b;font-weight:600;text-decoration:underline}
+  .ck-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .ck-b{min-height:44px;border-radius:999px;border:1.5px solid #404e35;background:#fff;color:#2c3524;font:600 15px Inter,system-ui,sans-serif;cursor:pointer}
+  .ck-b:hover{background:#f3f5ec}
+  .foot-btn{background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+  .foot-btn:hover{color:#fff}
+</style>
+<script>
+(function(){
+  var ck=document.getElementById('ck'); if(!ck) return;
+  function set(v){
+    try{ localStorage.setItem('cdm_consent',JSON.stringify({v:v,t:Date.now()})); }catch(e){}
+    window.cdmConsent=v; ck.hidden=true;
+    if(v==='oui' && window.cdmLoadPixel) window.cdmLoadPixel();
+    if(v==='non' && typeof window.fbq==='function'){ try{ fbq('consent','revoke'); }catch(e){} }
+  }
+  ck.addEventListener('click',function(e){ var b=e.target.closest('[data-ck]'); if(b) set(b.dataset.ck); });
+  if(window.cdmConsent==null) ck.hidden=false;
+  document.querySelectorAll('[data-cookies]').forEach(function(b){ b.addEventListener('click',function(){ ck.hidden=false; }); });
 })();
 </script>
 </body>
