@@ -2,14 +2,17 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Demande de devis | Coup de Main Provence</title>
-<meta name="description" content="Estimez et demandez votre devis d'aide à domicile (ménage, courses, cuisine) à Cabannes et 20 km autour." />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Réserver mon ménage | Coup de Main Provence</title>
+<meta name="description" content="Réservez votre aide à domicile (ménage, courses, cuisine) à Cabannes et 20 km autour. Estimation immédiate, crédit d'impôt déduit." />
 <meta name="robots" content="noindex" />
+<meta name="theme-color" content="#fbf8f2" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://data.geopf.fr" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400..700&display=swap" rel="stylesheet" />
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -29,617 +32,997 @@ src="https://www.facebook.com/tr?id=945702371856818&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 <style>
   :root{
-    --olive:#5a6b4a; --olive-dark:#404e35; --olive-light:#7d8f68;
-    --sand:#f6f1e7; --sand-2:#efe7d6; --cream:#fbf8f2;
-    --terracotta:#c9714b; --terracotta-dark:#b45f3b;
-    --ink:#2b2a25; --muted:#6f6a5f; --line:#e5ddcd;
-    --shadow:0 18px 50px -20px rgba(64,78,53,.35); --radius:18px;
+    --olive-900:#2c3524; --olive-800:#343f2b; --olive-700:#404e35; --olive-600:#4d5d40; --olive-500:#5a6b4a; --olive-400:#7d8f68;
+    --sage-200:#d6ddc8; --sage-100:#e9eddf; --sage-50:#f3f5ec;
+    --terra-700:#9a4b2b; --terra-600:#b45f3b; --terra-500:#c9714b; --terra-100:#f6e0d2; --terra-50:#fbefe7;
+    --cream:#fbf8f2; --stone-50:#f7f3ea; --stone-100:#f1ebdf; --stone-200:#e7dfcf; --line:#e4dccb;
+    --ink:#24231e; --ink-2:#3d3b33; --muted:#6c675b;
+    --sh-sm:0 1px 2px rgba(36,35,30,.05),0 2px 8px -2px rgba(36,35,30,.06);
+    --sh-md:0 2px 4px rgba(36,35,30,.04),0 14px 34px -14px rgba(52,63,43,.24);
+    --sh-lg:0 4px 10px rgba(36,35,30,.04),0 30px 60px -26px rgba(52,63,43,.38);
+    --ff-display:'Fraunces',Georgia,'Times New Roman',serif;
+    --ff-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased}
-  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1.12}
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:var(--ff-body);font-size:1rem;line-height:1.55;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
-  .wrap{width:min(680px,92vw);margin-inline:auto}
+  h1,h2,h3{font-family:var(--ff-display);font-weight:500;line-height:1.1;letter-spacing:-.016em;margin:0;color:var(--olive-900)}
+  p,ul,ol,dl,dd{margin:0;padding:0}
+  ul,ol{list-style:none}
+  button{font:inherit;color:inherit}
+  .wrap{width:min(1120px,calc(100% - 2rem));margin-inline:auto}
+  .i{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  :focus-visible{outline:3px solid var(--terra-500);outline-offset:3px;border-radius:8px}
 
-  header{position:sticky;top:0;z-index:20;background:rgba(251,248,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .top{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
-  .brand{display:flex;align-items:center;gap:.5rem;font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;color:var(--olive-dark)}
-  .brand .l{font-size:1.3rem}
-  .back{display:inline-flex;align-items:center;gap:.3rem;color:var(--muted);font-weight:600;font-size:.9rem;background:none;border:0;cursor:pointer}
-  .back:hover{color:var(--olive-dark)}
-  .progress{height:5px;background:var(--sand-2)}
-  .progress .bar{height:100%;background:var(--terracotta);width:12%;transition:width .35s ease;border-radius:0 3px 3px 0}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:54px;padding:0 1.5rem;border-radius:999px;border:1.5px solid transparent;font-weight:600;font-size:1rem;cursor:pointer;transition:transform .15s ease,background-color .15s ease,box-shadow .15s ease,opacity .15s ease;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+  .btn-primary{background:var(--terra-500);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 12px 26px -12px rgba(180,95,59,.85)}
+  .btn-primary:hover{background:var(--terra-600)}
+  .btn-primary:active{transform:scale(.99)}
+  .btn[aria-disabled="true"]{opacity:.5;box-shadow:none}
+  .btn[disabled]{opacity:.6;cursor:progress}
+  .btn .i{width:1.1em;height:1.1em}
 
-  .stepwrap{padding:2.4rem 0 6rem;min-height:60vh}
-  .step{display:none;animation:fade .3s ease}
-  .step.active{display:block}
-  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .kicker{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--terracotta)}
-  .step h2{font-size:clamp(1.55rem,3.2vw,2.1rem);margin:.5rem 0 .4rem}
-  .step .sub{color:var(--muted);margin-bottom:1.5rem;font-size:1rem}
+  /* HEADER */
+  .fh{position:sticky;top:0;z-index:30;background:rgba(251,248,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .fh-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:60px}
+  .logo{display:flex;align-items:center;gap:.55rem;min-width:0}
+  .logo svg{width:32px;height:32px;flex:none}
+  .logo-word{display:none;font-family:var(--ff-display);font-weight:600;font-size:1.05rem;line-height:1;color:var(--olive-700);white-space:nowrap}
+  .fh-step{font-size:.88rem;font-weight:600;color:var(--olive-800);text-align:center;line-height:1.2}
+  .fh-step small{display:block;font-weight:500;color:var(--muted);font-size:.76rem}
+  .fh-close{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--muted);border:1px solid var(--line);background:#fff;flex:none}
+  .fh-close .i{width:18px;height:18px}
+  .progress{height:4px;background:var(--stone-200)}
+  .progress span{display:block;height:100%;width:0;background:var(--terra-500);border-radius:0 4px 4px 0;transition:width .35s ease}
+  @media(min-width:640px){.logo-word{display:block}.fh-in{height:68px}}
 
-  .opts{display:grid;gap:.7rem;max-width:560px}
-  .opt{display:flex;align-items:center;gap:.9rem;background:#fff;border:2px solid var(--line);border-radius:14px;padding:1rem 1.1rem;cursor:pointer;transition:border .15s,transform .1s;text-align:left;width:100%;font:inherit;color:inherit}
-  .opt:hover{border-color:var(--olive-light);transform:translateY(-1px)}
-  .opt.sel{border-color:var(--terracotta);box-shadow:0 12px 30px -18px rgba(201,113,75,.7)}
-  .opt .ic{font-size:1.4rem;flex:none;width:42px;height:42px;border-radius:11px;background:var(--sand);display:grid;place-items:center}
-  .opt .tt{font-weight:600;font-size:1.02rem}
-  .opt .tt small{display:block;font-weight:400;color:var(--muted);font-size:.84rem;margin-top:.12rem}
-  .opt .tag{margin-left:auto;background:#eef1e8;color:var(--olive-dark);font-size:.68rem;font-weight:700;padding:.28rem .55rem;border-radius:999px;text-transform:uppercase}
-  .opt .chk{margin-left:auto;width:26px;height:26px;border-radius:8px;border:2px solid var(--line);flex:none;display:grid;place-items:center;color:#fff;font-size:.9rem;font-weight:700}
-  .opt.sel .chk{background:var(--terracotta);border-color:var(--terracotta)}
-  .opt .price-add{margin-left:auto;font-weight:700;color:var(--olive-dark);white-space:nowrap}
+  /* LAYOUT */
+  .fw{padding:1.6rem 0 8rem}
+  .fw-grid{display:grid;gap:2rem}
+  .fw-main{min-width:0;max-width:640px;width:100%}
+  @media(min-width:980px){.fw{padding:3rem 0 5rem}.fw-grid{grid-template-columns:minmax(0,1fr) 340px;gap:4rem;align-items:start}}
 
-  .chips{display:flex;flex-wrap:wrap;gap:.6rem;max-width:560px}
-  .chip{background:#fff;border:2px solid var(--line);border-radius:12px;padding:.75rem 1.15rem;cursor:pointer;font-weight:600;font-size:.98rem;transition:border .15s,transform .1s;font-family:inherit;color:inherit}
-  .chip:hover{border-color:var(--olive-light);transform:translateY(-1px)}
-  .chip.sel{border-color:var(--terracotta);box-shadow:0 10px 24px -16px rgba(201,113,75,.7)}
+  .step{display:none}
+  .step.active{display:block;animation:stepIn .32s ease both}
+  .step.active.from-back{animation-name:stepBack}
+  @keyframes stepIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+  @keyframes stepBack{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
+  .q{font-size:clamp(1.7rem,5.8vw,2.35rem);margin:0 0 .55rem;outline:none}
+  .q2{font-size:1.35rem;margin:2rem 0 .35rem}
+  .sub{color:var(--muted);font-size:1rem;margin-bottom:1.5rem;max-width:54ch}
+  .sub.sm{font-size:.92rem;margin-bottom:.9rem}
+  .mini-lbl{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .65rem}
+  .ctx{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;background:var(--sage-50);border:1px solid var(--sage-100);border-radius:14px;padding:.6rem .85rem;font-size:.88rem;color:var(--olive-800);margin-bottom:1.3rem}
+  .ctx .i{color:var(--olive-500);width:17px;height:17px}
+  .ctx span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+  .ctx button{background:none;border:0;color:var(--terra-600);font-weight:700;cursor:pointer;padding:.2rem 0;font-size:.86rem}
 
-  .field{margin-bottom:1rem;max-width:520px}
-  .field.small{max-width:300px}
-  label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.35rem}
-  input,select,textarea{width:100%;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fff;color:var(--ink)}
-  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--olive)}
-  textarea{min-height:90px;resize:vertical}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:520px}
-  .ac-wrap{position:relative;max-width:520px}
-  .ac-list{position:absolute;left:0;right:0;top:100%;background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:5px;box-shadow:var(--shadow);z-index:6;overflow:hidden;display:none}
-  .ac-list.open{display:block}
-  .ac-item{padding:.7rem 1rem;cursor:pointer;font-size:.94rem;border-bottom:1px solid var(--line)}
+  /* ADDRESS */
+  .addr{position:relative}
+  .lbl{display:block;font-size:.88rem;font-weight:600;margin-bottom:.45rem;color:var(--olive-900)}
+  .addr-field{display:flex;align-items:center;gap:.65rem;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:0 1rem;min-height:58px;box-shadow:var(--sh-sm);transition:border-color .15s,box-shadow .15s}
+  .addr-field:focus-within{border-color:var(--olive-400);box-shadow:0 0 0 4px rgba(125,143,104,.18)}
+  .addr-field .i{color:var(--terra-500);width:20px;height:20px}
+  .addr-field input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:inherit;font-size:1rem;height:56px;color:var(--ink);padding:0}
+  .addr-field input::placeholder{color:#9a9486}
+  .addr-clear{border:0;background:var(--stone-100);width:28px;height:28px;border-radius:50%;display:none;place-items:center;cursor:pointer;color:var(--muted);flex:none}
+  .addr-clear .i{width:14px;height:14px;stroke-width:2.6}
+  .addr-field.has .addr-clear{display:grid}
+  .ac{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh-lg);overflow:hidden;z-index:12;display:none}
+  .ac.open{display:block}
+  .ac-item{display:flex;gap:.75rem;align-items:center;padding:.8rem 1rem;cursor:pointer;border-bottom:1px solid var(--stone-100);font-size:.95rem;line-height:1.3}
   .ac-item:last-child{border-bottom:0}
-  .ac-item:hover,.ac-item.active{background:var(--sand)}
+  .ac-item .i{color:var(--olive-400);width:18px;height:18px}
+  .ac-item small{display:block;color:var(--muted);font-size:.8rem}
+  .ac-item[aria-selected="true"],.ac-item:hover{background:var(--stone-50)}
+  .zone-msg{display:flex;gap:.55rem;align-items:flex-start;margin-top:.9rem;font-size:.94rem;font-weight:500;line-height:1.45;padding:.75rem .9rem;border-radius:14px}
+  .zone-msg:empty{display:none}
+  .zone-msg .i{margin-top:.1rem;width:18px;height:18px}
+  .zone-msg.ok{background:var(--sage-50);color:var(--olive-600);border:1px solid var(--sage-100)}
+  .zone-msg.warn{background:var(--terra-50);color:var(--terra-700);border:1px solid var(--terra-100)}
+  .zone-msg.far{background:var(--stone-50);color:var(--ink-2);border:1px solid var(--stone-100)}
+  .fineprint{display:flex;gap:.5rem;align-items:flex-start;margin-top:1rem;font-size:.84rem;color:var(--muted)}
+  .fineprint .i{width:16px;height:16px;margin-top:.15rem;color:var(--olive-400)}
 
-  /* calendar */
-  .cal{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.1rem;max-width:520px}
-  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem}
-  .cal-head button{background:var(--sand);border:1px solid var(--line);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1rem;color:var(--olive-dark)}
+  /* OPTIONS */
+  .opts{display:grid;grid-template-columns:minmax(0,1fr);gap:.7rem}
+  @media(max-width:360px){.opt{gap:.7rem;padding:.85rem .8rem}.opt .ic{width:40px;height:40px}.opt img{width:50px;height:50px}}
+  .opt{position:relative;display:flex;align-items:center;gap:.95rem;width:100%;min-height:74px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:.9rem 1rem;cursor:pointer;transition:border-color .15s,box-shadow .15s,background-color .15s,transform .1s;-webkit-tap-highlight-color:transparent}
+  .opt:hover{border-color:var(--olive-400)}
+  .opt:active{transform:scale(.99)}
+  .opt[aria-pressed="true"]{border-color:var(--terra-500);background:var(--terra-50);box-shadow:0 0 0 3px rgba(201,113,75,.13)}
+  .opt .ic{width:46px;height:46px;border-radius:14px;background:var(--sage-100);color:var(--olive-600);display:grid;place-items:center;flex:none}
+  .opt .ic .i{width:22px;height:22px}
+  .opt img{width:58px;height:58px;border-radius:14px;object-fit:cover;flex:none;background:var(--stone-200)}
+  .opt .tt{flex:1;min-width:0;font-weight:600;font-size:1.02rem;color:var(--olive-900);line-height:1.3}
+  .opt .tt small{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:.15rem}
+  .opt .tag{position:absolute;top:-.62rem;right:.9rem;background:var(--olive-500);color:#fff;font-size:.64rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.24rem .55rem;border-radius:999px}
+  .opt .price-add{font-weight:700;color:var(--olive-700);white-space:nowrap;font-size:.92rem}
+  .box{width:24px;height:24px;border-radius:8px;border:2px solid var(--stone-200);display:grid;place-items:center;flex:none;color:#fff;background:#fff;transition:background-color .15s,border-color .15s}
+  .box .i{width:15px;height:15px;stroke-width:3.2;opacity:0}
+  .opt[aria-pressed="true"] .box{background:var(--terra-500);border-color:var(--terra-500)}
+  .opt[aria-pressed="true"] .box .i{opacity:1}
+  .radio{width:24px;height:24px;border-radius:50%;border:2px solid var(--stone-200);flex:none;position:relative;background:#fff}
+  .opt[aria-pressed="true"] .radio{border-color:var(--terra-500)}
+  .opt[aria-pressed="true"] .radio::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--terra-500)}
+  .note{display:flex;gap:.5rem;align-items:center;margin-top:1rem;font-size:.88rem;color:var(--muted)}
+  .note .i{color:var(--olive-500);width:16px;height:16px}
+
+  .presets{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-bottom:1.5rem}
+  .preset{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.95rem .35rem .85rem;border-radius:18px;background:#fff;border:1.5px solid var(--line);cursor:pointer;text-align:center;transition:border-color .15s,background-color .15s;-webkit-tap-highlight-color:transparent}
+  .preset:hover{border-color:var(--olive-400)}
+  .preset .i{color:var(--olive-500);width:26px;height:26px}
+  .preset b{font-size:.86rem;line-height:1.2;color:var(--olive-900)}
+  .preset small{color:var(--terra-600);font-weight:700;font-size:.85rem}
+  .preset[aria-pressed="true"]{border-color:var(--terra-500);background:var(--terra-50)}
+  .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+  @media(min-width:520px){.chips{grid-template-columns:repeat(6,1fr)}}
+  .chip{min-height:50px;border-radius:14px;background:#fff;border:1.5px solid var(--line);font-weight:600;cursor:pointer;transition:border-color .15s,background-color .15s;-webkit-tap-highlight-color:transparent}
+  .chip:hover{border-color:var(--olive-400)}
+  .chip[aria-pressed="true"]{background:var(--terra-500);border-color:var(--terra-500);color:#fff}
+  .seg{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;max-width:440px}
+  .seg button{min-height:54px;border-radius:16px;background:#fff;border:1.5px solid var(--line);font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:border-color .15s,background-color .15s;-webkit-tap-highlight-color:transparent}
+  .seg button .i{width:19px;height:19px;color:var(--olive-500)}
+  .seg button:hover{border-color:var(--olive-400)}
+  .seg button[aria-pressed="true"]{border-color:var(--terra-500);background:var(--terra-50);color:var(--terra-700)}
+  .seg button[aria-pressed="true"] .i{color:var(--terra-600)}
+
+  /* CALENDAR */
+  .hint{display:flex;gap:.6rem;align-items:flex-start;background:var(--terra-50);border:1px solid var(--terra-100);color:var(--terra-700);border-radius:14px;padding:.7rem .9rem;font-size:.88rem;margin-bottom:1.1rem;line-height:1.45}
+  .hint .i{width:17px;height:17px;margin-top:.12rem}
+  .cal{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1rem .85rem .9rem;box-shadow:var(--sh-sm);max-width:480px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+  .cal-head button{width:42px;height:42px;border-radius:12px;background:var(--stone-50);border:1px solid var(--line);cursor:pointer;display:grid;place-items:center;color:var(--olive-700)}
   .cal-head button:disabled{opacity:.35;cursor:not-allowed}
-  .cal-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem}
-  .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:5px}
-  .cal-dow span{text-align:center;font-size:.7rem;font-weight:700;color:var(--muted)}
-  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
-  .cal-cell{aspect-ratio:1;border:1px solid transparent;border-radius:10px;background:var(--cream);cursor:pointer;font:inherit;font-weight:600;color:var(--ink);position:relative;display:flex;align-items:center;justify-content:center;font-size:.9rem;padding:0}
-  .cal-cell.empty{background:transparent;border:none;cursor:default}
-  .cal-cell.past{color:#cdc6b6;cursor:not-allowed;background:transparent}
-  .cal-cell:not(.past):not(.empty):hover{border-color:var(--olive-light)}
-  .cal-cell.major:not(.sel){background:#f8e3d6;border-color:#eac7b2}
-  .cal-cell.major{align-items:flex-start;padding-top:5px}
-  .cal-cell.sel{background:var(--terracotta);color:#fff}
-  .cal-cell .p5{position:absolute;bottom:3px;left:0;right:0;text-align:center;font-size:.6rem;font-weight:800;color:var(--terracotta-dark);line-height:1;letter-spacing:-.03em}
+  .cal-title{font-family:var(--ff-display);font-weight:600;font-size:1.18rem;text-transform:capitalize}
+  .cal-dow,.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .cal-dow span{text-align:center;font-size:.72rem;font-weight:700;color:var(--muted);padding:.1rem 0 .4rem}
+  .cal-cell{aspect-ratio:1;border-radius:12px;border:1.5px solid transparent;background:var(--stone-50);font-weight:600;font-size:.95rem;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;padding:0;color:var(--ink);transition:background-color .12s,border-color .12s;-webkit-tap-highlight-color:transparent}
+  .cal-cell.empty{background:transparent;cursor:default}
+  .cal-cell.past{background:transparent;color:#c9c2b2;cursor:not-allowed}
+  .cal-cell.major{background:#fbdcc6;color:var(--terra-700);align-items:flex-start;padding-top:5px}
+  .cal-cell .p5{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:.6rem;font-weight:800;line-height:1;color:var(--terra-700);letter-spacing:-.02em}
+  .cal-cell.rep{background:var(--terra-100);color:var(--terra-700);border-color:#f0c9b3}
+  .cal-cell.sel{background:var(--terra-500);color:#fff;border-color:var(--terra-500)}
   .cal-cell.sel .p5{color:#fff}
-  .planline{margin-top:1rem;font-weight:600;color:var(--olive-dark);max-width:520px}
-  .planline em{font-style:normal;color:var(--muted);font-weight:400}
+  .cal-cell:not(.past):not(.empty):not(.sel):hover{border-color:var(--olive-400)}
+  .cal-legend{display:flex;flex-wrap:wrap;gap:.4rem 1rem;margin-top:.8rem;font-size:.78rem;color:var(--muted)}
+  .cal-legend span{display:inline-flex;align-items:center;gap:.35rem}
+  .cal-legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+  .planline{max-width:480px;margin-top:1rem;display:flex;gap:.6rem;align-items:center;background:var(--sage-50);border:1px solid var(--sage-100);border-radius:14px;padding:.8rem 1rem;font-weight:600;color:var(--olive-800);font-size:.95rem}
+  .planline .i{color:var(--olive-500)}
+  .planline.empty{background:var(--stone-50);border-color:var(--stone-100);color:var(--muted);font-weight:500}
 
-  .times{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:.5rem;max-width:520px;margin-top:.5rem}
-  .time{background:#fff;border:2px solid var(--line);border-radius:10px;padding:.55rem .3rem;cursor:pointer;font:inherit;font-weight:600;text-align:center;position:relative;font-size:.95rem}
-  .time:hover{border-color:var(--olive-light)}
-  .time.sel{background:var(--terracotta);border-color:var(--terracotta);color:#fff;box-shadow:0 10px 20px -12px rgba(201,113,75,.7)}
-  .time small{display:block;font-size:.6rem;color:var(--terracotta);font-weight:700;margin-top:1px}
-  .time.sel small{color:#fff}
+  /* TIMES */
+  .tgroup{margin-bottom:1.2rem}
+  .tgroup h3{display:flex;align-items:center;gap:.5rem;font-family:var(--ff-body);font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem}
+  .tgroup h3 .i{width:16px;height:16px;color:var(--olive-500)}
+  .times{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem}
+  @media(min-width:520px){.times{grid-template-columns:repeat(6,1fr)}}
+  .time{min-height:50px;border-radius:12px;background:#fff;border:1.5px solid var(--line);font-weight:600;cursor:pointer;font-size:.95rem;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;transition:border-color .12s,background-color .12s;-webkit-tap-highlight-color:transparent}
+  .time small{font-size:.62rem;font-weight:800;color:var(--terra-600);margin-top:3px}
+  .time.maj{background:#fdf0e6}
+  .time:hover{border-color:var(--olive-400)}
+  .time[aria-pressed="true"]{background:var(--terra-500);border-color:var(--terra-500);color:#fff}
+  .time[aria-pressed="true"] small{color:#fff}
+  .nudge{display:flex;gap:.55rem;align-items:flex-start;margin-top:.3rem;font-weight:600;font-size:.94rem;line-height:1.45;padding:.75rem .9rem;border-radius:14px}
+  .nudge:empty{display:none}
+  .nudge .i{width:18px;height:18px;margin-top:.1rem}
+  .nudge.more{background:var(--terra-50);color:var(--terra-700);border:1px solid var(--terra-100)}
+  .nudge.good{background:var(--sage-50);color:var(--olive-600);border:1px solid var(--sage-100)}
 
-  .hint{background:#eef1e8;border-radius:12px;padding:.7rem .9rem;font-size:.86rem;color:var(--olive-dark);max-width:520px;margin-bottom:1.2rem;display:flex;gap:.5rem}
-  .creneau-nudge{margin-top:1.1rem;font-weight:600;max-width:520px;font-size:.95rem;min-height:1.3em}
-  .modal-ov{position:fixed;inset:0;background:rgba(43,42,37,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:1.4rem}
-  .modal-ov.open{display:flex}
-  .modal-box{background:#fff;border-radius:18px;padding:2rem;max-width:420px;text-align:center;box-shadow:var(--shadow)}
-  .modal-box h3{font-size:1.3rem;margin-bottom:.6rem;font-family:'Fraunces',serif}
-  .modal-box p{color:var(--muted);margin-bottom:1.4rem}
-  .modal-btns{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+  /* ESTIMATE */
+  .est{background:var(--olive-700);color:#f3f0e6;border-radius:24px;padding:1.4rem 1.35rem 1.15rem;margin-bottom:1.7rem;position:relative;overflow:hidden;isolation:isolate}
+  .est::after{content:"";position:absolute;z-index:-1;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(201,113,75,.35),transparent 70%)}
+  .est-lbl{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#f0b597}
+  .est-price{display:flex;align-items:baseline;gap:.55rem;margin-top:.45rem;flex-wrap:wrap}
+  .est-price b{font-family:var(--ff-display);font-size:3.1rem;font-weight:600;color:#fff;line-height:1;letter-spacing:-.02em}
+  .est-price span{color:rgba(243,240,230,.82);font-size:1rem}
+  .est-sub{margin-top:.45rem;font-size:.92rem;color:rgba(243,240,230,.82)}
+  .est-sub s{color:rgba(243,240,230,.6);text-decoration-color:var(--terra-500);text-decoration-thickness:2px;margin-right:.3rem}
+  .est-month{margin-top:.85rem;display:inline-flex;gap:.45rem;align-items:center;background:rgba(255,255,255,.1);border-radius:999px;padding:.38rem .85rem;font-size:.86rem;font-weight:600;color:#fff}
+  .est-month .i{width:16px;height:16px;color:#f0b597}
+  .est details{margin-top:1.05rem;border-top:1px solid rgba(255,255,255,.14);padding-top:.85rem}
+  .est summary{cursor:pointer;font-weight:600;font-size:.9rem;color:#fff;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  .est summary::-webkit-details-marker{display:none}
+  .est summary .i{transition:transform .2s}
+  .est details[open] summary .i{transform:rotate(180deg)}
+  .est dl{margin-top:.7rem;display:grid;gap:.38rem}
+  .rl{display:flex;justify-content:space-between;gap:1rem;font-size:.86rem;color:rgba(243,240,230,.72)}
+  .rl dd{color:#fff;text-align:right;font-weight:600}
+  .rdiv{border-top:1px dashed rgba(255,255,255,.18);margin:.35rem 0}
+  .rnote{font-size:.76rem;color:rgba(243,240,230,.62);margin-top:.65rem;line-height:1.45}
 
-  .nav{display:flex;gap:.8rem;margin-top:2rem;align-items:center}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;font-size:1rem;padding:.95rem 1.8rem;border-radius:999px;cursor:pointer;border:2px solid transparent;font-family:inherit;transition:transform .12s,background .15s,opacity .15s}
-  .btn-primary{background:var(--terracotta);color:#fff;box-shadow:0 14px 30px -14px rgba(201,113,75,.8)}
-  .btn-primary:hover{background:var(--terracotta-dark);transform:translateY(-2px)}
-  .btn-primary:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
-  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--olive)}
-  .btn-wa{background:#25D366;color:#0b3d24}
+  /* FORM */
+  .form-grid{display:grid;gap:1rem}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+  .field label{display:block;font-size:.86rem;font-weight:600;margin-bottom:.38rem;color:var(--olive-900)}
+  .field label small{font-weight:400;color:var(--muted)}
+  .field input,.field textarea{width:100%;min-height:54px;padding:.85rem 1rem;border:1.5px solid var(--line);border-radius:14px;font:inherit;font-size:1rem;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--olive-400);box-shadow:0 0 0 4px rgba(125,143,104,.18)}
+  .field textarea{min-height:96px;resize:vertical}
+  .field.bad input{border-color:var(--terra-500);background:#fffaf7}
+  .ferr{display:block;color:var(--terra-700);font-size:.82rem;margin-top:.32rem;font-weight:600}
+  .ferr:empty{display:none}
+  .privacy{display:flex;gap:.55rem;align-items:flex-start;font-size:.82rem;color:var(--muted);line-height:1.45}
+  .privacy .i{width:16px;height:16px;margin-top:.12rem;color:var(--olive-400)}
+  .form-status{font-weight:600;font-size:.94rem;line-height:1.45}
+  .form-status:empty{display:none}
+  .form-status.bad{color:var(--terra-700);background:var(--terra-50);border:1px solid var(--terra-100);border-radius:14px;padding:.75rem .9rem}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
-  /* recap (only at the end) */
-  .recap{background:var(--olive);color:var(--cream);border-radius:16px;padding:1.4rem 1.5rem;margin-bottom:1.8rem;max-width:520px}
-  .recap h3{color:#fff;text-align:center;margin-bottom:.9rem;font-size:1.15rem}
-  .rl{display:flex;justify-content:space-between;gap:1rem;padding:.32rem 0;font-size:.92rem;color:rgba(251,248,242,.85)}
-  .rl b{color:#fff;text-align:right;font-weight:600}
-  .rdiv{border-top:1px solid rgba(255,255,255,.2);margin:.55rem 0}
-  .rold{text-decoration:line-through;text-decoration-color:var(--terracotta);color:rgba(251,248,242,.65)}
-  .rcred{color:#dfe7d3;font-weight:600}
-  .rtotal{display:flex;justify-content:space-between;align-items:baseline;margin-top:.5rem;padding-top:.7rem;border-top:2px solid rgba(255,255,255,.25)}
-  .rtotal span{font-weight:700}
-  .rtotal b{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--sand)}
-  .rtotal small{display:block;font-weight:400;color:rgba(251,248,242,.6);font-size:.75rem}
-  .rnote{margin-top:.9rem;font-size:.78rem;color:rgba(251,248,242,.7)}
+  /* ACTIONS */
+  .err{display:flex;gap:.45rem;align-items:center;color:var(--terra-700);font-weight:600;font-size:.92rem;margin-top:1rem}
+  .err:empty{display:none}
+  .err .i{width:17px;height:17px}
+  .err.shake{animation:shake .35s ease}
+  @keyframes shake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+  .actions{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;gap:.6rem;align-items:center;padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -10px 30px -20px rgba(52,63,43,.4)}
+  .actions .btn-next{flex:1}
+  .btn-back{width:54px;height:54px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--olive-700);flex:none;-webkit-tap-highlight-color:transparent}
+  .btn-back .i{width:20px;height:20px}
+  .btn-back span{display:none}
+  .actions.hidden{display:none}
+  @media(min-width:980px){
+    .actions{position:static;padding:0;background:none;border:0;box-shadow:none;margin-top:2rem;-webkit-backdrop-filter:none;backdrop-filter:none}
+    .actions .btn-next{flex:none;min-width:230px}
+    .btn-back{width:auto;height:54px;border-radius:999px;padding:0 1.25rem;display:inline-flex;align-items:center;gap:.4rem;font-weight:600}
+    .btn-back span{display:inline}
+  }
 
-  #step-merci{text-align:center;max-width:600px;margin:2rem auto}
-  #step-merci .big{font-size:3.5rem}
-  #step-merci h2{margin:1rem 0}
-  .form-status{margin-top:1rem;font-weight:600;min-height:1.4em}
+  /* SIDE */
+  .side{display:none}
+  @media(min-width:980px){.side{display:block;position:sticky;top:104px}}
+  .side-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.35rem 1.35rem 1.1rem;box-shadow:var(--sh-sm)}
+  .side-card h2{font-size:1.22rem;margin-bottom:.7rem}
+  .sum div{display:grid;grid-template-columns:92px 1fr;gap:.6rem;padding:.55rem 0;border-top:1px dashed var(--line);font-size:.87rem;line-height:1.4}
+  .sum dt{color:var(--muted)}
+  .sum dd{font-weight:600;color:var(--olive-900);overflow-wrap:anywhere}
+  .sum dd.empty{color:#b3ad9f;font-weight:400}
+  .side-trust{margin-top:1.1rem;display:grid;gap:.55rem;font-size:.9rem;color:var(--ink-2)}
+  .side-trust li{display:flex;gap:.55rem;align-items:center}
+  .side-trust .i{color:var(--olive-500);stroke-width:2.6;width:17px;height:17px}
+  .side-help{margin-top:1.15rem;display:flex;gap:.8rem;align-items:center;background:var(--stone-50);border:1px solid var(--stone-100);border-radius:18px;padding:.85rem .95rem;font-size:.9rem;line-height:1.35}
+  .side-help b{display:block;color:var(--olive-900)}
+  .side-help a{color:var(--terra-600);font-weight:700}
+  .avatar{width:44px;height:44px;border-radius:50%;background:var(--terra-100);color:var(--terra-700);display:grid;place-items:center;font-family:var(--ff-display);font-weight:600;font-size:1.2rem;flex:none}
+
+  /* MODAL */
+  .modal-ov{position:fixed;inset:0;background:rgba(36,35,30,.5);display:none;align-items:flex-end;justify-content:center;z-index:60;padding:1rem}
+  .modal-ov.open{display:flex;animation:fadeIn .2s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal-box{background:#fff;border-radius:24px;padding:1.6rem 1.4rem calc(1.3rem + env(safe-area-inset-bottom));max-width:440px;width:100%;text-align:center;box-shadow:var(--sh-lg);animation:sheetUp .25s ease}
+  @keyframes sheetUp{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+  .modal-ic{width:56px;height:56px;border-radius:18px;background:var(--terra-50);color:var(--terra-600);display:grid;place-items:center;margin:0 auto .9rem}
+  .modal-ic .i{width:26px;height:26px}
+  .modal-box h2{font-size:1.4rem;margin-bottom:.5rem}
+  .modal-box p{color:var(--muted);margin-bottom:1.3rem}
+  .modal-btns{display:grid;gap:.55rem}
+  .btn-plain{background:none;border:0;color:var(--muted);font-weight:600;cursor:pointer;min-height:46px}
+  @media(min-width:640px){.modal-ov{align-items:center}}
+
+  /* MERCI */
+  .merci{text-align:center;padding:.5rem 0 1rem}
+  .merci-badge{width:104px;height:104px;margin:0 auto 1.3rem;border-radius:50%;background:var(--sage-100);display:grid;place-items:center;position:relative}
+  .merci-badge>svg{width:58px;height:58px}
+  .merci-check{position:absolute;right:0;bottom:0;width:36px;height:36px;border-radius:50%;background:var(--olive-500);color:#fff;display:grid;place-items:center;border:3px solid var(--cream)}
+  .merci-check .i{width:18px;height:18px;stroke-width:3}
+  .merci .sub{margin-inline:auto}
+  .next-steps{text-align:left;display:grid;gap:.7rem;margin:1.6rem auto 0;max-width:460px;counter-reset:ns}
+  .next-steps li{display:grid;grid-template-columns:34px 1fr;gap:.8rem;align-items:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:.9rem 1rem;font-size:.94rem;color:var(--ink-2)}
+  .next-steps li::before{counter-increment:ns;content:counter(ns);width:34px;height:34px;border-radius:50%;background:var(--terra-50);color:var(--terra-600);font-weight:700;display:grid;place-items:center}
+  .next-steps b{display:block;color:var(--olive-900)}
+  .merci-links{margin-top:1.6rem;display:flex;flex-direction:column;gap:.8rem;align-items:center;font-size:.94rem;color:var(--muted)}
+  .merci-links a{color:var(--terra-600);font-weight:700}
+
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap top">
-    <a href="index.html" class="brand"><span class="l">🌿</span> Coup de Main Provence</a>
-    <button class="back" id="backBtn">‹ Retour</button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="sprig" viewBox="0 0 564 564"><path d="M26 540 140 410" stroke="#404e35" stroke-width="36" stroke-linecap="round"/><ellipse cx="136" cy="384" rx="124" ry="55" transform="rotate(-41 136 384)" fill="#5a6b4a"/><ellipse cx="284" cy="256" rx="128" ry="57" transform="rotate(-37 284 256)" fill="#5a6b4a"/><ellipse cx="424" cy="146" rx="106" ry="52" transform="rotate(-42 424 146)" fill="#5a6b4a"/><ellipse cx="224" cy="440" rx="98" ry="51" transform="rotate(34 224 440)" fill="#7d8f68"/><ellipse cx="368" cy="311" rx="104" ry="52" transform="rotate(32 368 311)" fill="#7d8f68"/><circle cx="338" cy="196" r="54" fill="#c9714b"/><circle cx="496" cy="66" r="64" fill="#c9714b"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-cal2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.5 2.3a.5.5 0 0 1 1 0l2.3 4.7a2.1 2.1 0 0 0 1.6 1.2l5.2.7a.5.5 0 0 1 .3.9l-3.8 3.7a2.1 2.1 0 0 0-.6 1.9l.9 5.1a.5.5 0 0 1-.8.6l-4.6-2.4a2.1 2.1 0 0 0-2 0L6.4 21a.5.5 0 0 1-.8-.6l.9-5.1a2.1 2.1 0 0 0-.6-1.9L2.2 9.8a.5.5 0 0 1 .3-.9l5.2-.8a2.1 2.1 0 0 0 1.6-1.2z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-flat" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol>
+    <symbol id="i-house" viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M9 20v-5h6v5"/><path d="M15 6.5V3h3v5.7"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.3 2.2l.6 3.5a1 1 0 0 0 1 .8H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.2a1 1 0 0 0 1-.8l.6-3.5a2 2 0 0 0-1.4-2.2z"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.8 1C6.5 17.5 6.5 17.5 4.5 16.8A3.5 3.5 0 0 1 5.5 10z"/></symbol>
+    <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
+    <symbol id="i-sunrise" viewBox="0 0 24 24"><path d="M12 2v8M4.9 10.9l1.4 1.4M2 18h2M20 18h2M19.1 10.9l-1.4 1.4M22 22H2M8 6l4-4 4 4M16 18a4 4 0 0 0-8 0"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  </defs>
+</svg>
+
+<header class="fh">
+  <div class="wrap fh-in">
+    <a href="index.html" class="logo" aria-label="Retour au site Coup de Main Provence">
+      <svg aria-hidden="true"><use href="#sprig"/></svg>
+      <span class="logo-word">Coup de Main Provence</span>
+    </a>
+    <p class="fh-step" id="stepCount" aria-live="polite">Étape 1 sur 8<small>Votre adresse</small></p>
+    <a href="index.html" class="fh-close" aria-label="Quitter la réservation"><svg class="i"><use href="#i-x"/></svg></a>
   </div>
-  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div class="progress" aria-hidden="true"><span id="bar"></span></div>
 </header>
 
-<div class="wrap stepwrap">
+<main class="wrap fw">
+  <h1 class="sr-only">Réserver mon ménage</h1>
+  <div class="fw-grid">
+    <div class="fw-main">
 
-  <!-- 1 ADRESSE -->
-  <section class="step active" data-step="adresse">
-    <span class="kicker">Étape 1</span>
-    <h2>Où aurait lieu la prestation ?</h2>
-    <p class="sub">Indiquez l'adresse où l'intervenante se rendra.</p>
-    <div class="field ac-wrap">
-      <label for="adresse">Adresse complète</label>
-      <input id="adresse" type="text" placeholder="12 rue des Oliviers, 13440 Cabannes" autocomplete="off" />
-      <div class="ac-list" id="acList"></div>
-    </div>
-  </section>
-
-  <!-- 2 PRESTATION (multi) -->
-  <section class="step" data-step="prestation">
-    <span class="kicker">Étape 2</span>
-    <h2>Quelles prestations souhaitez-vous ?</h2>
-    <p class="sub">Cochez une ou plusieurs prestations.</p>
-    <div class="opts" data-multi="prestations">
-      <button class="opt" data-value="Ménage"><span class="ic">🧹</span><span class="tt">Ménage<small>Entretien courant, sols, sanitaires, poussières</small></span><span class="chk">✓</span></button>
-      <button class="opt" data-value="Courses & commissions"><span class="ic">🛒</span><span class="tt">Courses & commissions<small>Courses, pharmacie, marché, rangement</small></span><span class="chk">✓</span></button>
-      <button class="opt" data-value="Cuisine à domicile"><span class="ic">🍲</span><span class="tt">Cuisine à domicile<small>Repas du jour, batch cooking, régimes</small></span><span class="chk">✓</span></button>
-    </div>
-  </section>
-
-  <!-- 3 FREQUENCE -->
-  <section class="step" data-step="frequence">
-    <span class="kicker">Étape 3</span>
-    <h2>À quelle fréquence ?</h2>
-    <p class="sub">Sans engagement, ajustable ou en pause à tout moment.</p>
-    <div class="opts" data-key="frequence">
-      <button class="opt" data-value="hebdo"><span class="ic">📅</span><span class="tt">Chaque semaine<small>15 € de l'heure net</small></span><span class="tag">Populaire</span></button>
-      <button class="opt" data-value="2x"><span class="ic">🗓️</span><span class="tt">Deux fois par semaine<small>15 € de l'heure net</small></span></button>
-      <button class="opt" data-value="bimensuel"><span class="ic">📆</span><span class="tt">Toutes les deux semaines<small>15 € de l'heure net</small></span></button>
-      <button class="opt" data-value="ponctuel"><span class="ic">⭐</span><span class="tt">Ponctuel, une seule fois<small>Tarif ponctuel, 17,50 € de l'heure net</small></span></button>
-    </div>
-  </section>
-
-  <!-- 4 DUREE -->
-  <section class="step" data-step="duree">
-    <span class="kicker">Étape 4</span>
-    <h2>Combien de temps par passage ?</h2>
-    <p class="sub">Minimum 2h. Une estimation suffit, on ajustera ensemble.</p>
-    <div class="chips" data-key="duree">
-      <button class="chip" data-value="2">2h</button>
-      <button class="chip" data-value="2.5">2h30</button>
-      <button class="chip" data-value="3">3h</button>
-      <button class="chip" data-value="3.5">3h30</button>
-      <button class="chip" data-value="4">4h</button>
-      <button class="chip" data-value="4.5">4h30</button>
-      <button class="chip" data-value="5">5h</button>
-      <button class="chip" data-value="5.5">5h30</button>
-      <button class="chip" data-value="6">6h</button>
-      <button class="chip" data-value="6.5">6h30</button>
-      <button class="chip" data-value="7">7h</button>
-    </div>
-  </section>
-
-  <!-- 5 OPTIONS -->
-  <section class="step" data-step="options">
-    <span class="kicker">Étape 5</span>
-    <h2>Des besoins en plus ?</h2>
-    <p class="sub">Facultatif. Cochez ce dont vous avez besoin.</p>
-    <div class="opts" data-multi="options">
-      <button class="opt" data-value="repassage" data-add="1"><span class="ic">👕</span><span class="tt">Repassage<small>Le linge repassé et plié</small></span><span class="price-add">+1 €/h</span></button>
-      <button class="opt" data-value="produits" data-add="3"><span class="ic">🧴</span><span class="tt">Produits ménagers fournis<small>L'intervenante apporte le nécessaire</small></span><span class="price-add">+3 €/h</span></button>
-    </div>
-  </section>
-
-  <!-- 6 ANIMAUX -->
-  <section class="step" data-step="animaux">
-    <span class="kicker">Étape 6</span>
-    <h2>Avez-vous des animaux ?</h2>
-    <p class="sub">Cette information nous aide à éviter toute allergie côté intervenante.</p>
-    <div class="opts" data-key="animaux">
-      <button class="opt" data-value="Oui"><span class="ic">🐾</span><span class="tt">Oui</span></button>
-      <button class="opt" data-value="Non"><span class="ic">🚫</span><span class="tt">Non, aucun</span></button>
-    </div>
-  </section>
-
-  <!-- 7 PLANNING (calendar + time) -->
-  <!-- 7 JOURS -->
-  <section class="step" data-step="jours">
-    <span class="kicker">Étape 7</span>
-    <h2>Quels jours souhaitez-vous ?</h2>
-    <p class="sub" id="planSub">Choisissez la date de votre première session.</p>
-    <div class="hint">🗓️ <span>Les jours en orange (dimanches et jours fériés) sont majorés de 5 € de l'heure.</span></div>
-    <div class="cal">
-      <div class="cal-head">
-        <button type="button" id="calPrev" aria-label="Mois précédent">‹</button>
-        <span class="cal-title" id="calTitle"></span>
-        <button type="button" id="calNext" aria-label="Mois suivant">›</button>
-      </div>
-      <div class="cal-dow"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
-      <div class="cal-grid" id="calGrid"></div>
-    </div>
-    <p class="planline" id="planLine"><em>Sélectionnez un jour ci-dessus.</em></p>
-  </section>
-
-  <!-- 8 HORAIRES -->
-  <section class="step" data-step="horaires">
-    <span class="kicker">Étape 8</span>
-    <h2>À quelles heures ?</h2>
-    <p class="sub">Choisissez plusieurs créneaux : plus vous en proposez, plus c'est simple de trouver votre intervenante.</p>
-    <div class="hint">⏰ <span>Créneaux 7h/7h30 et 20h à 22h majorés de 5 € de l'heure.</span></div>
-    <div class="times" id="timeGrid"></div>
-    <p class="creneau-nudge" id="creneauNudge"></p>
-  </section>
-
-  <!-- 8 COORDONNEES (with recap) -->
-  <section class="step" data-step="coordonnees">
-    <span class="kicker">Dernière étape</span>
-    <h2>Votre devis</h2>
-    <p class="sub">Voici le récapitulatif. Laissez vos coordonnées, Huguette vous rappelle.</p>
-    <div class="recap" id="recap"></div>
-    <form id="devisForm">
-      <div class="field">
-        <label>Civilité</label>
-        <div class="chips" data-key="civilite">
-          <button type="button" class="chip" data-value="Madame">Madame</button>
-          <button type="button" class="chip" data-value="Monsieur">Monsieur</button>
+      <section class="step" data-step="adresse" aria-labelledby="q-adresse">
+        <h2 class="q" id="q-adresse" tabindex="-1">Où aura lieu la prestation&nbsp;?</h2>
+        <p class="sub">On vérifie tout de suite que vous êtes dans notre zone, pour vous proposer une intervenante proche de chez vous.</p>
+        <div class="addr">
+          <label class="lbl" for="adresse">Adresse complète</label>
+          <div class="addr-field" id="addrField">
+            <svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>
+            <input id="adresse" type="text" inputmode="search" enterkeyhint="next" autocomplete="off" spellcheck="false" placeholder="N° et rue, puis votre commune" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="acList" />
+            <button type="button" class="addr-clear" id="addrClear" aria-label="Effacer l'adresse"><svg class="i"><use href="#i-x"/></svg></button>
+          </div>
+          <div class="ac" id="acList" role="listbox" aria-label="Suggestions d'adresses"></div>
+          <p class="zone-msg" id="zoneMsg" aria-live="polite"></p>
         </div>
-      </div>
-      <div class="two">
-        <div class="field" style="max-width:none;margin-bottom:0">
-          <label for="prenom">Prénom</label>
-          <input id="prenom" type="text" placeholder="Marie" required />
-        </div>
-        <div class="field" style="max-width:none;margin-bottom:0">
-          <label for="nom">Nom</label>
-          <input id="nom" type="text" placeholder="Durand" required />
-        </div>
-      </div>
-      <div class="field" style="margin-top:1rem">
-        <label for="tel">Téléphone</label>
-        <input id="tel" type="tel" inputmode="tel" placeholder="06 12 34 56 78" required />
-      </div>
-      <div class="field">
-        <label for="email">Email (facultatif)</label>
-        <input id="email" type="email" placeholder="marie.durand@email.fr" />
-      </div>
-      <div class="field">
-        <label for="message">Un détail à ajouter ? (facultatif)</label>
-        <textarea id="message" placeholder="Ex : maison de 90 m², accès par le portail bleu…"></textarea>
-      </div>
-      <div class="nav"><button type="submit" class="btn btn-primary" id="submitBtn">Envoyer ma demande</button></div>
-      <p class="form-status" id="formStatus"></p>
-    </form>
-  </section>
+        <p class="fineprint"><svg class="i"><use href="#i-lock"/></svg><span>Votre adresse sert uniquement à organiser la prestation.</span></p>
+      </section>
 
-  <!-- MERCI -->
-  <section class="step" data-step="merci" id="step-merci">
-    <div class="big">🌿</div>
-    <h2>Merci, c'est bien reçu !</h2>
-    <p class="sub">Huguette vous rappelle très vite avec votre devis, crédit d'impôt déduit.</p>
-    <div style="margin-top:1.4rem"><a href="index.html" class="back">‹ Revenir au site</a></div>
-  </section>
+      <section class="step" data-step="prestations" aria-labelledby="q-prestations">
+        <p class="ctx" id="ctxAddr" hidden><svg class="i"><use href="#i-pin"/></svg><span></span><button type="button" data-goto="0">Modifier</button></p>
+        <h2 class="q" id="q-prestations" tabindex="-1">De quoi avez-vous besoin&nbsp;?</h2>
+        <p class="sub">Une ou plusieurs prestations, au même tarif horaire.</p>
+        <div class="opts" data-multi="prestations" role="group" aria-label="Prestations">
+          <button type="button" class="opt" data-value="Ménage" aria-pressed="false"><img src="img/thumb-menage.webp" alt="" width="58" height="58" /><span class="tt">Ménage<small>Entretien courant, sols, sanitaires, poussières</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+          <button type="button" class="opt" data-value="Courses &amp; commissions" aria-pressed="false"><img src="img/thumb-courses.webp" alt="" width="58" height="58" /><span class="tt">Courses &amp; commissions<small>Courses, pharmacie, marché, rangement</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+          <button type="button" class="opt" data-value="Cuisine à domicile" aria-pressed="false"><img src="img/thumb-cuisine.webp" alt="" width="58" height="58" /><span class="tt">Cuisine à domicile<small>Repas du jour, batch cooking, régimes</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+        </div>
+      </section>
 
-  <!-- shared nav -->
-  <div class="nav" id="mainNav">
-    <button class="btn btn-ghost" id="prevBtn" style="display:none">Retour</button>
-    <button class="btn btn-primary" id="nextBtn" disabled>Continuer</button>
+      <section class="step" data-step="frequence" aria-labelledby="q-frequence">
+        <h2 class="q" id="q-frequence" tabindex="-1">À quelle fréquence&nbsp;?</h2>
+        <p class="sub">Vous pourrez toujours changer de rythme par la suite.</p>
+        <div class="opts" data-single="frequence" role="group" aria-label="Fréquence">
+          <button type="button" class="opt" data-value="hebdo" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-repeat"/></svg></span><span class="tt">Chaque semaine<small>15&nbsp;€ de l'heure après crédit d'impôt</small></span><span class="tag">Recommandé</span><span class="radio"></span></button>
+          <button type="button" class="opt" data-value="2x" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-cal2"/></svg></span><span class="tt">Deux fois par semaine<small>15&nbsp;€ de l'heure après crédit d'impôt</small></span><span class="radio"></span></button>
+          <button type="button" class="opt" data-value="bimensuel" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-calendar"/></svg></span><span class="tt">Toutes les deux semaines<small>15&nbsp;€ de l'heure après crédit d'impôt</small></span><span class="radio"></span></button>
+          <button type="button" class="opt" data-value="ponctuel" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-star"/></svg></span><span class="tt">Une seule fois<small>Tarif ponctuel, 17,50&nbsp;€ de l'heure après crédit d'impôt</small></span><span class="radio"></span></button>
+        </div>
+        <p class="note"><svg class="i"><use href="#i-check"/></svg>Sans engagement, ajustable ou en pause à tout moment.</p>
+      </section>
+
+      <section class="step" data-step="duree" aria-labelledby="q-duree">
+        <h2 class="q" id="q-duree" tabindex="-1">Combien de temps par passage&nbsp;?</h2>
+        <p class="sub">Minimum 2&nbsp;h. Une estimation suffit, on ajustera ensemble après le premier passage.</p>
+        <p class="mini-lbl">Selon votre logement</p>
+        <div class="presets" role="group" aria-label="Durée selon le logement">
+          <button type="button" class="preset" data-dur="2" aria-pressed="false"><svg class="i"><use href="#i-flat"/></svg><b>Appartement</b><small>2&nbsp;h</small></button>
+          <button type="button" class="preset" data-dur="3" aria-pressed="false"><svg class="i"><use href="#i-home"/></svg><b>Maison</b><small>3&nbsp;h</small></button>
+          <button type="button" class="preset" data-dur="4" aria-pressed="false"><svg class="i"><use href="#i-house"/></svg><b>Grande maison</b><small>4&nbsp;h</small></button>
+        </div>
+        <p class="mini-lbl">Ou choisissez la durée</p>
+        <div class="chips" data-single="duree" role="group" aria-label="Durée par passage">
+          <button type="button" class="chip" data-value="2" aria-pressed="false">2h</button>
+          <button type="button" class="chip" data-value="2.5" aria-pressed="false">2h30</button>
+          <button type="button" class="chip" data-value="3" aria-pressed="false">3h</button>
+          <button type="button" class="chip" data-value="3.5" aria-pressed="false">3h30</button>
+          <button type="button" class="chip" data-value="4" aria-pressed="false">4h</button>
+          <button type="button" class="chip" data-value="4.5" aria-pressed="false">4h30</button>
+          <button type="button" class="chip" data-value="5" aria-pressed="false">5h</button>
+          <button type="button" class="chip" data-value="5.5" aria-pressed="false">5h30</button>
+          <button type="button" class="chip" data-value="6" aria-pressed="false">6h</button>
+          <button type="button" class="chip" data-value="6.5" aria-pressed="false">6h30</button>
+          <button type="button" class="chip" data-value="7" aria-pressed="false">7h</button>
+        </div>
+      </section>
+
+      <section class="step" data-step="options" aria-labelledby="q-options">
+        <h2 class="q" id="q-options" tabindex="-1">Des besoins en plus&nbsp;?</h2>
+        <p class="sub">Facultatif. Les options s'ajoutent au tarif horaire.</p>
+        <div class="opts" data-multi="options" role="group" aria-label="Options">
+          <button type="button" class="opt" data-value="repassage" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-shirt"/></svg></span><span class="tt">Repassage<small>Le linge repassé et plié</small></span><span class="price-add">+1&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+          <button type="button" class="opt" data-value="produits" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-drop"/></svg></span><span class="tt">Produits ménagers fournis<small>L'intervenante apporte le nécessaire</small></span><span class="price-add">+3&nbsp;€/h</span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
+        </div>
+        <h3 class="q2">Des animaux à la maison&nbsp;?</h3>
+        <p class="sub sm">Cela nous aide à éviter toute allergie côté intervenante.</p>
+        <div class="seg" data-single="animaux" role="group" aria-label="Animaux">
+          <button type="button" data-value="Oui" aria-pressed="false"><svg class="i"><use href="#i-paw"/></svg>Oui</button>
+          <button type="button" data-value="Non" aria-pressed="false"><svg class="i"><use href="#i-ban"/></svg>Non, aucun</button>
+        </div>
+      </section>
+
+      <section class="step" data-step="jours" aria-labelledby="q-jours">
+        <h2 class="q" id="q-jours" tabindex="-1">Quel jour vous arrange&nbsp;?</h2>
+        <p class="sub" id="planSub">Choisissez la date de votre premier passage.</p>
+        <p class="hint"><svg class="i"><use href="#i-alert"/></svg><span>Les jours en orange (dimanches et jours fériés) sont majorés de 5&nbsp;€ de l'heure.</span></p>
+        <div class="cal">
+          <div class="cal-head">
+            <button type="button" id="calPrev" aria-label="Mois précédent"><svg class="i"><use href="#i-left"/></svg></button>
+            <span class="cal-title" id="calTitle" aria-live="polite"></span>
+            <button type="button" id="calNext" aria-label="Mois suivant"><svg class="i"><use href="#i-right"/></svg></button>
+          </div>
+          <div class="cal-dow" aria-hidden="true"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
+          <div class="cal-grid" id="calGrid"></div>
+          <div class="cal-legend" aria-hidden="true"><span><i style="background:var(--terra-500)"></i>Votre passage</span><span id="lgRep"><i style="background:var(--terra-100);border:1px solid #f0c9b3"></i>Passages suivants</span><span><i style="background:#fbdcc6"></i>+5&nbsp;€/h</span></div>
+        </div>
+        <p class="planline empty" id="planLine"><svg class="i"><use href="#i-calendar"/></svg><span>Sélectionnez un jour ci-dessus.</span></p>
+      </section>
+
+      <section class="step" data-step="horaires" aria-labelledby="q-horaires">
+        <h2 class="q" id="q-horaires" tabindex="-1">À quelle heure peut-elle arriver&nbsp;?</h2>
+        <p class="sub">Cochez toutes les heures d'arrivée qui vous conviennent&nbsp;: plus vous en proposez, plus c'est simple de trouver votre intervenante.</p>
+        <p class="hint"><svg class="i"><use href="#i-alert"/></svg><span>Arrivée à 7h, 7h30 ou à partir de 20h&nbsp;: majoration de 5&nbsp;€ de l'heure.</span></p>
+        <div id="timeGroups"></div>
+        <p class="nudge" id="nudge" aria-live="polite"></p>
+      </section>
+
+      <section class="step" data-step="coordonnees" aria-labelledby="q-coord">
+        <h2 class="q" id="q-coord" tabindex="-1">Votre estimation est prête</h2>
+        <p class="sub">Laissez vos coordonnées&nbsp;: Huguette vous rappelle pour confirmer le devis. Rien à payer maintenant.</p>
+        <div class="est" id="est"></div>
+        <form id="devisForm" class="form-grid" novalidate>
+          <div class="field">
+            <span class="lbl" id="civLbl">Civilité <small style="font-weight:400;color:var(--muted)">(facultatif)</small></span>
+            <div class="seg" data-single="civilite" role="group" aria-labelledby="civLbl">
+              <button type="button" data-value="Madame" aria-pressed="false">Madame</button>
+              <button type="button" data-value="Monsieur" aria-pressed="false">Monsieur</button>
+            </div>
+          </div>
+          <div class="two">
+            <div class="field" id="f-prenom"><label for="prenom">Prénom</label><input id="prenom" name="prenom" type="text" autocomplete="given-name" enterkeyhint="next" /><span class="ferr"></span></div>
+            <div class="field" id="f-nom"><label for="nom">Nom</label><input id="nom" name="nom" type="text" autocomplete="family-name" enterkeyhint="next" /><span class="ferr"></span></div>
+          </div>
+          <div class="field" id="f-tel"><label for="tel">Téléphone</label><input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78" enterkeyhint="next" /><span class="ferr"></span></div>
+          <div class="field" id="f-email"><label for="email">Email <small>(facultatif)</small></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="marie.durand@email.fr" enterkeyhint="send" /><span class="ferr"></span></div>
+          <div class="field"><label for="message">Un détail à ajouter&nbsp;? <small>(facultatif)</small></label><textarea id="message" name="message" placeholder="Ex. maison de 90 m², accès par le portail bleu…"></textarea></div>
+          <div class="hp" aria-hidden="true"><label>Ne pas remplir <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" /></label></div>
+          <p class="privacy"><svg class="i"><use href="#i-lock"/></svg><span>Vos coordonnées servent uniquement à vous recontacter au sujet de cette demande. Gratuit et sans engagement.</span></p>
+          <p class="form-status" id="formStatus" role="alert"></p>
+        </form>
+      </section>
+
+      <section class="step" data-step="merci" aria-labelledby="q-merci">
+        <div class="merci">
+          <div class="merci-badge"><svg aria-hidden="true"><use href="#sprig"/></svg><span class="merci-check"><svg class="i"><use href="#i-check"/></svg></span></div>
+          <h2 class="q" id="q-merci" tabindex="-1">Merci, c'est bien reçu&nbsp;!</h2>
+          <p class="sub" id="merciSub">Huguette vous rappelle très vite pour confirmer votre devis, crédit d'impôt déduit.</p>
+          <ol class="next-steps">
+            <li><span><b>Huguette vous appelle</b>Elle valide avec vous le devis, les jours et les horaires.</span></li>
+            <li><span><b>On active votre avance immédiate</b>Gratuitement, en cinq minutes, pour ne payer que 50&nbsp;%.</span></li>
+            <li><span><b>Votre intervenante arrive</b>Au jour et à l'heure convenus. Vous ne réglez que la moitié.</span></li>
+          </ol>
+          <div class="merci-links">
+            <span>Une question d'ici là&nbsp;? <a href="tel:+33641946311" id="merciTel">06 41 94 63 11</a></span>
+            <a href="index.html">Revenir au site</a>
+          </div>
+        </div>
+      </section>
+
+      <p class="err" id="err" role="alert"></p>
+      <div class="actions" id="actions">
+        <button type="button" class="btn-back" id="prevBtn" aria-label="Étape précédente"><svg class="i"><use href="#i-left"/></svg><span>Retour</span></button>
+        <button type="button" class="btn btn-primary btn-next" id="nextBtn"><span id="nextLbl">Continuer</span><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+
+    <aside class="side" aria-label="Récapitulatif de votre demande">
+      <div class="side-card">
+        <h2>Votre demande</h2>
+        <dl class="sum" id="sum"></dl>
+      </div>
+      <ul class="side-trust">
+        <li><svg class="i"><use href="#i-check"/></svg>Rien à payer maintenant</li>
+        <li><svg class="i"><use href="#i-check"/></svg>Sans engagement</li>
+        <li><svg class="i"><use href="#i-check"/></svg>Crédit d'impôt déduit tout de suite</li>
+      </ul>
+      <div class="side-help"><span class="avatar" aria-hidden="true">H</span><div><b>Une question&nbsp;?</b>Huguette au <a href="tel:+33641946311" data-contact>06 41 94 63 11</a></div></div>
+    </aside>
   </div>
+</main>
 
-</div>
-
-<div class="modal-ov" id="creneauModal">
+<div class="modal-ov" id="creneauModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box">
-    <h3>Ajoutez d'autres créneaux ?</h3>
-    <p>Plus vous proposez de créneaux, plus il est simple de trouver votre intervenante. Trois minimum, c'est l'idéal.</p>
+    <div class="modal-ic"><svg class="i"><use href="#i-clock"/></svg></div>
+    <h2 id="modalTitle">Ajouter d'autres créneaux&nbsp;?</h2>
+    <p>Plus vous proposez d'heures d'arrivée, plus il est simple de trouver votre intervenante. Trois minimum, c'est l'idéal.</p>
     <div class="modal-btns">
-      <button type="button" class="btn btn-ghost" id="modalContinue">Non, continuer</button>
-      <button type="button" class="btn btn-primary" id="modalAdd">Oui, en ajouter</button>
+      <button type="button" class="btn btn-primary" id="modalAdd">Oui, j'en ajoute</button>
+      <button type="button" class="btn-plain" id="modalContinue">Non, continuer</button>
     </div>
   </div>
 </div>
 
 <script>
-  var order=['adresse','prestation','frequence','duree','options','animaux','jours','horaires','coordonnees'];
-  var idx=0;
-  var state={adresse:'',civilite:'',prestations:[],frequence:'',duree:null,durLabel:'',
-             options:[],animaux:'',anchors:[],heures:[]};
-
+(function(){
+  var ORDER=['adresse','prestations','frequence','duree','options','jours','horaires','coordonnees'];
+  var TITLES={adresse:'Votre adresse',prestations:'Vos prestations',frequence:'La fréquence',duree:'La durée',options:'Options',jours:'Le jour',horaires:'Les horaires',coordonnees:'Votre estimation'};
+  var CAB={lat:43.857203,lon:4.957922};
+  var SERVED=['Cabannes','Saint-Andiol','Noves','Verquières','Mollégès','Plan-d\'Orgon','Orgon','Cavaillon','Châteaurenard','Eyragues','Graveson','Maillane','Saint-Rémy-de-Provence','Eygalières','Barbentane','Rognonas','Tarascon','Sénas','Mas-Blanc-des-Alpilles'];
+  var PRESTA_PARAM={menage:'Ménage',courses:'Courses & commissions',cuisine:'Cuisine à domicile'};
+  var FREQ_LABEL={hebdo:'Chaque semaine','2x':'Deux fois par semaine',bimensuel:'Toutes les deux semaines',ponctuel:'Une seule fois'};
+  var PER_MONTH={hebdo:52/12,'2x':104/12,bimensuel:26/12};
+  var OPT_LABEL={repassage:'Repassage',produits:'Produits fournis'};
   var MONTHS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
   var WD=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
-  var HOLIDAYS=new Set(['2026-01-01','2026-04-06','2026-05-01','2026-05-08','2026-05-14','2026-05-25','2026-07-14','2026-08-15','2026-11-01','2026-11-11','2026-12-25','2027-01-01','2027-03-29','2027-05-01','2027-05-06','2027-05-08','2027-05-17','2027-07-14','2027-08-15','2027-11-01','2027-11-11','2027-12-25']);
-  var TIMES=[]; for(var _h=7;_h<=22;_h++){ var _hh=(_h<10?'0':'')+_h; TIMES.push(_hh+':00'); if(_h<22) TIMES.push(_hh+':30'); }
-  var MAJTIMES=new Set(['07:00','07:30','20:00','20:30','21:00','21:30','22:00']);
+  var NBSP=' ';
 
-  var now=new Date();
+  function fresh(){ return {adresse:'',lat:null,lon:null,ville:'',prestations:[],frequence:'',duree:null,options:[],animaux:'',anchors:[],heures:[],civilite:''}; }
+  var state=fresh(), idx=0;
+
+  /* ---------- utilitaires ---------- */
+  function $(id){ return document.getElementById(id); }
+  function pad(n){ return (n<10?'0':'')+n; }
+  function toStr(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+  function parseD(s){ var p=s.split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function frDate(s){ var d=parseD(s); return d.getDate()+(d.getDate()===1?'er':'')+' '+MONTHS[d.getMonth()]+' '+d.getFullYear(); }
+  function euro(n){ var r=Math.round(n*100)/100; return (r%1===0? String(r) : r.toFixed(2).replace('.',','))+NBSP+'€'; }
+  function hLabel(t){ var h=parseInt(t,10), m=t.slice(3); return h+'h'+(m==='00'?'':m); }
+  function durLabel(d){ if(d==null) return ''; var h=Math.floor(d), m=Math.round((d-h)*60); return h+'h'+(m?pad(m):''); }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function track(ev,data,custom){ try{ if(typeof fbq==='function') fbq(custom?'trackCustom':'track',ev,data||{}); }catch(e){} }
+
+  /* ---------- jours fériés (calculés, Pâques incluse) ---------- */
+  function easter(y){ var a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1; return new Date(y,mo-1,da); }
+  function holidays(y){ var e=easter(y); function add(n){ var d=new Date(e); d.setDate(d.getDate()+n); return toStr(d); } return [y+'-01-01',add(1),y+'-05-01',y+'-05-08',add(39),add(50),y+'-07-14',y+'-08-15',y+'-11-01',y+'-11-11',y+'-12-25']; }
+  var now=new Date(), HOLIDAYS=new Set([].concat(holidays(now.getFullYear()),holidays(now.getFullYear()+1)));
   var minDate=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1);
-  var viewYear=now.getFullYear(), viewMonth=now.getMonth();
+  var maxMonth=new Date(now.getFullYear(),now.getMonth()+6,1);
+  var viewYear=minDate.getFullYear(), viewMonth=minDate.getMonth();
 
-  function pad(n){return (n<10?'0':'')+n;}
-  function toStr(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
-  function parseD(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
-  function frDate(s){var d=parseD(s);return d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear();}
-  function fmtEuro(n){ if(n==null) return '—'; return (Number.isInteger(n)? n : (Math.round(n*100)/100).toFixed(2).replace('.',',')) + ' €'; }
+  /* ---------- créneaux ---------- */
+  var TIMES=[]; for(var _h=7;_h<=22;_h++){ TIMES.push(pad(_h)+':00'); if(_h<22) TIMES.push(pad(_h)+':30'); }
+  var MAJTIMES=new Set(['07:00','07:30','20:00','20:30','21:00','21:30','22:00']);
+  var GROUPS=[{k:'Matin',ic:'#i-sunrise',from:7,to:11.5},{k:'Après-midi',ic:'#i-sun',from:12,to:17.5},{k:'Soirée',ic:'#i-moon',from:18,to:22}];
 
-  var steps=[].slice.call(document.querySelectorAll('.step'));
-  var bar=document.getElementById('bar');
-  var nextBtn=document.getElementById('nextBtn');
-  var prevBtn=document.getElementById('prevBtn');
-  var mainNav=document.getElementById('mainNav');
-
-  /* ---------- pricing ---------- */
+  /* ---------- tarifs (inchangés) ---------- */
   function baseRate(){ return state.frequence==='ponctuel'?35:30; }
-  function optionsAdd(){ var a=0; if(state.options.indexOf('repassage')>-1)a+=1; if(state.options.indexOf('produits')>-1)a+=3; return a; }
-  function dayMajor(){ return state.anchors.some(function(a){var d=parseD(a);return d.getDay()===0||HOLIDAYS.has(a);}); }
-  function timeMajor(){ return state.heures.length>0 && state.heures.every(function(t){return MAJTIMES.has(t);}); }
+  function optionsAdd(){ var a=0; if(state.options.indexOf('repassage')>-1) a+=1; if(state.options.indexOf('produits')>-1) a+=3; return a; }
+  function dayMajor(){ return state.anchors.some(function(a){ var d=parseD(a); return d.getDay()===0||HOLIDAYS.has(a); }); }
+  function timeMajor(){ return state.heures.length>0 && state.heures.every(function(t){ return MAJTIMES.has(t); }); }
   function majoration(){ return (dayMajor()?5:0)+(timeMajor()?5:0); }
   function rateGross(){ return baseRate()+optionsAdd()+majoration(); }
-  function prestaGross(){ return state.duree!=null? state.duree*rateGross():null; }
-  function sousTotal(){ return prestaGross(); }
+  function grossPerVisit(){ return state.duree!=null? state.duree*rateGross() : 0; }
 
-  /* ---------- generic steps ---------- */
-  function show(name){
-    steps.forEach(function(s){ s.classList.toggle('active', s.dataset.step===name); });
-    mainNav.style.display=(name==='coordonnees'||name==='merci')?'none':'flex';
-    prevBtn.style.display=(order.indexOf(name)>0)?'inline-flex':'none';
-    if(order.indexOf(name)>-1) bar.style.width=((order.indexOf(name)+1)/order.length*100)+'%';
-    if(name==='merci') bar.style.width='100%';
+  /* ---------- zone ---------- */
+  function km(lat,lon){ var r=Math.PI/180, dp=(lat-CAB.lat)*r, dl=(lon-CAB.lon)*r; var a=Math.sin(dp/2)*Math.sin(dp/2)+Math.cos(CAB.lat*r)*Math.cos(lat*r)*Math.sin(dl/2)*Math.sin(dl/2); return 12742*Math.asin(Math.sqrt(a)); }
+  function distance(){ return (state.lat!=null && state.lon!=null)? km(state.lat,state.lon) : null; }
+  function zoneInfo(){
+    var d=distance(); if(d==null) return null;
+    var k=Math.max(1,Math.round(d)), c=state.ville||'votre commune';
+    if(SERVED.indexOf(c)>-1 || d<=3) return {cls:'ok',ic:'#i-check',txt:'Bonne nouvelle, nous intervenons à '+c+'.'};
+    if(d<=20) return {cls:'ok',ic:'#i-check',txt:c+' est à '+k+NBSP+'km de Cabannes, dans notre rayon de 20'+NBSP+'km.'};
+    if(d<=25) return {cls:'warn',ic:'#i-pin',txt:c+' est en limite de zone ('+k+NBSP+'km). Continuez, Huguette vous confirme.'};
+    return {cls:'far',ic:'#i-pin',txt:c+' est à '+k+NBSP+'km de Cabannes, au-delà de notre zone habituelle. Vous pouvez continuer, Huguette vous dira si c\'est possible.'};
+  }
+
+  /* ---------- sauvegarde ---------- */
+  function save(){ try{ sessionStorage.setItem('cdm_devis',JSON.stringify({s:state,i:idx,t:Date.now()})); }catch(e){} }
+  function load(){ try{ var o=JSON.parse(sessionStorage.getItem('cdm_devis')||'null'); if(o && o.s && Date.now()-o.t<6*3600e3) return o; }catch(e){} return null; }
+  function clearSave(){ try{ sessionStorage.removeItem('cdm_devis'); }catch(e){} }
+  function source(){
+    var src={};
+    try{ src=JSON.parse(sessionStorage.getItem('cdm_src')||'{}')||{}; }catch(e){}
+    try{ var qs=new URLSearchParams(location.search); ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ if(qs.get(k)) src[k]=qs.get(k); }); if(Object.keys(src).length) sessionStorage.setItem('cdm_src',JSON.stringify(src)); }catch(e){}
+    return src;
+  }
+  var SRC=source();
+
+  /* ---------- validation ---------- */
+  function errorFor(name){
+    switch(name){
+      case 'adresse': return state.adresse.trim().length>3? '' : 'Indiquez votre adresse pour continuer.';
+      case 'prestations': return state.prestations.length? '' : 'Choisissez au moins une prestation.';
+      case 'frequence': return state.frequence? '' : 'Choisissez une fréquence.';
+      case 'duree': return state.duree!=null? '' : 'Choisissez une durée.';
+      case 'options': return state.animaux? '' : 'Dites-nous si vous avez des animaux.';
+      case 'jours': var need=state.frequence==='2x'?2:1; return state.anchors.length>=need? '' : (need===2?'Choisissez deux jours de la semaine.':'Choisissez un jour dans le calendrier.');
+      case 'horaires': return state.heures.length? '' : 'Choisissez au moins une heure d\'arrivée.';
+    }
+    return '';
+  }
+
+  /* ---------- affichage ---------- */
+  var steps=[].slice.call(document.querySelectorAll('.step'));
+  var nextBtn=$('nextBtn'), prevBtn=$('prevBtn'), errEl=$('err'), actions=$('actions');
+
+  function syncPressed(){
+    document.querySelectorAll('[data-multi]').forEach(function(g){
+      var arr=state[g.dataset.multi]||[];
+      g.querySelectorAll('[data-value]').forEach(function(b){ b.setAttribute('aria-pressed', String(arr.indexOf(b.dataset.value)>-1)); });
+    });
+    document.querySelectorAll('[data-single]').forEach(function(g){
+      var key=g.dataset.single, v=state[key];
+      g.querySelectorAll('[data-value]').forEach(function(b){ var bv=key==='duree'? Number(b.dataset.value) : b.dataset.value; b.setAttribute('aria-pressed', String(v!==null && v!=='' && bv===v)); });
+    });
+    document.querySelectorAll('.preset').forEach(function(b){ b.setAttribute('aria-pressed', String(Number(b.dataset.dur)===state.duree)); });
+  }
+
+  function refreshNext(){
+    var name=ORDER[idx];
+    var bad = name && name!=='coordonnees' && !!errorFor(name);
+    nextBtn.setAttribute('aria-disabled', String(bad));
+    if(!bad) errEl.textContent='';
+  }
+
+  function show(name,dir){
+    steps.forEach(function(s){ var on=s.dataset.step===name; s.classList.toggle('active',on); s.classList.toggle('from-back',on && dir==='back'); });
+    var i=ORDER.indexOf(name), done=name==='merci';
+    $('bar').style.width=(done?100:((i+1)/ORDER.length*100))+'%';
+    $('stepCount').innerHTML= done? 'Demande envoyée' : 'Étape '+(i+1)+' sur '+ORDER.length+'<small>'+TITLES[name]+'</small>';
+    actions.classList.toggle('hidden',done);
+    prevBtn.style.display=(i>0)?'':'none';
+    $('nextLbl').textContent= name==='coordonnees'? 'Envoyer ma demande' : (name==='horaires'? 'Voir mon estimation' : 'Continuer');
+    errEl.textContent='';
+    if(name==='prestations') renderCtx();
     if(name==='jours') setupJours();
-    if(name==='horaires') setupTimes();
-    if(name==='coordonnees') fillRecap();
-    validate();
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  function validate(){
-    var n=order[idx], ok=false;
-    if(n==='adresse') ok=state.adresse.trim().length>3;
-    else if(n==='prestation') ok=state.prestations.length>0;
-    else if(n==='frequence') ok=!!state.frequence;
-    else if(n==='duree') ok=state.duree!=null;
-    else if(n==='options') ok=true;
-    else if(n==='animaux') ok=!!state.animaux;
-    else if(n==='jours') ok=state.anchors.length>=(state.frequence==='2x'?2:1);
-    else if(n==='horaires') ok=state.heures.length>0;
-    nextBtn.disabled=!ok;
+    if(name==='horaires') renderTimes();
+    if(name==='coordonnees') renderEstimate();
+    syncPressed(); refreshNext(); renderSummary();
+    window.scrollTo(0,0);
+    var h=document.querySelector('.step.active .q'); if(h) setTimeout(function(){ try{ h.focus({preventScroll:true}); }catch(e){} },60);
+    if(!done){ track('EtapeDevis',{etape:name,numero:i+1},true); save(); }
   }
 
-  /* adresse + autocomplétion (API Adresse gouv, Base Adresse Nationale) */
-  var adresseInput=document.getElementById('adresse');
-  var acList=document.getElementById('acList');
-  var acTimer=null;
-  function closeAc(){ acList.classList.remove('open'); acList.innerHTML=''; }
-  adresseInput.addEventListener('input',function(){
-    state.adresse=adresseInput.value; validate();
-    var q=adresseInput.value.trim();
-    clearTimeout(acTimer);
-    if(q.length<3){ closeAc(); return; }
-    acTimer=setTimeout(function(){ fetchAdresse(q); }, 250);
-  });
-  async function fetchAdresse(q){
-    try{
-      var res=await fetch('https://api-adresse.data.gouv.fr/search/?limit=5&q='+encodeURIComponent(q));
-      var json=await res.json();
-      var feats=json.features||[];
-      if(!feats.length){ closeAc(); return; }
-      acList.innerHTML=feats.map(function(ft){
-        var l=ft.properties.label.replace(/"/g,'&quot;');
-        return '<div class="ac-item" data-label="'+l+'">'+ft.properties.label+'</div>';
-      }).join('');
-      acList.classList.add('open');
-      acList.querySelectorAll('.ac-item').forEach(function(it){
-        it.addEventListener('mousedown',function(e){
-          e.preventDefault();
-          adresseInput.value=it.dataset.label; state.adresse=it.dataset.label;
-          closeAc(); validate();
-        });
-      });
-    }catch(e){ closeAc(); /* la saisie libre reste valable */ }
+  function goTo(i,opts){
+    opts=opts||{};
+    var dir= i<idx? 'back' : 'fwd';
+    idx=Math.max(0,Math.min(ORDER.length-1,i));
+    if(!opts.fromPop){ if(opts.replace) history.replaceState({cdm:1,i:idx},''); else history.pushState({cdm:1,i:idx},''); }
+    show(ORDER[idx],dir);
   }
-  adresseInput.addEventListener('blur',function(){ setTimeout(closeAc,150); });
+  function goNext(){ if(idx<ORDER.length-1) goTo(idx+1); }
 
-  /* single-select groups */
-  document.querySelectorAll('[data-key]').forEach(function(group){
-    var key=group.dataset.key;
-    group.querySelectorAll('.opt,.chip').forEach(function(el){
-      el.addEventListener('click',function(){
-        group.querySelectorAll('.opt,.chip').forEach(function(o){o.classList.remove('sel');});
-        el.classList.add('sel');
-        if(key==='duree'){ state.duree=Number(el.dataset.value); state.durLabel=el.textContent.trim(); }
-        else if(key==='frequence'){ state.frequence=el.dataset.value; state.anchors=[]; }
-        else { state[key]=el.dataset.value; }
-        validate();
-      });
-    });
-  });
-
-  /* multi-select groups */
-  document.querySelectorAll('[data-multi]').forEach(function(group){
-    var key=group.dataset.multi;
-    group.querySelectorAll('.opt').forEach(function(el){
-      el.addEventListener('click',function(){
-        el.classList.toggle('sel');
-        var v=el.dataset.value;
-        var arr=state[key];
-        var i=arr.indexOf(v);
-        if(el.classList.contains('sel')){ if(i<0) arr.push(v); } else { if(i>-1) arr.splice(i,1); }
-        validate();
-      });
-    });
-  });
-
-  /* ---------- planning ---------- */
-  function isSelectedDay(dateObj,ds){
-    if(!state.anchors.length) return false;
-    var f=state.frequence;
-    if(f==='ponctuel') return state.anchors.indexOf(ds)>-1;
-    if(f==='2x'){
-      var wds=state.anchors.map(function(a){return parseD(a).getDay();});
-      var start=state.anchors.map(parseD).sort(function(a,b){return a-b;})[0];
-      return dateObj>=start && wds.indexOf(dateObj.getDay())>-1;
+  window.addEventListener('popstate',function(e){
+    if(e.state && e.state.cdm){
+      if($('creneauModal').classList.contains('open')) $('creneauModal').classList.remove('open');
+      if(document.querySelector('.step.active').dataset.step==='merci'){ return; }
+      goTo(e.state.i,{fromPop:true});
     }
-    var a=parseD(state.anchors[0]);
-    if(dateObj.getDay()!==a.getDay()||dateObj<a) return false;
-    if(f==='bimensuel'){ var w=Math.round((dateObj-a)/(7*86400000)); return w%2===0; }
-    return true;
-  }
-  function renderCalendar(){
-    document.getElementById('calTitle').textContent=MONTHS[viewMonth]+' '+viewYear;
-    document.getElementById('calPrev').disabled=(viewYear<now.getFullYear())||(viewYear===now.getFullYear()&&viewMonth<=now.getMonth());
-    var grid=document.getElementById('calGrid');
-    var startDay=(new Date(viewYear,viewMonth,1).getDay()+6)%7;
-    var dim=new Date(viewYear,viewMonth+1,0).getDate();
-    var html='';
-    for(var i=0;i<startDay;i++) html+='<div class="cal-cell empty"></div>';
-    for(var d=1;d<=dim;d++){
-      var dObj=new Date(viewYear,viewMonth,d), ds=toStr(dObj);
-      var past=dObj<minDate, maj=(dObj.getDay()===0||HOLIDAYS.has(ds)), sel=isSelectedDay(dObj,ds);
-      var cls='cal-cell'+(past?' past':'')+(sel?' sel':'')+((maj&&!past)?' major':'');
-      html+='<button type="button" class="'+cls+'" data-date="'+ds+'"'+(past?' disabled':'')+'>'+d+((maj&&!past)?'<span class="p5">+5€</span>':'')+'</button>';
-    }
-    grid.innerHTML=html;
-    grid.querySelectorAll('.cal-cell:not(.empty):not(.past)').forEach(function(c){
-      c.addEventListener('click',function(){ pickDay(c.dataset.date); });
-    });
-    updatePlanLine();
-  }
-  function pickDay(ds){
-    if(state.frequence==='2x'){
-      var i=state.anchors.indexOf(ds);
-      if(i>-1){ state.anchors.splice(i,1); }
-      else { var wd=parseD(ds).getDay(); state.anchors=state.anchors.filter(function(a){return parseD(a).getDay()!==wd;}); if(state.anchors.length>=2) state.anchors=[ds]; else state.anchors.push(ds); }
-    } else { state.anchors=[ds]; }
-    renderCalendar(); validate();
-  }
+  });
+
+  /* ---------- récapitulatif latéral ---------- */
   function scheduleText(){
-    if(!state.anchors.length) return '—';
+    if(!state.anchors.length) return '';
     var f=state.frequence;
-    if(f==='ponctuel') return 'Le '+frDate(state.anchors[0]);
-    if(f==='2x'){
-      var srt=state.anchors.slice().sort();
-      var wd=srt.map(function(a){return WD[parseD(a).getDay()];});
-      return 'Chaque '+wd.join(' et ')+', à partir du '+frDate(srt[0]);
-    }
+    if(f==='ponctuel') return 'Le '+WD[parseD(state.anchors[0]).getDay()]+' '+frDate(state.anchors[0]);
+    if(f==='2x'){ var srt=state.anchors.slice().sort(), days=state.anchors.map(function(a){ return parseD(a).getDay(); }).sort(function(x,y){ return ((x+6)%7)-((y+6)%7); }); return 'Chaque '+days.map(function(d){ return WD[d]; }).join(' et ')+', à partir du '+frDate(srt[0]); }
     var day=WD[parseD(state.anchors[0]).getDay()];
     if(f==='bimensuel') return 'Un '+day+' sur deux, à partir du '+frDate(state.anchors[0]);
     return 'Chaque '+day+', à partir du '+frDate(state.anchors[0]);
   }
-  function updatePlanLine(){
-    var el=document.getElementById('planLine');
-    if(!state.anchors.length){ el.innerHTML='<em>'+(state.frequence==='2x'?'Sélectionnez deux jours ci-dessus.':'Sélectionnez un jour ci-dessus.')+'</em>'; }
-    else el.textContent=scheduleText();
+  function heuresText(){ return state.heures.slice().sort().map(hLabel).join(', '); }
+  function optionsText(){ return state.options.length? state.options.map(function(o){ return OPT_LABEL[o]; }).join(', ') : (idx>4?'Aucune':''); }
+  function renderSummary(){
+    var rows=[['Adresse',state.adresse],['Prestations',state.prestations.join(', ')],['Fréquence',FREQ_LABEL[state.frequence]||''],['Durée',state.duree!=null? durLabel(state.duree)+' par passage':''],['Options',optionsText()],['Animaux',state.animaux],['Planning',scheduleText()],['Arrivée',heuresText()]];
+    $('sum').innerHTML=rows.map(function(r){ return '<div><dt>'+r[0]+'</dt><dd class="'+(r[1]?'':'empty')+'">'+(r[1]? esc(r[1]) : 'À compléter')+'</dd></div>'; }).join('');
   }
-  function renderTimes(){
-    var g=document.getElementById('timeGrid');
-    g.innerHTML=TIMES.map(function(t){
-      return '<button type="button" class="time'+(state.heures.indexOf(t)>-1?' sel':'')+'" data-t="'+t+'">'+t+(MAJTIMES.has(t)?'<small>+5€</small>':'')+'</button>';
-    }).join('');
-    g.querySelectorAll('.time').forEach(function(b){
-      b.addEventListener('click',function(){ var t=b.dataset.t; var i=state.heures.indexOf(t); if(i>-1) state.heures.splice(i,1); else state.heures.push(t); renderTimes(); validate(); });
+  function renderCtx(){
+    var c=$('ctxAddr');
+    if(state.adresse){ c.hidden=false; c.querySelector('span').textContent=state.adresse; } else c.hidden=true;
+  }
+
+  /* ---------- choix ---------- */
+  var autoTimer=null;
+  function autoAdvance(fromStep){ clearTimeout(autoTimer); autoTimer=setTimeout(function(){ if(ORDER[idx]===fromStep && !errorFor(fromStep)) goNext(); },280); }
+
+  document.querySelectorAll('[data-multi]').forEach(function(g){
+    var key=g.dataset.multi;
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('[data-value]'); if(!b) return;
+      var arr=state[key], v=b.dataset.value, k=arr.indexOf(v);
+      if(k>-1) arr.splice(k,1); else arr.push(v);
+      syncPressed(); refreshNext(); renderSummary(); save();
     });
-    updateNudge();
+  });
+  document.querySelectorAll('[data-single]').forEach(function(g){
+    var key=g.dataset.single;
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('[data-value]'); if(!b) return;
+      var v= key==='duree'? Number(b.dataset.value) : b.dataset.value;
+      if(key==='frequence' && state.frequence!==v) state.anchors=[];
+      state[key]=v;
+      syncPressed(); refreshNext(); renderSummary(); save();
+      if(key==='frequence'||key==='duree') autoAdvance(ORDER[idx]);
+    });
+  });
+  document.querySelectorAll('.preset').forEach(function(b){
+    b.addEventListener('click',function(){ state.duree=Number(b.dataset.dur); syncPressed(); refreshNext(); renderSummary(); save(); autoAdvance('duree'); });
+  });
+  document.querySelectorAll('[data-goto]').forEach(function(b){ b.addEventListener('click',function(){ goTo(Number(b.dataset.goto)); }); });
+
+  /* ---------- adresse ---------- */
+  var adr=$('adresse'), acList=$('acList'), zoneMsg=$('zoneMsg'), addrField=$('addrField');
+  var acItems=[], acActive=-1, acTimer=null, acSeq=0;
+  function closeAc(){ acList.classList.remove('open'); acList.innerHTML=''; adr.setAttribute('aria-expanded','false'); acActive=-1; }
+  function renderZone(){
+    var z=zoneInfo();
+    if(!z){ zoneMsg.className='zone-msg'; zoneMsg.innerHTML=''; return; }
+    zoneMsg.className='zone-msg '+z.cls; zoneMsg.innerHTML='<svg class="i"><use href="'+z.ic+'"/></svg><span>'+esc(z.txt)+'</span>';
   }
-  function updateNudge(){
-    var el=document.getElementById('creneauNudge'); if(!el) return;
-    var n=state.heures.length;
-    if(n===0){ el.textContent=''; }
-    else if(n<3){ el.textContent='💡 Ajoutez d\'autres créneaux ('+n+' sélectionné'+(n>1?'s':'')+'). Trois minimum, c\'est l\'idéal pour trouver votre intervenante.'; el.style.color='var(--terracotta-dark)'; }
-    else { el.textContent='✓ Parfait, '+n+' créneaux sélectionnés.'; el.style.color='var(--olive-dark)'; }
+  function renderAc(){
+    if(!acItems.length){ closeAc(); return; }
+    acList.innerHTML=acItems.map(function(s,i){
+      var main=s.type==='municipality'? s.city : (s.name||s.label), sub=s.type==='municipality'? s.postcode : (s.postcode+' '+s.city);
+      return '<div class="ac-item" role="option" id="ac-'+i+'" aria-selected="'+(i===acActive)+'" data-i="'+i+'"><svg class="i"><use href="#i-pin"/></svg><span>'+esc(main)+'<small>'+esc(sub)+'</small></span></div>';
+    }).join('');
+    acList.classList.add('open'); adr.setAttribute('aria-expanded','true');
+    adr.setAttribute('aria-activedescendant', acActive>-1? 'ac-'+acActive : '');
   }
+  async function geocode(q){
+    var p='q='+encodeURIComponent(q)+'&limit=10&autocomplete=1&lat='+CAB.lat+'&lon='+CAB.lon;
+    var urls=['https://data.geopf.fr/geocodage/search?'+p,'https://api-adresse.data.gouv.fr/search/?'+p];
+    for(var i=0;i<urls.length;i++){
+      try{
+        var res=await fetch(urls[i]); if(!res.ok) continue;
+        var j=await res.json();
+        var list=(j.features||[]).map(function(f){ var pr=f.properties; return {label:pr.label,name:pr.name,city:pr.city||pr.municipality||'',postcode:pr.postcode||'',type:pr.type,lat:f.geometry.coordinates[1],lon:f.geometry.coordinates[0]}; });
+        list.forEach(function(s){ s.d=km(s.lat,s.lon); });
+        list.sort(function(a,b){ return (a.d<=30?0:1)-(b.d<=30?0:1); });
+        return list.slice(0,5);
+      }catch(e){}
+    }
+    return [];
+  }
+  function pickAddr(s){
+    state.adresse=s.label; state.lat=s.lat; state.lon=s.lon; state.ville=s.city;
+    adr.value=s.label; closeAc(); renderZone(); refreshNext(); renderSummary(); save();
+  }
+  adr.addEventListener('input',function(){
+    state.adresse=adr.value; state.lat=null; state.lon=null; state.ville='';
+    addrField.classList.toggle('has',!!adr.value); renderZone(); refreshNext(); renderSummary(); save();
+    var q=adr.value.trim(); clearTimeout(acTimer);
+    if(q.length<3){ acItems=[]; closeAc(); return; }
+    var my=++acSeq;
+    acTimer=setTimeout(async function(){ var r=await geocode(q); if(my!==acSeq) return; acItems=r; acActive=-1; renderAc(); },220);
+  });
+  adr.addEventListener('keydown',function(e){
+    if(e.key==='Enter' && !acList.classList.contains('open')){ e.preventDefault(); nextBtn.click(); return; }
+    if(!acList.classList.contains('open')) return;
+    if(e.key==='ArrowDown'){ e.preventDefault(); acActive=Math.min(acItems.length-1,acActive+1); renderAc(); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); acActive=Math.max(0,acActive-1); renderAc(); }
+    else if(e.key==='Enter'){ e.preventDefault(); if(acActive>-1) pickAddr(acItems[acActive]); else closeAc(); }
+    else if(e.key==='Escape'){ closeAc(); }
+  });
+  acList.addEventListener('mousedown',function(e){ var it=e.target.closest('.ac-item'); if(!it) return; e.preventDefault(); pickAddr(acItems[+it.dataset.i]); });
+  adr.addEventListener('blur',function(){ setTimeout(closeAc,150); });
+  $('addrClear').addEventListener('click',function(){ adr.value=''; state.adresse=''; state.lat=state.lon=null; state.ville=''; addrField.classList.remove('has'); closeAc(); renderZone(); refreshNext(); renderSummary(); save(); adr.focus(); });
+
+  /* ---------- calendrier ---------- */
+  function cellState(d,ds){
+    if(!state.anchors.length) return '';
+    var f=state.frequence;
+    if(state.anchors.indexOf(ds)>-1) return 'sel';
+    if(f==='ponctuel') return '';
+    var srt=state.anchors.map(parseD).sort(function(a,b){ return a-b; }), start=srt[0];
+    if(d<start) return '';
+    if(f==='2x'){ return state.anchors.some(function(a){ return parseD(a).getDay()===d.getDay(); })? 'rep' : ''; }
+    var a=srt[0];
+    if(d.getDay()!==a.getDay()) return '';
+    if(f==='bimensuel'){ var w=Math.round((d-a)/(7*86400000)); return w%2===0? 'rep' : ''; }
+    return 'rep';
+  }
+  function renderCalendar(){
+    $('calTitle').textContent=MONTHS[viewMonth]+' '+viewYear;
+    $('calPrev').disabled=(viewYear<minDate.getFullYear())||(viewYear===minDate.getFullYear()&&viewMonth<=minDate.getMonth());
+    $('calNext').disabled=new Date(viewYear,viewMonth+1,1)>maxMonth;
+    var startDay=(new Date(viewYear,viewMonth,1).getDay()+6)%7, dim=new Date(viewYear,viewMonth+1,0).getDate(), html='';
+    for(var i=0;i<startDay;i++) html+='<span class="cal-cell empty" aria-hidden="true"></span>';
+    for(var d=1;d<=dim;d++){
+      var dObj=new Date(viewYear,viewMonth,d), ds=toStr(dObj), past=dObj<minDate, maj=!past&&(dObj.getDay()===0||HOLIDAYS.has(ds)), st=past?'':cellState(dObj,ds);
+      var cls='cal-cell'+(past?' past':'')+(maj?' major':'')+(st?' '+st:'');
+      var lbl=WD[dObj.getDay()]+' '+d+' '+MONTHS[viewMonth]+(maj?', majoré de 5 euros de l\'heure':'')+(past?', indisponible':'');
+      html+='<button type="button" class="'+cls+'" data-date="'+ds+'" aria-label="'+lbl+'" aria-pressed="'+(st==='sel')+'"'+(past?' disabled':'')+'>'+d+(maj?'<span class="p5">+5'+NBSP+'€</span>':'')+'</button>';
+    }
+    $('calGrid').innerHTML=html;
+    var pl=$('planLine'), t=scheduleText();
+    pl.classList.toggle('empty',!t);
+    pl.querySelector('span').textContent= t || (state.frequence==='2x'?'Sélectionnez deux jours ci-dessus.':'Sélectionnez un jour ci-dessus.');
+  }
+  $('calGrid').addEventListener('click',function(e){
+    var c=e.target.closest('.cal-cell'); if(!c || c.disabled || c.classList.contains('empty')) return;
+    var ds=c.dataset.date;
+    if(state.frequence==='2x'){
+      var k=state.anchors.indexOf(ds);
+      if(k>-1) state.anchors.splice(k,1);
+      else { var wd=parseD(ds).getDay(); state.anchors=state.anchors.filter(function(a){ return parseD(a).getDay()!==wd; }); if(state.anchors.length>=2) state.anchors=[ds]; else state.anchors.push(ds); }
+    } else state.anchors=[ds];
+    renderCalendar(); refreshNext(); renderSummary(); save();
+  });
   function setupJours(){
-    document.getElementById('planSub').textContent = state.frequence==='2x'
-      ? 'Choisissez les deux jours de la semaine, ils se répètent chaque semaine.'
-      : (state.frequence==='ponctuel' ? 'Choisissez la date de votre intervention.'
-      : 'Choisissez un jour, il se répète '+(state.frequence==='bimensuel'?'toutes les deux semaines.':'chaque semaine.'));
+    var f=state.frequence;
+    $('q-jours').innerHTML= f==='2x'? 'Quels jours vous arrangent&nbsp;?' : (f==='ponctuel'? 'Quel jour vous arrange&nbsp;?' : 'Quel jour de la semaine&nbsp;?');
+    $('planSub').textContent= f==='2x'? 'Choisissez deux jours de la semaine : ils se répètent chaque semaine.' : (f==='ponctuel'? 'Choisissez la date de votre intervention.' : 'Choisissez la date du premier passage : le même jour se répète '+(f==='bimensuel'?'toutes les deux semaines.':'chaque semaine.'));
+    $('lgRep').style.display= f==='ponctuel'? 'none' : '';
+    if(state.anchors.length){ var first=state.anchors.map(parseD).sort(function(a,b){return a-b;})[0]; viewYear=first.getFullYear(); viewMonth=first.getMonth(); }
     renderCalendar();
   }
-  function setupTimes(){ renderTimes(); }
-  document.getElementById('calPrev').addEventListener('click',function(){
-    if(this.disabled) return; viewMonth--; if(viewMonth<0){viewMonth=11;viewYear--;} renderCalendar();
-  });
-  document.getElementById('calNext').addEventListener('click',function(){
-    viewMonth++; if(viewMonth>11){viewMonth=0;viewYear++;} renderCalendar();
-  });
+  $('calPrev').addEventListener('click',function(){ if(this.disabled) return; viewMonth--; if(viewMonth<0){ viewMonth=11; viewYear--; } renderCalendar(); });
+  $('calNext').addEventListener('click',function(){ if(this.disabled) return; viewMonth++; if(viewMonth>11){ viewMonth=0; viewYear++; } renderCalendar(); });
 
-  /* ---------- recap ---------- */
-  function fillRecap(){
-    var rate=rateGross(), pg=prestaGross(), st=sousTotal(), net=st/2;
-    var optTxt = state.options.length? state.options.map(function(o){return o==='repassage'?'repassage':'produits fournis';}).join(', ') : 'aucune';
-    var html='<h3>Votre estimation</h3>'
-      +row('Adresse',state.adresse)
-      +row('Prestation(s)',state.prestations.join(', '))
-      +row('Fréquence',freqLabel())
-      +row('Planning',scheduleText())
-      +row('Créneaux',state.heures.join(', ')||'—')
-      +row('Durée',state.durLabel)
-      +row('Options',optTxt)
-      +row('Animaux',state.animaux)
-      +'<div class="rdiv"></div>'
-      +row('Prestation <em style="color:rgba(251,248,242,.6);font-style:normal">('+state.durLabel+' × '+rate+' €/h)</em>',fmtEuro(pg))
-      +'<div class="rl"><span>Sous-total</span><b class="rold">'+fmtEuro(st)+'</b></div>'
-      +'<div class="rl"><span class="rcred">Crédit d\'impôt 50 %</span><b class="rcred">- '+fmtEuro(st/2)+'</b></div>'
-      +'<div class="rtotal"><span>Total estimé<small>par passage, crédit d\'impôt déduit</small></span><b>'+fmtEuro(net)+'</b></div>';
-    if(majoration()>0){ var mr=[]; if(dayMajor())mr.push('dimanche ou jour férié'); if(timeMajor())mr.push('créneau tôt ou tard'); html+='<p class="rnote">Majoration de '+majoration()+' € de l\'heure incluse ('+mr.join(' + ')+').</p>'; }
-    html+='<p class="rnote">Estimation indicative, ajustable ensemble.</p>';
-    document.getElementById('recap').innerHTML=html;
+  /* ---------- heures ---------- */
+  function renderTimes(){
+    $('timeGroups').innerHTML=GROUPS.map(function(g){
+      var items=TIMES.filter(function(t){ var v=parseInt(t,10)+(t.slice(3)==='30'?.5:0); return v>=g.from && v<=g.to; });
+      return '<div class="tgroup"><h3><svg class="i"><use href="'+g.ic+'"/></svg>'+g.k+'</h3><div class="times">'+items.map(function(t){
+        var on=state.heures.indexOf(t)>-1, maj=MAJTIMES.has(t);
+        return '<button type="button" class="time'+(maj?' maj':'')+'" data-t="'+t+'" aria-pressed="'+on+'" aria-label="'+hLabel(t)+(maj?', majoré de 5 euros de l\'heure':'')+'">'+hLabel(t)+(maj?'<small>+5'+NBSP+'€</small>':'')+'</button>';
+      }).join('')+'</div></div>';
+    }).join('');
+    updateNudge();
   }
-  function row(label,val){ return '<div class="rl"><span>'+label+'</span><b>'+(val||'—')+'</b></div>'; }
-  function freqLabel(){ return {hebdo:'Chaque semaine','2x':'Deux fois par semaine',bimensuel:'Toutes les deux semaines',ponctuel:'Ponctuel'}[state.frequence]||'—'; }
+  $('timeGroups').addEventListener('click',function(e){
+    var b=e.target.closest('.time'); if(!b) return;
+    var t=b.dataset.t, k=state.heures.indexOf(t);
+    if(k>-1) state.heures.splice(k,1); else state.heures.push(t);
+    b.setAttribute('aria-pressed',String(k<0));
+    updateNudge(); refreshNext(); renderSummary(); save();
+  });
+  function updateNudge(){
+    var el=$('nudge'), n=state.heures.length;
+    if(!n){ el.className='nudge'; el.innerHTML=''; return; }
+    if(n<3){ el.className='nudge more'; el.innerHTML='<svg class="i"><use href="#i-bulb"/></svg><span>'+n+' heure'+(n>1?'s':'')+' choisie'+(n>1?'s':'')+'. Ajoutez-en d\'autres&nbsp;: trois minimum, c\'est l\'idéal pour trouver votre intervenante.</span>'; }
+    else { el.className='nudge good'; el.innerHTML='<svg class="i"><use href="#i-check"/></svg><span>Parfait, '+n+' heures d\'arrivée possibles.</span>'; }
+  }
 
-  /* ---------- nav ---------- */
-  function goNext(){ if(idx<order.length-1){ idx++; show(order[idx]); } }
-  var creneauModal=document.getElementById('creneauModal');
+  /* ---------- estimation ---------- */
+  function renderEstimate(){
+    var rate=rateGross(), gross=grossPerVisit(), net=gross/2, pm=PER_MONTH[state.frequence];
+    var html='<span class="est-lbl">Votre estimation</span>'
+      +'<div class="est-price"><b>'+euro(net)+'</b><span>par passage</span></div>'
+      +'<p class="est-sub"><s>'+euro(gross)+'</s>crédit d\'impôt de 50'+NBSP+'% déduit</p>'
+      +(pm? '<span class="est-month"><svg class="i"><use href="#i-calendar"/></svg>Soit environ '+euro(Math.round(net*pm))+' par mois</span>' : '')
+      +'<details><summary>Détail de votre demande<svg class="i"><use href="#i-down"/></svg></summary><dl>'
+      +rl('Prestations',state.prestations.join(', '))
+      +rl('Fréquence',FREQ_LABEL[state.frequence])
+      +rl('Planning',scheduleText())
+      +rl('Arrivée possible',heuresText())
+      +rl('Options',state.options.length? state.options.map(function(o){ return OPT_LABEL[o]; }).join(', ') : 'Aucune')
+      +rl('Animaux',state.animaux)
+      +'<div class="rdiv"></div>'
+      +rl('Tarif horaire',rate+NBSP+'€/h'+(majoration()>0?' (majoration incluse)':''))
+      +rl('Durée',durLabel(state.duree)+' × '+rate+NBSP+'€',true)
+      +rl('Prix par passage',euro(gross))
+      +rl('Crédit d\'impôt 50'+NBSP+'%','moins '+euro(gross/2))
+      +rl('Vous payez',euro(net))
+      +'</dl>';
+    if(majoration()>0){ var mr=[]; if(dayMajor()) mr.push('dimanche ou jour férié'); if(timeMajor()) mr.push('arrivée tôt ou en soirée'); html+='<p class="rnote">Majoration de '+majoration()+NBSP+'€ de l\'heure incluse ('+mr.join(' et ')+').</p>'; }
+    html+='<p class="rnote">Estimation indicative, confirmée par Huguette au téléphone. Sans frais de déplacement.</p></details>';
+    $('est').innerHTML=html;
+  }
+  function rl(k,v){ return '<div class="rl"><dt>'+esc(k)+'</dt><dd>'+esc(v||'Non renseigné')+'</dd></div>'; }
+
+  /* ---------- navigation ---------- */
+  var modal=$('creneauModal');
+  function openModal(){ modal.classList.add('open'); setTimeout(function(){ $('modalAdd').focus(); },50); }
+  function closeModal(){ modal.classList.remove('open'); }
   nextBtn.addEventListener('click',function(){
-    if(order[idx]==='horaires' && state.heures.length>0 && state.heures.length<3){ creneauModal.classList.add('open'); return; }
+    var name=ORDER[idx];
+    if(name==='coordonnees'){ submitForm(); return; }
+    var m=errorFor(name);
+    if(m){ errEl.innerHTML='<svg class="i"><use href="#i-alert"/></svg>'+esc(m); errEl.classList.remove('shake'); void errEl.offsetWidth; errEl.classList.add('shake'); var r=errEl.getBoundingClientRect(); if(r.bottom>window.innerHeight-90||r.top<70) errEl.scrollIntoView({block:'center',behavior:'smooth'}); return; }
+    if(name==='horaires' && state.heures.length<3){ openModal(); return; }
     goNext();
   });
-  document.getElementById('modalAdd').addEventListener('click',function(){ creneauModal.classList.remove('open'); });
-  document.getElementById('modalContinue').addEventListener('click',function(){ creneauModal.classList.remove('open'); goNext(); });
-  prevBtn.addEventListener('click',function(){ if(idx>0){ idx--; show(order[idx]); } });
-  document.getElementById('backBtn').addEventListener('click',function(){ if(idx>0){ idx--; show(order[idx]); } else window.location.href='index.html'; });
+  prevBtn.addEventListener('click',function(){
+    if(idx<=0) return;
+    var before=idx;
+    if(history.state && history.state.cdm && history.state.i===idx) history.back();
+    setTimeout(function(){ if(idx===before) goTo(before-1,{replace:true}); },350);
+  });
+  $('modalAdd').addEventListener('click',closeModal);
+  $('modalContinue').addEventListener('click',function(){ closeModal(); goNext(); });
+  modal.addEventListener('click',function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+  document.querySelectorAll('[data-contact]').forEach(function(a){ a.addEventListener('click',function(){ track('Contact'); }); });
 
-  /* ---------- submit ---------- */
-  var form=document.getElementById('devisForm');
-  var statusEl=document.getElementById('formStatus');
-  form.addEventListener('submit',async function(e){
-    e.preventDefault();
-    var submitBtn=document.getElementById('submitBtn');
-    submitBtn.disabled=true; statusEl.style.color='var(--muted)'; statusEl.textContent='Envoi en cours…';
-    var st=sousTotal(), net=st/2;
-    var recap='Civilité: '+(state.civilite||'—')
-      +'\nAdresse: '+state.adresse
-      +'\nPrestations: '+state.prestations.join(', ')
-      +'\nFréquence: '+freqLabel()
-      +'\nPlanning: '+scheduleText()
-      +'\nCréneaux: '+state.heures.join(', ')
-      +'\nDurée: '+state.durLabel
-      +'\nOptions: '+(state.options.join(', ')||'aucune')
-      +'\nAnimaux: '+state.animaux
-      +'\nTarif horaire brut: '+rateGross()+' €/h'+(majoration()>0?' (majoration incluse)':'')
-      +'\nEstimation: '+fmtEuro(net)+' net par passage (avant crédit '+fmtEuro(st)+')'
-      +'\n\nMessage: '+document.getElementById('message').value;
+  /* ---------- envoi ---------- */
+  var form=$('devisForm'), statusEl=$('formStatus');
+  form.addEventListener('submit',function(e){ e.preventDefault(); submitForm(); });
+  ['prenom','nom','tel','email'].forEach(function(id){ $(id).addEventListener('input',function(){ setFieldErr(id,''); }); });
+  var FLOW=['prenom','nom','tel','email'];
+  FLOW.forEach(function(id,i){ $(id).addEventListener('keydown',function(e){ if(e.key!=='Enter') return; e.preventDefault(); if(i<FLOW.length-1) $(FLOW[i+1]).focus(); else submitForm(); }); });
+  function setFieldErr(id,m){ var f=$('f-'+id); if(!f) return; f.classList.toggle('bad',!!m); f.querySelector('.ferr').textContent=m; $(id).setAttribute('aria-invalid',String(!!m)); }
+  function telDigits(v){ var d=v.replace(/\D/g,''); if(d.indexOf('0033')===0) d='0'+d.slice(4); else if(d.indexOf('33')===0 && d.length===11) d='0'+d.slice(2); return d; }
+  function telPretty(d){ return d.replace(/(\d{2})(?=\d)/g,'$1 '); }
+  var sending=false;
+  async function submitForm(){
+    if(sending) return;
+    var prenom=$('prenom').value.trim(), nom=$('nom').value.trim(), telRaw=$('tel').value.trim(), email=$('email').value.trim(), msg=$('message').value.trim();
+    var tel=telDigits(telRaw), first=null;
+    setFieldErr('prenom', prenom? '' : 'Indiquez votre prénom.'); if(!prenom) first=first||'prenom';
+    setFieldErr('nom', nom? '' : 'Indiquez votre nom.'); if(!nom) first=first||'nom';
+    var telOk=/^0[1-9]\d{8}$/.test(tel);
+    setFieldErr('tel', telOk? '' : 'Un numéro à 10 chiffres, par exemple 06 12 34 56 78.'); if(!telOk) first=first||'tel';
+    var mailOk=!email || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    setFieldErr('email', mailOk? '' : 'Cette adresse email semble incomplète.'); if(!mailOk) first=first||'email';
+    if(first){ $(first).focus(); return; }
+    if($('botcheck').checked) return;
+
+    sending=true; nextBtn.setAttribute('disabled',''); $('nextLbl').textContent='Envoi en cours…';
+    statusEl.className='form-status'; statusEl.textContent='';
+    var gross=grossPerVisit(), net=gross/2, d=distance(), pm=PER_MONTH[state.frequence];
+    var srcTxt=Object.keys(SRC).filter(function(k){ return k!=='fbclid' && k!=='landing'; }).map(function(k){ return k+'='+SRC[k]; }).join(', ');
+    if(SRC.fbclid) srcTxt+=(srcTxt?', ':'')+'clic Meta';
+    var recap='Civilité : '+(state.civilite||'Non renseignée')
+      +'\nAdresse : '+state.adresse
+      +(d!=null? '\nDistance de Cabannes : '+Math.round(d)+' km'+(state.ville? ' ('+state.ville+')' : '') : '')
+      +'\nPrestations : '+state.prestations.join(', ')
+      +'\nFréquence : '+(FREQ_LABEL[state.frequence]||'')
+      +'\nPlanning : '+scheduleText()
+      +'\nHeures d\'arrivée possibles : '+heuresText()
+      +'\nDurée : '+durLabel(state.duree)+' par passage'
+      +'\nOptions : '+(state.options.length? state.options.map(function(o){ return OPT_LABEL[o]; }).join(', ') : 'aucune')
+      +'\nAnimaux : '+state.animaux
+      +'\nTarif horaire brut : '+rateGross()+' €/h'+(majoration()>0?' (majoration incluse)':'')
+      +'\nEstimation : '+euro(net)+' net par passage (avant crédit '+euro(gross)+')'+(pm? ', environ '+euro(Math.round(net*pm))+' par mois' : '')
+      +'\nProvenance : '+(srcTxt||'directe ou inconnue')
+      +'\n\nMessage : '+(msg||'aucun');
     var fd=new FormData();
     fd.append('access_key','ccb01bd2-78c2-464c-a16b-1c4373caf243');
-    fd.append('subject','Nouvelle demande de devis (funnel) — Coup de Main Provence');
+    fd.append('subject','Devis '+state.prestations.join(' + ')+' · '+prenom+' '+nom+(state.ville? ' · '+state.ville : ''));
     fd.append('from_name','Funnel Coup de Main Provence');
     fd.append('civilité',state.civilite||'');
-    fd.append('prénom',document.getElementById('prenom').value);
-    fd.append('nom',document.getElementById('nom').value);
-    fd.append('téléphone',document.getElementById('tel').value);
-    fd.append('email',document.getElementById('email').value);
+    fd.append('prénom',prenom);
+    fd.append('nom',nom);
+    fd.append('téléphone',telPretty(tel));
+    fd.append('email',email);
     fd.append('message',recap);
     try{
-      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
+      var res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd,headers:{Accept:'application/json'}});
       var json=await res.json();
-      if(json.success){ if(typeof fbq==='function') fbq('track','Lead'); idx=order.length; show('merci'); }
-      else { statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11."; submitBtn.disabled=false; }
-    }catch(err){ statusEl.style.color='var(--terracotta-dark)'; statusEl.textContent="Échec de l'envoi. Appelez Huguette au 06 41 94 63 11."; submitBtn.disabled=false; }
-  });
+      if(json.success){
+        track('Lead',{value:Math.round(net),currency:'EUR',content_name:state.prestations.join(', ')});
+        $('q-merci').innerHTML='Merci '+esc(prenom)+', c\'est bien reçu&nbsp;!';
+        $('merciSub').textContent='Huguette vous rappelle très vite au '+telPretty(tel)+' pour confirmer votre devis, crédit d\'impôt déduit.';
+        clearSave();
+        history.replaceState({cdm:1,i:ORDER.length,done:1},'');
+        show('merci');
+      } else throw new Error(json.message||'échec');
+    }catch(err){
+      statusEl.className='form-status bad';
+      statusEl.innerHTML='L\'envoi n\'a pas fonctionné. Réessayez, ou appelez Huguette au <a href="tel:+33641946311" style="text-decoration:underline">06 41 94 63 11</a>.';
+    }finally{
+      sending=false; nextBtn.removeAttribute('disabled'); if(ORDER[idx]==='coordonnees') $('nextLbl').textContent='Envoyer ma demande';
+    }
+  }
 
-  show('adresse');
+  /* ---------- démarrage ---------- */
+  var params=new URLSearchParams(location.search), start=0, saved=load();
+  if(saved){ state=Object.assign(fresh(),saved.s); start=Math.min(saved.i||0,ORDER.length-1); }
+  var pAdr=params.get('adresse'), pPresta=PRESTA_PARAM[params.get('p')];
+  if(pAdr){
+    state.adresse=pAdr; state.lat=null; state.lon=null; state.ville='';
+    var la=parseFloat(params.get('lat')), lo=parseFloat(params.get('lon'));
+    if(!isNaN(la) && !isNaN(lo)){ state.lat=la; state.lon=lo; state.ville=params.get('ville')||''; }
+    start=1;
+  }
+  if(pPresta){ if(state.prestations.indexOf(pPresta)<0) state.prestations.push(pPresta); if(!pAdr) start=0; }
+  for(var k=0;k<start;k++){ if(errorFor(ORDER[k])){ start=k; break; } }
+  adr.value=state.adresse; addrField.classList.toggle('has',!!state.adresse); renderZone();
+  history.replaceState({cdm:1,i:0},'',location.pathname);
+  for(var j=1;j<=start;j++) history.pushState({cdm:1,i:j},'');
+  idx=start;
+  show(ORDER[idx]);
+})();
 </script>
 </body>
 </html>
