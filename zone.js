@@ -1,7 +1,7 @@
 /* Zone d'intervention de Coup de Main Provence, partagée par index.html et devis.html.
-   Autour d'Avignon : communes dont le chef-lieu est à 30 minutes de voiture ou moins du centre d'Avignon,
+   Communes dont le chef-lieu est à 30 minutes de voiture ou moins du centre d'Avignon, d'Aix-en-Provence ou de Marseille,
    hors embouteillages (temps OSRM sur OpenStreetMap, calculés le 20/10/2026).
-   « En limite » : de 30 à 36 minutes. Autour d'Aix et de Marseille : liste fixe de communes. */
+   « En limite » : de 30 à 36 minutes. */
 (function(){
   var HUBS=[{nom:'Avignon',lat:43.9493,lon:4.8059},{nom:'Aix-en-Provence',lat:43.5263,lon:5.4474},{nom:'Marseille',lat:43.2965,lon:5.3880}];
   /* [commune, latitude, longitude du chef-lieu] */
@@ -69,34 +69,84 @@
     ["Saint-Pierre-de-Mézoargues", 43.8593, 4.6513]
   ];
   var AIX_MARSEILLE=[
-    ["Aix-en-Provence", 43.5263, 5.4474],
-    ["Marseille", 43.2965, 5.388],
-    ["Venelles", 43.5986, 5.4825],
-    ["Éguilles", 43.5683, 5.3561],
-    ["Le Tholonet", 43.5214, 5.5106],
-    ["Saint-Marc-Jaumegarde", 43.547, 5.5236],
-    ["Meyreuil", 43.4878, 5.4964],
-    ["Bouc-Bel-Air", 43.452, 5.4136],
-    ["Cabriès", 43.4413, 5.3797],
-    ["Allauch", 43.3364, 5.4822],
-    ["Plan-de-Cuques", 43.3475, 5.4635]
+    ["Marseille", 43.2965, 5.3698],
+    ["Aix-en-Provence", 43.5299, 5.4474],
+    ["Aubagne", 43.2924, 5.5695],
+    ["Vitrolles", 43.448, 5.2498],
+    ["Marignane", 43.4172, 5.2155],
+    ["Les Pennes-Mirabeau", 43.4003, 5.34],
+    ["Gardanne", 43.4557, 5.4707],
+    ["Allauch", 43.3362, 5.4817],
+    ["Pertuis", 43.6947, 5.503],
+    ["Châteauneuf-les-Martigues", 43.383, 5.1647],
+    ["Bouc-Bel-Air", 43.4511, 5.4137],
+    ["Auriol", 43.3693, 5.6346],
+    ["Rognac", 43.4896, 5.2292],
+    ["Septèmes-les-Vallons", 43.3991, 5.3661],
+    ["Plan-de-Cuques", 43.3456, 5.4619],
+    ["Trets", 43.4472, 5.6839],
+    ["Gignac-la-Nerthe", 43.3934, 5.2357],
+    ["Fuveau", 43.4539, 5.5609],
+    ["Cabriès", 43.4412, 5.38],
+    ["Lambesc", 43.6551, 5.2622],
+    ["La Fare-les-Oliviers", 43.551, 5.1946],
+    ["Velaux", 43.5311, 5.2544],
+    ["Roquevaire", 43.3488, 5.604],
+    ["Éguilles", 43.5686, 5.3543],
+    ["Venelles", 43.5982, 5.4844],
+    ["Carnoux-en-Provence", 43.2562, 5.5656],
+    ["Meyreuil", 43.4868, 5.495],
+    ["Saint-Victoret", 43.4205, 5.2328],
+    ["Cassis", 43.2139, 5.5396],
+    ["La Penne-sur-Huveaune", 43.2827, 5.5154],
+    ["Gémenos", 43.2955, 5.6284],
+    ["La Bouilladisse", 43.3941, 5.5932],
+    ["Cuges-les-Pins", 43.2753, 5.6999],
+    ["Saint-Cannat", 43.6209, 5.2981],
+    ["Le Puy-Sainte-Réparade", 43.6631, 5.4348],
+    ["Ventabren", 43.5387, 5.293],
+    ["Roquefort-la-Bédoule", 43.2477, 5.5916],
+    ["Simiane-Collongue", 43.4298, 5.4348],
+    ["Peypin", 43.3842, 5.5775],
+    ["Ensuès-la-Redonne", 43.3568, 5.2061],
+    ["Rousset", 43.4806, 5.622],
+    ["Peyrolles-en-Provence", 43.6483, 5.584],
+    ["Le Rove", 43.3696, 5.2513],
+    ["Rognes", 43.6632, 5.3491],
+    ["Gréasque", 43.4314, 5.5444],
+    ["Mimet", 43.414, 5.5047],
+    ["La Destrousse", 43.3775, 5.6054],
+    ["Meyrargues", 43.638, 5.5275],
+    ["Coudoux", 43.5581, 5.2512],
+    ["Peynier", 43.4475, 5.6395],
+    ["Villelaure", 43.7101, 5.4332],
+    ["Saint-Savournin", 43.4081, 5.526],
+    ["Le Tholonet", 43.5217, 5.5124],
+    ["Châteauneuf-le-Rouge", 43.489, 5.569],
+    ["Cadolive", 43.3961, 5.5444],
+    ["Belcodène", 43.4249, 5.5866],
+    ["Puyloubier", 43.5254, 5.673],
+    ["Saint-Marc-Jaumegarde", 43.5476, 5.5234],
+    ["Vauvenargues", 43.5552, 5.5996],
+    ["Beaurecueil", 43.5106, 5.5448],
+    ["Saint-Estève-Janson", 43.6856, 5.3964],
+    ["Saint-Antonin-sur-Bayon", 43.5189, 5.5831]
   ];
-  var AVIGNON_LIMITE=["Cavaillon", "Pernes-les-Fontaines", "Saint-Rémy-de-Provence", "Sénas", "Laudun-l'Ardoise", "Mazan", "Aubignan", "Piolenc", "Camaret-sur-Aigues", "Cheval-Blanc", "Jonquières-Saint-Vincent", "Plan-d'Orgon", "Caromb", "Velleron", "Orgon", "Mollégès", "Meynes", "Mornas", "Beaumes-de-Venise", "Saint-Victor-la-Coste", "Sernhac", "Vers-Pont-du-Gard", "Castillon-du-Gard", "Lédenon", "Orsan", "Saint-Paul-les-Fonts", "Chusclan", "Pouzilhac", "Codolet", "Mas-Blanc-des-Alpilles", "Saint-Pierre-de-Vassols", "Modène", "Argilliers", "Saint-Hippolyte-le-Graveyron"];
+  var LIMITE_NOMS=["Salon-de-Provence", "La Ciotat", "Cavaillon", "Saint-Maximin-la-Sainte-Baume", "Berre-l'Étang", "Saint-Cyr-sur-Mer", "Pélissanne", "Pernes-les-Fontaines", "Lançon-Provence", "Saint-Rémy-de-Provence", "Sausset-les-Pins", "Sénas", "Laudun-l'Ardoise", "Mazan", "Aubignan", "Saint-Zacharie", "Piolenc", "Carry-le-Rouet", "Pourrières", "Grans", "Ceyreste", "Jouques", "Camaret-sur-Aigues", "La Tour-d'Aigues", "Cadenet", "Cheval-Blanc", "Jonquières-Saint-Vincent", "Plan-d'Orgon", "Caromb", "Velleron", "Orgon", "Mollégès", "Meynes", "Mornas", "Beaumes-de-Venise", "Saint-Victor-la-Coste", "Lamanon", "Sernhac", "Vers-Pont-du-Gard", "Castillon-du-Gard", "Lédenon", "Pourcieux", "Orsan", "Ansouis", "Saint-Paul-les-Fonts", "Chusclan", "La Bastidonne", "Saint-Paul-lès-Durance", "La Barben", "Pouzilhac", "Codolet", "Mas-Blanc-des-Alpilles", "Saint-Pierre-de-Vassols", "Modène", "Argilliers", "Sannes", "Saint-Hippolyte-le-Graveyron"];
   var COMMUNES=AVIGNON.concat(AIX_MARSEILLE), CENTER={lat:43.62,lon:5.1};
   /* comparaison des noms sans accents, apostrophes ni casse : l'API Adresse et l'IGN n'écrivent pas toujours pareil */
   function norm(s){ return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,"'").toLowerCase().trim(); }
-  var SERVED=COMMUNES.map(function(c){ return norm(c[0]); }), LIMITE=AVIGNON_LIMITE.map(norm);
+  var SERVED=COMMUNES.map(function(c){ return norm(c[0]); }), LIMITE=LIMITE_NOMS.map(norm);
   function dist(h,lat,lon){ var r=Math.PI/180, dp=(lat-h.lat)*r, dl=(lon-h.lon)*r; var a=Math.sin(dp/2)*Math.sin(dp/2)+Math.cos(h.lat*r)*Math.cos(lat*r)*Math.sin(dl/2)*Math.sin(dl/2); return 12742*Math.asin(Math.sqrt(a)); }
   function nearest(lat,lon){ var best=null; HUBS.forEach(function(h){ var d=dist(h,lat,lon); if(!best||d<best.km) best={nom:h.nom,km:d}; }); return best; }
   function place(city,cp){ if(city==='Marseille' && /^130(0[1-9]|1[0-6])$/.test(cp||'')){ var n=+cp.slice(3); return 'Marseille '+n+(n===1?'er':'e'); } return city||'votre commune'; }
-  /* ok : commune desservie ; warn : en limite (30 à 36 min d'Avignon, à moins de 7 km d'une commune desservie, ou de 16 km d'Aix ou de Marseille) ; far : au-delà */
+  /* ok : commune desservie ; warn : en limite (30 à 36 min, ou à moins de 7 km d'une commune desservie) ; far : au-delà */
   function check(lat,lon,city,cp){
     var lbl=place(city,cp), n=norm(city);
     if(SERVED.indexOf(n)>-1) return {cls:'ok',lbl:lbl};
     if(LIMITE.indexOf(n)>-1) return {cls:'warn',lbl:lbl};
     var dmin=Infinity; COMMUNES.forEach(function(c){ var d=dist({lat:c[1],lon:c[2]},lat,lon); if(d<dmin) dmin=d; });
-    var dAM=Math.min(dist(HUBS[1],lat,lon),dist(HUBS[2],lat,lon));
-    return {cls:(dmin<=7||dAM<=16)?'warn':'far',lbl:lbl};
+    return {cls:dmin<=7?'warn':'far',lbl:lbl};
   }
   /* autocomplétion : Géoplateforme IGN, repli sur l'API Adresse ; adresses proches de nos trois villes en tête */
   async function geocode(q){
