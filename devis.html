@@ -27,6 +27,7 @@
 })();
 </script>
 <!-- Fin Meta Pixel -->
+<script src="mesure.js?v=20261029"></script>
 <style>
   :root{
     --navy-900:#0b2742; --navy-800:#0f3457; --navy-700:#134170; --teal-600:#0e7f90; --teal-500:#1595a8; --blue-300:#7fb2e0;
@@ -619,7 +620,9 @@
   function hLabel(t){ var h=parseInt(t,10), m=t.slice(3); return h+'h'+(m==='00'?'':m); }
   function durLabel(d){ if(d==null) return ''; var h=Math.floor(d), m=Math.round((d-h)*60); return h+'h'+(m?pad(m):''); }
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  function track(ev,data,custom){ try{ if(typeof fbq==='function') fbq(custom?'trackCustom':'track',ev,data||{}); }catch(e){} }
+  var PH={EtapeDevis:'devis_etape',Lead:'devis_envoye',Contact:'contact_clic'};
+  function track(ev,data,custom){ try{ if(typeof fbq==='function') fbq(custom?'trackCustom':'track',ev,data||{}); }catch(e){}
+    window.cdmMesure(PH[ev]||ev,data); }
   function order(){
     var o=ORDERS[state.type]||ORDERS.reguliere, i=o.indexOf('horaires');
     return freq()==='2x'? o.slice(0,i+1).concat('horaires2',o.slice(i+1)) : o;
@@ -851,7 +854,9 @@
     var z=zoneInfo();
     if(!z){ zoneMsg.className='zone-msg'; zoneMsg.innerHTML=''; return; }
     zoneMsg.className='zone-msg '+z.cls; zoneMsg.innerHTML='<svg class="i"><use href="'+z.ic+'"/></svg><span>'+esc(z.txt)+'</span>';
+    var k=z.cls+'|'+state.ville; if(k!==lastZone){ lastZone=k; window.cdmMesure('zone_verifiee',{resultat:z.cls,commune:state.ville||'',page:'devis'}); }
   }
+  var lastZone=null;
   function renderAc(){
     if(!acItems.length){ closeAc(); return; }
     acList.innerHTML=acItems.map(function(s,i){

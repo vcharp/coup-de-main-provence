@@ -39,6 +39,7 @@
 })();
 </script>
 <!-- Fin Meta Pixel -->
+<script src="mesure.js?v=20261029"></script>
 <script>document.documentElement.classList.add('js');</script>
 <style>
   :root{
@@ -914,7 +915,7 @@
 
   /* Appels : événement Contact */
   document.querySelectorAll('[data-contact]').forEach(function(a){
-    a.addEventListener('click',function(){ if(typeof fbq==='function') fbq('track','Contact'); });
+    a.addEventListener('click',function(){ if(typeof fbq==='function') fbq('track','Contact'); window.cdmMesure('contact_clic',{page:'accueil'}); });
   });
 
   /* FAQ : un seul ouvert à la fois */
@@ -972,7 +973,7 @@
     }
     function pick(s){
       picked=s; input.value=s.label; close();
-      var z=zone(s); msg.className='zone-msg '+z.cls; msg.innerHTML='<svg class="i"><use href="'+ICON[z.cls]+'"/></svg><span>'+esc(z.txt)+'</span>';
+      var z=zone(s); window.cdmMesure('zone_verifiee',{resultat:z.cls,commune:s.city||'',page:'accueil'}); msg.className='zone-msg '+z.cls; msg.innerHTML='<svg class="i"><use href="'+ICON[z.cls]+'"/></svg><span>'+esc(z.txt)+'</span>';
     }
     input.addEventListener('input',function(){
       picked=null; msg.innerHTML=''; msg.className='zone-msg';
