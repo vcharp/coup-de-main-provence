@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Réserver une aide à domicile | Coup de Main Provence</title>
-<meta name="description" content="Réservez ménage, préparation des repas ou livraison de courses à Avignon, Aix-en-Provence et Marseille. Toujours 30 €/h, estimation immédiate, crédit d'impôt déduit." />
+<meta name="description" content="Réservez ménage, préparation des repas ou livraison de courses à Avignon, Aix-en-Provence et Marseille. 30 €/h en aide régulière, 35 €/h pour une seule fois, estimation immédiate, crédit d'impôt déduit." />
 <meta name="robots" content="noindex" />
 <meta name="theme-color" content="#f7fafd" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -204,6 +204,9 @@
   .nudge .i{width:18px;height:18px;margin-top:.1rem}
   .nudge.more{background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-100)}
   .nudge.good{background:var(--teal-50);color:var(--teal-600);border:1px solid var(--teal-100)}
+  .copy-h{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;margin:-.4rem 0 1.2rem;padding:.55rem 1rem;border-radius:999px;background:#fff;border:1.5px solid var(--blue-300);color:var(--blue-700);font-weight:700;font-size:.92rem;cursor:pointer}
+  .copy-h .i{width:16px;height:16px}
+  .copy-h:hover{background:var(--blue-50)}
 
   /* ESTIMATE */
   .est{background:var(--navy-700);color:#eef4fb;border-radius:24px;padding:1.4rem 1.35rem 1.15rem;margin-bottom:1.7rem;position:relative;overflow:hidden;isolation:isolate}
@@ -400,10 +403,10 @@
         <h2 class="q" id="q-type" tabindex="-1">Quel coup de main vous faut-il&nbsp;?</h2>
         <p class="sub">Vous verrez votre prix, crédit d'impôt déduit, avant d'envoyer quoi que ce soit.</p>
         <div class="opts" data-single="type" role="group" aria-label="Formule">
-          <button type="button" class="opt" data-value="reguliere" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-repeat"/></svg></span><span class="tt">Une aide régulière<small>Chaque semaine, deux fois par semaine ou toutes les deux semaines</small></span><span class="tag">Le plus choisi</span><span class="radio"></span></button>
-          <button type="button" class="opt" data-value="ponctuel" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-star"/></svg></span><span class="tt">Une seule fois<small>Une intervention, sans engagement, au même prix</small></span><span class="radio"></span></button>
+          <button type="button" class="opt" data-value="reguliere" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-repeat"/></svg></span><span class="tt">Une aide régulière<small>30&nbsp;€ de l'heure, soit 15&nbsp;€ après crédit d'impôt</small></span><span class="tag">Le plus choisi</span><span class="radio"></span></button>
+          <button type="button" class="opt" data-value="ponctuel" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-star"/></svg></span><span class="tt">Une seule fois<small>35&nbsp;€ de l'heure, soit 17,50&nbsp;€ après crédit d'impôt</small></span><span class="radio"></span></button>
         </div>
-        <p class="note"><svg class="i"><use href="#i-check"/></svg><span>Toujours 30&nbsp;€ de l'heure, soit 15&nbsp;€ après crédit d'impôt.</span></p>
+        <p class="note"><svg class="i"><use href="#i-check"/></svg><span>L'aide régulière, c'est chaque semaine, deux fois par semaine ou toutes les deux semaines. Sans engagement dans les deux cas.</span></p>
         <h3 class="q2">C'est pour qui&nbsp;?</h3>
         <div class="seg" data-single="pourqui" role="group" aria-label="Bénéficiaire">
           <button type="button" data-value="moi" aria-pressed="false">Pour moi</button>
@@ -420,7 +423,7 @@
           <button type="button" class="opt" data-value="Livraison de courses" aria-pressed="false"><span class="ic"><svg class="i"><use href="#i-bag"/></svg></span><span class="tt">Livraison de courses<small>Vos courses faites et rangées, avec le ménage ou les repas</small></span><span class="box"><svg class="i"><use href="#i-check"/></svg></span></button>
         </div>
         <p class="info" id="infoCourses" hidden><svg class="i"><use href="#i-info"/></svg><span>Les courses s'ajoutent à un passage ménage ou repas&nbsp;: c'est ce qui ouvre droit au crédit d'impôt. Ajoutez l'un des deux.</span></p>
-        <p class="note" id="prestaNote"><svg class="i"><use href="#i-check"/></svg><span>Les trois au même prix, 30&nbsp;€ de l'heure. Courses et denrées à votre charge, au prix du magasin.</span></p>
+        <p class="note" id="prestaNote"><svg class="i"><use href="#i-check"/></svg><span>Les trois au même prix, <span id="prestaRate">30&nbsp;€</span> de l'heure. Courses et denrées à votre charge, au prix du magasin.</span></p>
       </section>
 
       <section class="step" data-step="frequence" aria-labelledby="q-frequence">
@@ -487,10 +490,20 @@
       </section>
 
       <section class="step" data-step="horaires" aria-labelledby="q-horaires">
+        <p class="ctx" id="ctxDay0" hidden><svg class="i"><use href="#i-calendar"/></svg><span></span><button type="button" data-goto="jours">Modifier</button></p>
         <h2 class="q" id="q-horaires" tabindex="-1">À quelle heure peut-elle arriver&nbsp;?</h2>
-        <p class="sub">Cochez toutes les heures d'arrivée qui vous conviennent&nbsp;: plus vous en proposez, plus c'est simple de trouver votre intervenante.</p>
-        <div id="timeGroups"></div>
-        <p class="nudge" id="nudge" aria-live="polite"></p>
+        <p class="sub" id="subDay0">Cochez toutes les heures d'arrivée qui vous conviennent&nbsp;: plus vous en proposez, plus c'est simple de trouver votre intervenante.</p>
+        <div class="tgroups" data-day="0"></div>
+        <p class="nudge" data-nudge="0" aria-live="polite"></p>
+      </section>
+
+      <section class="step" data-step="horaires2" aria-labelledby="q-horaires2">
+        <p class="ctx" id="ctxDay1" hidden><svg class="i"><use href="#i-calendar"/></svg><span></span><button type="button" data-goto="jours">Modifier</button></p>
+        <h2 class="q" id="q-horaires2" tabindex="-1">Et le second jour&nbsp;?</h2>
+        <p class="sub" id="subDay1"></p>
+        <button type="button" class="copy-h" id="copyHours" hidden><svg class="i"><use href="#i-repeat"/></svg><span></span></button>
+        <div class="tgroups" data-day="1"></div>
+        <p class="nudge" data-nudge="1" aria-live="polite"></p>
       </section>
 
       <section class="step" data-step="coordonnees" aria-labelledby="q-coord">
@@ -581,19 +594,19 @@
     reguliere:['adresse','type','prestations','frequence','duree','options','jours','horaires','coordonnees'],
     ponctuel:['adresse','type','prestations','duree','options','jours','horaires','coordonnees']
   };
-  var TITLES={adresse:'Votre adresse',type:'La formule',prestations:'Les services',frequence:'La fréquence',duree:'La durée',options:'Les animaux',jours:'Le jour',horaires:'Les horaires',coordonnees:'Votre estimation'};
+  var TITLES={adresse:'Votre adresse',type:'La formule',prestations:'Les services',frequence:'La fréquence',duree:'La durée',options:'Les animaux',jours:'Le jour',horaires:'Les horaires',horaires2:'Les horaires',coordonnees:'Votre estimation'};
   var TYPE_LABEL={reguliere:'Aide régulière',ponctuel:'Une seule fois'};
   var PMAP={menage:'Ménage et entretien',repas:'Préparation des repas',courses:'Livraison de courses'};
   var COURSES=PMAP.courses;
   var FREQ_LABEL={hebdo:'Chaque semaine','2x':'Deux fois par semaine',bimensuel:'Toutes les deux semaines',ponctuel:'Une seule fois'};
   var PER_MONTH={hebdo:52/12,'2x':104/12,bimensuel:26/12};
-  var RATE=30; /* toujours 30 € de l'heure, quel que soit le service, le jour ou l'heure */
+  var RATES={reguliere:30,ponctuel:35}; /* à l'heure, quel que soit le service, le jour ou l'heure : une seule fois coûte plus cher */
   var Z=window.CDM_ZONE;
   var MONTHS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
   var WD=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
   var NBSP=' ';
 
-  function fresh(){ return {adresse:'',lat:null,lon:null,ville:'',cp:'',type:'',pourqui:'',prestations:[],frequence:'',duree:null,animaux:'',anchors:[],heures:[],civilite:''}; }
+  function fresh(){ return {adresse:'',lat:null,lon:null,ville:'',cp:'',type:'',pourqui:'',prestations:[],frequence:'',duree:null,animaux:'',anchors:[],heures:{},civilite:''}; }
   var state=fresh(), cur='adresse';
 
   /* ---------- utilitaires ---------- */
@@ -607,9 +620,37 @@
   function durLabel(d){ if(d==null) return ''; var h=Math.floor(d), m=Math.round((d-h)*60); return h+'h'+(m?pad(m):''); }
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function track(ev,data,custom){ try{ if(typeof fbq==='function') fbq(custom?'trackCustom':'track',ev,data||{}); }catch(e){} }
-  function order(){ return ORDERS[state.type]||ORDERS.reguliere; }
+  function order(){
+    var o=ORDERS[state.type]||ORDERS.reguliere, i=o.indexOf('horaires');
+    return freq()==='2x'? o.slice(0,i+1).concat('horaires2',o.slice(i+1)) : o;
+  }
   function freq(){ return state.type==='ponctuel'? 'ponctuel' : state.frequence; }
   function onlyCourses(){ return state.prestations.length===1 && state.prestations[0]===COURSES; }
+  function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+
+  /* ---------- jours de passage et heures de chacun ---------- */
+  /* heures d'arrivée rangées par jour de la semaine (0 = dimanche) : deux passages par semaine = deux listes */
+  function days(){
+    var a=state.anchors.map(function(s){ return parseD(s).getDay(); });
+    if(freq()!=='2x') a=a.slice(0,1);
+    return a.sort(function(x,y){ return ((x+6)%7)-((y+6)%7); });
+  }
+  function dayIdx(step){ return step==='horaires2'? 1 : 0; }
+  function hoursOf(i){ var d=days()[i]; if(d==null) return []; return state.heures[d]||(state.heures[d]=[]); }
+  /* un jour changé dans le calendrier garde les heures déjà cochées */
+  function syncHeures(){
+    var ds=days(), h=state.heures;
+    if(freq()==='2x' && ds.length<2) return; /* attendre le second jour pour ne pas intervertir les listes */
+    ds.forEach(function(d){
+      if(h[d] && h[d].length) return;
+      var o=Object.keys(h).filter(function(k){ return ds.indexOf(+k)<0 && h[k].length; })[0];
+      if(o!=null){ h[d]=h[o]; delete h[o]; }
+    });
+  }
+  function stepTitle(n){
+    var d=days()[dayIdx(n)];
+    return (n==='horaires'||n==='horaires2') && freq()==='2x' && d!=null? 'Les horaires du '+WD[d] : TITLES[n];
+  }
 
   /* ---------- calendrier : bornes ---------- */
   var now=new Date();
@@ -622,7 +663,8 @@
   var GROUPS=[{k:'Matin',ic:'#i-sunrise',from:7,to:11.5},{k:'Après-midi',ic:'#i-sun',from:12,to:17.5},{k:'Soirée',ic:'#i-moon',from:18,to:22}];
 
   /* ---------- tarifs ---------- */
-  function gross(){ return (state.duree||0)*RATE; }
+  function rate(){ return RATES[state.type]||RATES.reguliere; }
+  function gross(){ return (state.duree||0)*rate(); }
   function netPrice(){ return gross()/2; }
   function monthlyNet(){ var pm= state.type==='reguliere'? PER_MONTH[state.frequence] : 0; return pm? netPrice()*pm : 0; }
 
@@ -657,7 +699,7 @@
       case 'duree': return state.duree!=null? '' : 'Choisissez une durée.';
       case 'options': return state.animaux? '' : 'Dites-nous s\'il y a des animaux.';
       case 'jours': var need=freq()==='2x'?2:1; return state.anchors.length>=need? '' : (need===2?'Choisissez deux jours de la semaine.':'Choisissez un jour dans le calendrier.');
-      case 'horaires': return state.heures.length? '' : 'Choisissez au moins une heure d\'arrivée.';
+      case 'horaires': case 'horaires2': var di=dayIdx(name), dd=days()[di]; return hoursOf(di).length? '' : 'Choisissez au moins une heure d\'arrivée'+(freq()==='2x' && dd!=null? ' le '+WD[dd] : '')+'.';
     }
     return '';
   }
@@ -685,7 +727,7 @@
   function updateHeader(){
     var ord=order(), i=ord.indexOf(cur), done=cur==='merci';
     $('bar').style.width=(done?100:((i+1)/ord.length*100))+'%';
-    $('stepCount').innerHTML= done? 'Demande envoyée' : 'Étape '+(i+1)+' sur '+ord.length+'<small>'+TITLES[cur]+'</small>';
+    $('stepCount').innerHTML= done? 'Demande envoyée' : 'Étape '+(i+1)+' sur '+ord.length+'<small>'+stepTitle(cur)+'</small>';
     actions.classList.toggle('hidden',done);
     prevBtn.style.display=(i>0)?'':'none';
     var nextName=ord[i+1];
@@ -700,7 +742,7 @@
     if(name==='type') renderCtx();
     if(name==='prestations') setupPrestations();
     if(name==='jours') setupJours();
-    if(name==='horaires') renderTimes();
+    if(name==='horaires'||name==='horaires2') renderTimes(name);
     if(name==='coordonnees') setupCoord();
     syncPressed(); refreshNext(); renderSummary();
     window.scrollTo(0,0);
@@ -733,7 +775,11 @@
     if(f==='bimensuel') return 'Un '+day+' sur deux, à partir du '+frDate(state.anchors[0]);
     return 'Chaque '+day+', à partir du '+frDate(state.anchors[0]);
   }
-  function heuresText(){ return state.heures.slice().sort().map(hLabel).join(', '); }
+  function heuresText(){
+    var ds=days(), one=function(d){ return (state.heures[d]||[]).slice().sort().map(hLabel).join(', '); };
+    if(ds.length<2) return ds.length? one(ds[0]) : '';
+    return ds.map(function(d){ var h=one(d); return h? cap(WD[d])+NBSP+': '+h : ''; }).filter(Boolean).join(' · ');
+  }
   var PORDER=[PMAP.menage,PMAP.repas,PMAP.courses];
   function prestaText(){ return state.prestations.slice().sort(function(a,b){ return PORDER.indexOf(a)-PORDER.indexOf(b); }).join(', '); }
   function renderSummary(){
@@ -751,6 +797,7 @@
   function syncCourses(){ $('infoCourses').hidden=!onlyCourses(); }
   function setupPrestations(){
     $('q-prestations').innerHTML= state.type==='ponctuel'? 'Quel coup de main&nbsp;?' : (state.pourqui==='parent'? 'Que faut-il faire chez votre proche&nbsp;?' : 'De quoi avez-vous besoin&nbsp;?');
+    $('prestaRate').textContent=rate()+NBSP+'€';
     syncCourses();
   }
   function setupCoord(){
@@ -876,7 +923,7 @@
       if(k>-1) state.anchors.splice(k,1);
       else { var wd=parseD(ds).getDay(); state.anchors=state.anchors.filter(function(a){ return parseD(a).getDay()!==wd; }); if(state.anchors.length>=2) state.anchors=[ds]; else state.anchors.push(ds); }
     } else state.anchors=[ds];
-    renderCalendar(); refreshNext(); renderSummary(); save();
+    syncHeures(); renderCalendar(); refreshNext(); renderSummary(); save();
   });
   function setupJours(){
     var f=freq();
@@ -893,28 +940,50 @@
   $('calNext').addEventListener('click',function(){ if(this.disabled) return; viewMonth++; if(viewMonth>11){ viewMonth=0; viewYear++; } renderCalendar(); });
 
   /* ---------- heures ---------- */
-  function renderTimes(){
-    $('timeGroups').innerHTML=GROUPS.map(function(g){
+  var SUB0=$('subDay0').innerHTML;
+  function renderTimes(step){
+    var i=dayIdx(step), ds=days(), d=ds[i], two=freq()==='2x', hs=hoursOf(i);
+    var ctx=$('ctxDay'+i);
+    ctx.hidden=d==null;
+    if(d!=null) ctx.querySelector('span').textContent= two? 'Jour '+(i+1)+' sur 2 · chaque '+WD[d] : scheduleText();
+    if(i===0){
+      $('q-horaires').innerHTML= two && d!=null? 'À quelle heure le '+WD[d]+'&nbsp;?' : 'À quelle heure peut-elle arriver&nbsp;?';
+      $('subDay0').innerHTML= two && ds[1]!=null? 'Cochez toutes les heures d\'arrivée possibles le '+WD[d]+'. Celles du '+WD[ds[1]]+' se choisissent juste après.' : SUB0;
+    } else if(d!=null){
+      $('q-horaires2').innerHTML='Et le '+WD[d]+', à quelle heure&nbsp;?';
+      $('subDay1').textContent='Les heures peuvent être différentes de celles du '+WD[ds[0]]+'. Cochez toutes celles qui vous conviennent le '+WD[d]+'.';
+      var cp=$('copyHours'); cp.hidden=!hoursOf(0).length; cp.querySelector('span').textContent='Mêmes heures que le '+WD[ds[0]];
+    }
+    document.querySelector('.tgroups[data-day="'+i+'"]').innerHTML=GROUPS.map(function(g){
       var items=TIMES.filter(function(t){ var v=parseInt(t,10)+(t.slice(3)==='30'?.5:0); return v>=g.from && v<=g.to; });
       return '<div class="tgroup"><h3><svg class="i"><use href="'+g.ic+'"/></svg>'+g.k+'</h3><div class="times">'+items.map(function(t){
-        var on=state.heures.indexOf(t)>-1;
+        var on=hs.indexOf(t)>-1;
         return '<button type="button" class="time" data-t="'+t+'" aria-pressed="'+on+'">'+hLabel(t)+'</button>';
       }).join('')+'</div></div>';
     }).join('');
-    updateNudge();
+    updateNudge(i);
   }
-  $('timeGroups').addEventListener('click',function(e){
-    var b=e.target.closest('.time'); if(!b) return;
-    var t=b.dataset.t, k=state.heures.indexOf(t);
-    if(k>-1) state.heures.splice(k,1); else state.heures.push(t);
-    b.setAttribute('aria-pressed',String(k<0));
-    updateNudge(); refreshNext(); renderSummary(); save();
+  document.querySelectorAll('.tgroups').forEach(function(g){
+    var i=+g.dataset.day;
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.time'); if(!b) return;
+      var hs=hoursOf(i), t=b.dataset.t, k=hs.indexOf(t);
+      if(k>-1) hs.splice(k,1); else hs.push(t);
+      b.setAttribute('aria-pressed',String(k<0));
+      updateNudge(i); refreshNext(); renderSummary(); save();
+    });
   });
-  function updateNudge(){
-    var el=$('nudge'), n=state.heures.length;
+  $('copyHours').addEventListener('click',function(){
+    var d=days()[1]; if(d==null) return;
+    state.heures[d]=hoursOf(0).slice();
+    renderTimes('horaires2'); refreshNext(); renderSummary(); save();
+  });
+  function updateNudge(i){
+    var el=document.querySelector('[data-nudge="'+i+'"]'), n=hoursOf(i).length, d=days()[i];
+    var when= freq()==='2x' && d!=null? ' le '+WD[d] : '';
     if(!n){ el.className='nudge'; el.innerHTML=''; return; }
-    if(n<3){ el.className='nudge more'; el.innerHTML='<svg class="i"><use href="#i-bulb"/></svg><span>'+n+' heure'+(n>1?'s':'')+' choisie'+(n>1?'s':'')+'. Ajoutez-en d\'autres&nbsp;: trois minimum, c\'est l\'idéal pour trouver votre intervenante.</span>'; }
-    else { el.className='nudge good'; el.innerHTML='<svg class="i"><use href="#i-check"/></svg><span>Parfait, '+n+' heures d\'arrivée possibles.</span>'; }
+    if(n<3){ el.className='nudge more'; el.innerHTML='<svg class="i"><use href="#i-bulb"/></svg><span>'+n+' heure'+(n>1?'s':'')+' choisie'+(n>1?'s':'')+when+'. Ajoutez-en d\'autres&nbsp;: trois minimum, c\'est l\'idéal pour trouver votre intervenante.</span>'; }
+    else { el.className='nudge good'; el.innerHTML='<svg class="i"><use href="#i-check"/></svg><span>Parfait, '+n+' heures d\'arrivée possibles'+when+'.</span>'; }
   }
 
   /* ---------- estimation ---------- */
@@ -933,7 +1002,7 @@
       +rl('Planning',scheduleText())
       +rl('Arrivée possible',heuresText())
       +rl('Animaux',state.animaux)+'<div class="rdiv"></div>'
-      +rl('Tarif horaire',RATE+NBSP+'€/h, tous les jours')+rl('Durée',durLabel(state.duree)+' par passage')
+      +rl('Tarif horaire',rate()+NBSP+'€/h, tous les jours')+rl('Durée',durLabel(state.duree)+' par passage')
       +rl('Prix TTC',euro(g))+rl('Crédit d\'impôt 50'+NBSP+'%','moins '+euro(g/2))+rl('Vous payez',euro(net))+'</dl>';
     var notes=[];
     if(state.prestations.indexOf(COURSES)>-1 || state.prestations.indexOf(PMAP.repas)>-1) notes.push('Les courses et les denrées restent à votre charge, au prix du magasin.');
@@ -950,7 +1019,7 @@
     if(cur==='coordonnees'){ submitForm(); return; }
     var m=errorFor(cur);
     if(m){ errEl.innerHTML='<svg class="i"><use href="#i-alert"/></svg>'+esc(m); errEl.classList.remove('shake'); void errEl.offsetWidth; errEl.classList.add('shake'); var r=errEl.getBoundingClientRect(); if(r.bottom>window.innerHeight-90||r.top<70) errEl.scrollIntoView({block:'center',behavior:'smooth'}); return; }
-    if(cur==='horaires' && state.heures.length<3){ openModal(); return; }
+    if((cur==='horaires'||cur==='horaires2') && hoursOf(dayIdx(cur)).length<3){ openModal(); return; }
     goNext();
   });
   prevBtn.addEventListener('click',function(){
@@ -1011,7 +1080,7 @@
       +'\nHeures d\'arrivée possibles : '+heuresText()
       +'\nDurée : '+durLabel(state.duree)+' par passage'
       +'\nAnimaux : '+state.animaux
-      +'\nTarif horaire : '+RATE+' €/h'
+      +'\nTarif horaire : '+rate()+' €/h'
       +'\nEstimation : '+euro(net)+' à payer '+(state.type==='ponctuel'?'pour l\'intervention':'par passage')+' (prix TTC '+euro(g)+', crédit d\'impôt '+euro(g/2)+')'+(mn? ', environ '+euro(Math.round(mn))+' par mois' : '')
       +'\nConsentement au rappel : oui'
       +'\nProvenance : '+(srcTxt||'directe ou inconnue')
@@ -1049,6 +1118,8 @@
   var params=new URLSearchParams(location.search), start='adresse', saved=load(), reloaded=!!(history.state && history.state.cdm===3);
   if(saved){ state=Object.assign(fresh(),saved.s); start=saved.step||'adresse'; }
   state.anchors=state.anchors.filter(function(a){ return parseD(a)>=minDate; });
+  if(!state.heures || Array.isArray(state.heures)) state.heures={}; /* ancien format : une seule liste pour tous les jours */
+  syncHeures();
   var pT=params.get('t'), pP=params.get('p'), pQ=params.get('q'), pre=null;
   /* anciens liens (publicités, partages) : formules et prestations retirées */
   if(pT==='serenite'||pT==='maison'||pT==='retour'){ pT='reguliere'; pQ=pQ||'parent'; }

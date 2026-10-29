@@ -14,7 +14,9 @@ L'organisme est simplement déclaré : le site ne propose ni compagnie, ni aide 
 
 ## Tarifs
 
-Dans `devis.html` (`TASKS`, `regRate`, `taskRate`, `parts`, `monthlyNet`) : aide régulière 30 €/h, Sérénité 32 €/h (une heure de papiers par mois comprise), ménage ponctuel et vitres 35 €/h, grand ménage 36 €/h, papiers en ordre 38 €/h, retour à la maison environ 12 h à 32 €/h. Repassage +1 €/h. Produits fournis +3 €/h, hors crédit d'impôt. Majoration de 5 €/h pour les passages du dimanche (et les jours fériés en ponctuel) et si toutes les heures d'arrivée sont à 7h, 7h30 ou après 20h. La grille de `index.html` doit rester alignée.
+Dans `devis.html` (`RATES`, `rate`, `monthlyNet`) : aide régulière 30 €/h, une seule fois 35 €/h, quel que soit le service (ménage, repas, courses), le jour ou l'heure. 2 h minimum, sans option ni majoration. Les courses seules sont refusées (il faut ménage ou repas pour le crédit d'impôt). La grille de `index.html` doit rester alignée.
+
+Heures d'arrivée : `state.heures` les range par jour de la semaine. Deux passages par semaine donnent deux écrans d'horaires (`horaires`, puis `horaires2`), un par jour, avec un bouton pour recopier les heures du premier jour.
 
 ## Mesure
 
