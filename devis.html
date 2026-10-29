@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Réserver une aide à domicile | Coup de Main Provence</title>
-<meta name="description" content="Réservez ménage, préparation des repas ou livraison de courses à Avignon, Aix-en-Provence et Marseille. 30 €/h en aide régulière, 35 €/h pour une seule fois, estimation immédiate, crédit d'impôt déduit." />
+<meta name="description" content="Réservez ménage, préparation des repas ou livraison de courses à Avignon, Cavaillon, Aix-en-Provence et Marseille. 30 €/h en aide régulière, 35 €/h pour une seule fois, estimation immédiate, crédit d'impôt déduit." />
 <meta name="robots" content="noindex" />
 <meta name="theme-color" content="#f7fafd" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -384,7 +384,7 @@
 
       <section class="step" data-step="adresse" aria-labelledby="q-adresse">
         <h2 class="q" id="q-adresse" tabindex="-1">Où aura lieu la prestation&nbsp;?</h2>
-        <p class="sub">On vérifie tout de suite que l'adresse est dans notre zone&nbsp;: autour d'Avignon, d'Aix-en-Provence ou de Marseille.</p>
+        <p class="sub">On vérifie tout de suite que l'adresse est dans notre zone&nbsp;: autour d'Avignon, de Cavaillon, d'Aix-en-Provence ou de Marseille.</p>
         <div class="addr">
           <label class="lbl" for="adresse">Adresse complète</label>
           <div class="addr-field" id="addrField">
@@ -586,7 +586,7 @@
   </div>
 </div>
 
-<script src="zone.js"></script>
+<script src="zone.js?v=20261029"></script>
 <script>
 (function(){
   /* ---------- formules et services ---------- */
@@ -674,7 +674,7 @@
     var z=Z.check(state.lat,state.lon,state.ville,state.cp);
     if(z.cls==='ok') return {cls:'ok',ic:'#i-check',txt:'Bonne nouvelle, nous intervenons à '+z.lbl+'.'};
     if(z.cls==='warn') return {cls:'warn',ic:'#i-pin',txt:z.lbl+' est en limite de notre zone. Continuez, Huguette vous confirme.'};
-    return {cls:'far',ic:'#i-pin',txt:z.lbl+' est au-delà de notre zone habituelle, autour d\'Avignon, d\'Aix et de Marseille. Vous pouvez continuer, Huguette vous dira si c\'est possible.'};
+    return {cls:'far',ic:'#i-pin',txt:z.lbl+' est au-delà de notre zone habituelle, autour d\'Avignon, de Cavaillon, d\'Aix et de Marseille. Vous pouvez continuer, Huguette vous dira si c\'est possible.'};
   }
 
   /* ---------- sauvegarde et provenance ---------- */

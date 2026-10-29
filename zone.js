@@ -1,6 +1,7 @@
 /* Zone d'intervention de Coup de Main Provence, partagée par index.html et devis.html.
    Communes dont le chef-lieu est à 30 minutes de voiture ou moins du centre d'Avignon, d'Aix-en-Provence ou de Marseille,
-   hors embouteillages (temps OSRM sur OpenStreetMap, calculés le 20/10/2026).
+   hors embouteillages (temps OSRM sur OpenStreetMap, calculés le 20/10/2026),
+   plus Cavaillon et ses voisines depuis le 29/10/2026.
    « En limite » : de 30 à 36 minutes. */
 (function(){
   var HUBS=[{nom:'Avignon',lat:43.9493,lon:4.8059},{nom:'Aix-en-Provence',lat:43.5263,lon:5.4474},{nom:'Marseille',lat:43.2965,lon:5.3880}];
@@ -66,7 +67,18 @@
     ["Verquières", 43.8399, 4.9195],
     ["Valliguières", 44.0067, 4.5787],
     ["Estézargues", 43.9407, 4.6377],
-    ["Saint-Pierre-de-Mézoargues", 43.8593, 4.6513]
+    ["Saint-Pierre-de-Mézoargues", 43.8593, 4.6513],
+    /* Cavaillon et ses voisines, ajoutées le 29/10/2026 avec la pub Avignon Cavaillon */
+    ["Cavaillon", 43.8355, 5.0375],
+    ["L'Isle-sur-la-Sorgue", 43.9195, 5.0507],
+    ["Cheval-Blanc", 43.8003, 5.0635],
+    ["Robion", 43.8443, 5.1119],
+    ["Taillades", 43.8342, 5.0932],
+    ["Plan-d'Orgon", 43.8096, 4.9983],
+    ["Orgon", 43.7905, 5.0403],
+    ["Mollégès", 43.8061, 4.9488],
+    ["Lagnes", 43.8923, 5.1135],
+    ["Maubec", 43.844, 5.1403]
   ];
   var AIX_MARSEILLE=[
     ["Marseille", 43.2965, 5.3698],
@@ -132,7 +144,7 @@
     ["Saint-Estève-Janson", 43.6856, 5.3964],
     ["Saint-Antonin-sur-Bayon", 43.5189, 5.5831]
   ];
-  var LIMITE_NOMS=["Salon-de-Provence", "La Ciotat", "Cavaillon", "Saint-Maximin-la-Sainte-Baume", "Berre-l'Étang", "Saint-Cyr-sur-Mer", "Pélissanne", "Pernes-les-Fontaines", "Lançon-Provence", "Saint-Rémy-de-Provence", "Sausset-les-Pins", "Sénas", "Laudun-l'Ardoise", "Mazan", "Aubignan", "Saint-Zacharie", "Piolenc", "Carry-le-Rouet", "Pourrières", "Grans", "Ceyreste", "Jouques", "Camaret-sur-Aigues", "La Tour-d'Aigues", "Cadenet", "Cheval-Blanc", "Jonquières-Saint-Vincent", "Plan-d'Orgon", "Caromb", "Velleron", "Orgon", "Mollégès", "Meynes", "Mornas", "Beaumes-de-Venise", "Saint-Victor-la-Coste", "Lamanon", "Sernhac", "Vers-Pont-du-Gard", "Castillon-du-Gard", "Lédenon", "Pourcieux", "Orsan", "Ansouis", "Saint-Paul-les-Fonts", "Chusclan", "La Bastidonne", "Saint-Paul-lès-Durance", "La Barben", "Pouzilhac", "Codolet", "Mas-Blanc-des-Alpilles", "Saint-Pierre-de-Vassols", "Modène", "Argilliers", "Sannes", "Saint-Hippolyte-le-Graveyron"];
+  var LIMITE_NOMS=["Salon-de-Provence", "La Ciotat", "Saint-Maximin-la-Sainte-Baume", "Berre-l'Étang", "Saint-Cyr-sur-Mer", "Pélissanne", "Pernes-les-Fontaines", "Lançon-Provence", "Saint-Rémy-de-Provence", "Sausset-les-Pins", "Sénas", "Laudun-l'Ardoise", "Mazan", "Aubignan", "Saint-Zacharie", "Piolenc", "Carry-le-Rouet", "Pourrières", "Grans", "Ceyreste", "Jouques", "Camaret-sur-Aigues", "La Tour-d'Aigues", "Cadenet", "Jonquières-Saint-Vincent", "Caromb", "Velleron", "Meynes", "Mornas", "Beaumes-de-Venise", "Saint-Victor-la-Coste", "Lamanon", "Sernhac", "Vers-Pont-du-Gard", "Castillon-du-Gard", "Lédenon", "Pourcieux", "Orsan", "Ansouis", "Saint-Paul-les-Fonts", "Chusclan", "La Bastidonne", "Saint-Paul-lès-Durance", "La Barben", "Pouzilhac", "Codolet", "Mas-Blanc-des-Alpilles", "Saint-Pierre-de-Vassols", "Modène", "Argilliers", "Sannes", "Saint-Hippolyte-le-Graveyron"];
   var COMMUNES=AVIGNON.concat(AIX_MARSEILLE), CENTER={lat:43.62,lon:5.1};
   /* comparaison des noms sans accents, apostrophes ni casse : l'API Adresse et l'IGN n'écrivent pas toujours pareil */
   function norm(s){ return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’']/g,"'").toLowerCase().trim(); }
