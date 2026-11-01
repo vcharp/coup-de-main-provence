@@ -1,10 +1,11 @@
-/* Mesure de fréquentation de Coup de Main Provence, partagée par l'accueil, le devis et la confidentialité.
+/* Mesure de fréquentation de Coup de Main Provence, partagée par l'accueil, le devis, la page parents et la confidentialité.
    PostHog, projet commun de Victor (UE), super-property product = coup-de-main-provence.
    Sans cookie ni stockage (persistence memory) : rien n'est déposé sur l'appareil, le bandeau
    ne concerne que le traceur de Meta. Les champs saisis et les adresses sont masqués dans les
    enregistrements de session. L'équipe se marque avec ?interne=1 (retour avec ?interne=0),
    puis filtre interne = true. Rien ne part depuis localhost.
-   Événements : devis_etape, zone_verifiee, devis_envoye, contact_clic. */
+   Événements : devis_etape, zone_verifiee, devis_envoye, contact_clic, et sur parents.html
+   rappel_pourqui, rappel_commence, rappel_erreur, rappel_envoye. */
 (function(){
   "use strict";
   window.cdmMesure = function(){};
@@ -48,7 +49,7 @@
     capture_pageleave: true,
     autocapture: true,
     // nom, téléphone, adresse : ni les champs ni les suggestions ni le récapitulatif
-    session_recording: { maskAllInputs: true, maskTextSelector: "#sum, #acList, .ac, #merciSub" }
+    session_recording: { maskAllInputs: true, maskTextSelector: "#sum, #acList, .ac, #merciSub, #doneS, #doneT" }
   });
   posthog.register({ product: "coup-de-main-provence", interne: interne });
 

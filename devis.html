@@ -27,7 +27,7 @@
 })();
 </script>
 <!-- Fin Meta Pixel -->
-<script src="mesure.js?v=20261029"></script>
+<script src="mesure.js?v=20261101"></script>
 <style>
   :root{
     --navy-900:#0b2742; --navy-800:#0f3457; --navy-700:#134170; --teal-600:#0e7f90; --teal-500:#1595a8; --blue-300:#7fb2e0;
@@ -1150,7 +1150,10 @@
   adr.value=state.adresse; addrField.classList.toggle('has',!!state.adresse); renderZone();
   if(reloaded && !pT && !pre){ history.replaceState({cdm:3,s:start},''); }
   else {
-    history.replaceState({cdm:3,s:'adresse'},'',location.pathname);
+    // on retire les préréglages t, p, q pour qu'un rechargement ne les réapplique pas,
+    // mais on garde utm_* et fbclid : PostHog et le pixel de Meta les lisent après ce point
+    var keep=new URLSearchParams(location.search); ['t','p','q'].forEach(function(k){ keep.delete(k); });
+    history.replaceState({cdm:3,s:'adresse'},'',location.pathname+(keep.toString()?'?'+keep.toString():''));
     for(var j=1;j<=ord.indexOf(start);j++) history.pushState({cdm:3,s:ord[j]},'');
   }
   cur=start;
