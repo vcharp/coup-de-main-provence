@@ -25,7 +25,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Coup de Main Provence","description":"Ménage, préparation des repas et livraison de courses à domicile à Avignon, Cavaillon, Aix-en-Provence, Marseille et alentours","url":"https://coup-de-main-provence.vercel.app/","image":"https://coup-de-main-provence.vercel.app/img/og.jpg","telephone":"+33783578956","priceRange":"30 à 35 €/h, soit 15 à 17,50 €/h après crédit d'impôt","areaServed":["Avignon","Orange","Carpentras","Sorgues","Le Pontet","Châteaurenard","Tarascon","Beaucaire","Villeneuve-lès-Avignon","Vedène","Le Thor","Monteux","Cavaillon","L'Isle-sur-la-Sorgue","Marseille","Aix-en-Provence","Aubagne","Vitrolles","Marignane","Gardanne","Les Pennes-Mirabeau","Pertuis","Allauch","Bouc-Bel-Air","Trets","Cassis","Venelles","Éguilles"]}
 </script>
-<!-- Meta Pixel : chargé seulement après accord dans le bandeau cookies -->
+<!-- Meta Pixel : chargé d'office (choix de Victor, 02/11/2026), sauf si le visiteur l'a refusé dans « Gérer les cookies » -->
 <script>
 (function(){
   var v=null; try{ var c=JSON.parse(localStorage.getItem('cdm_consent')||'null'); if(c && Date.now()-c.t<182*864e5) v=c.v; }catch(e){}
@@ -35,7 +35,7 @@
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init','945702371856818'); fbq('track','PageView');
   };
-  if(v==='oui') window.cdmLoadPixel();
+  if(v!=='non') window.cdmLoadPixel();
 })();
 </script>
 <!-- Fin Meta Pixel -->
@@ -1008,7 +1008,7 @@
 })();
 </script>
 <div class="ck" id="ck" role="dialog" aria-label="Cookies" hidden>
-  <p><b>Cookies.</b> Avec votre accord, nous utilisons un traceur de Meta pour mesurer l'efficacité de nos publicités. Sans accord, rien n'est déposé. <a href="confidentialite.html">En savoir plus</a></p>
+  <p><b>Cookies.</b> Nous utilisons un traceur de Meta pour mesurer l'efficacité de nos publicités. Vous pouvez le refuser. <a href="confidentialite.html">En savoir plus</a></p>
   <div class="ck-btns"><button type="button" class="ck-b" data-ck="non">Refuser</button><button type="button" class="ck-b" data-ck="oui">Accepter</button></div>
 </div>
 <style>
@@ -1032,7 +1032,6 @@
     if(v==='non' && typeof window.fbq==='function'){ try{ fbq('consent','revoke'); }catch(e){} }
   }
   ck.addEventListener('click',function(e){ var b=e.target.closest('[data-ck]'); if(b) set(b.dataset.ck); });
-  if(window.cdmConsent==null) ck.hidden=false;
   document.querySelectorAll('[data-cookies]').forEach(function(b){ b.addEventListener('click',function(){ ck.hidden=false; }); });
 })();
 </script>

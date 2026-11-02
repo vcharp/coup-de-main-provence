@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://data.geopf.fr" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600..900&family=Inter:wght@400..700&display=swap" rel="stylesheet" />
-<!-- Meta Pixel : chargé seulement après accord dans le bandeau cookies -->
+<!-- Meta Pixel : chargé d'office (choix de Victor, 02/11/2026), sauf si le visiteur l'a refusé dans « Gérer les cookies » -->
 <script>
 (function(){
   var v=null; try{ var c=JSON.parse(localStorage.getItem('cdm_consent')||'null'); if(c && Date.now()-c.t<182*864e5) v=c.v; }catch(e){}
@@ -23,7 +23,7 @@
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init','945702371856818'); fbq('track','PageView');
   };
-  if(v==='oui') window.cdmLoadPixel();
+  if(v!=='non') window.cdmLoadPixel();
 })();
 </script>
 <!-- Fin Meta Pixel -->
@@ -1161,7 +1161,7 @@
 })();
 </script>
 <div class="ck" id="ck" role="dialog" aria-label="Cookies" hidden>
-  <p><b>Cookies.</b> Avec votre accord, nous utilisons un traceur de Meta pour mesurer l'efficacité de nos publicités. Sans accord, rien n'est déposé. <a href="confidentialite.html">En savoir plus</a></p>
+  <p><b>Cookies.</b> Nous utilisons un traceur de Meta pour mesurer l'efficacité de nos publicités. Vous pouvez le refuser. <a href="confidentialite.html">En savoir plus</a></p>
   <div class="ck-btns"><button type="button" class="ck-b" data-ck="non">Refuser</button><button type="button" class="ck-b" data-ck="oui">Accepter</button></div>
 </div>
 <style>
@@ -1185,7 +1185,6 @@
     if(v==='non' && typeof window.fbq==='function'){ try{ fbq('consent','revoke'); }catch(e){} }
   }
   ck.addEventListener('click',function(e){ var b=e.target.closest('[data-ck]'); if(b) set(b.dataset.ck); });
-  if(window.cdmConsent==null) ck.hidden=false;
   document.querySelectorAll('[data-cookies]').forEach(function(b){ b.addEventListener('click',function(){ ck.hidden=false; }); });
 })();
 </script>
