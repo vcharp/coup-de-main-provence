@@ -94,6 +94,9 @@
   .alt{margin:.9rem 0 0;padding-top:.9rem;border-top:1px solid var(--mist-100);display:flex;flex-direction:column;gap:.35rem;font-size:.92rem;color:var(--muted)}
   .alt a{font-weight:700}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .callbig{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-top:1rem;min-height:56px;border-radius:999px;background:#fff;border:2px solid var(--blue-500);color:var(--blue-700);font:800 1.12rem var(--ff-display);text-decoration:none;max-width:420px}
+  .callbig[hidden]{display:none}
+  .callbig svg{width:22px;height:22px}
   .done{text-align:center;padding:12px 4px 6px}
   .done .ok{width:72px;height:72px;margin:0 auto 1rem;border-radius:50%;background:var(--teal-100);display:grid;place-items:center}
   .done .ok svg{width:36px;height:36px;color:var(--teal-600)}
@@ -159,22 +162,23 @@
   <div class="wrap hero">
     <div class="grid">
       <div>
-        <span class="eyebrow">Pour vos parents · Avignon et Cavaillon</span>
-        <h1>Vos parents chez eux, <em>et vous rassuré</em></h1>
-        <p class="lead">On s'occupe de leur maison, de leurs repas cuisinés chez eux et de leurs courses. Une intervenante attitrée, et un compte rendu après chaque passage.</p>
+        <span class="eyebrow" data-moi="Chez vous · Avignon et Cavaillon">Pour vos parents · Avignon et Cavaillon</span>
+        <h1 data-moi="Ménage, repas et courses &lt;em&gt;chez vous&lt;/em&gt;">Vos parents chez eux, <em>et vous rassuré</em></h1>
+        <p class="lead" data-moi="Une intervenante attitrée vient chez vous&nbsp;: le ménage, vos repas cuisinés dans votre cuisine, vos courses faites et rangées. Toujours la même personne.">On s'occupe de leur maison, de leurs repas cuisinés chez eux et de leurs courses. Une intervenante attitrée, et un compte rendu après chaque passage.</p>
         <ul class="chips">
           <li><b>15&nbsp;€ de l'heure</b> après crédit d'impôt</li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg>Même non imposable</li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg>Sans engagement</li>
         </ul>
+        <a class="callbig" href="tel:+33783578956" data-contact data-moi-only hidden><svg aria-hidden="true"><use href="#i-phone"/></svg>Appelez-nous au 07 83 57 89 56</a>
       </div>
 
       <div class="card form" id="rappel">
         <div id="formBox">
           <h2>On vous rappelle</h2>
-          <p class="sub">Quatre réponses, puis on vous appelle pour comprendre leurs besoins et organiser le premier passage.</p>
+          <p class="sub" data-moi="Trois réponses, puis on vous appelle pour comprendre vos besoins et organiser le premier passage.">Quatre réponses, puis on vous appelle pour comprendre leurs besoins et organiser le premier passage.</p>
           <form id="f" novalidate>
-            <fieldset>
+            <fieldset data-parents-only>
               <legend id="lg-who">C'est pour…</legend>
               <div class="who" role="group" aria-labelledby="lg-who">
                 <button type="button" data-who="Ma mère" aria-pressed="false">Ma mère</button>
@@ -218,14 +222,14 @@
 
   <section class="band">
     <div class="wrap">
-      <h3 class="t">Ce qu'on fait chez eux</h3>
+      <h3 class="t" data-moi="Ce qu'on fait chez vous">Ce qu'on fait chez eux</h3>
       <div class="svc">
         <div class="card"><span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#1673c6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><line x1="70" y1="8" x2="46" y2="56"/><path d="M30 54 L60 62 L64 92 L16 84 Z" fill="#d9f2f5"/><path d="M28 70 L60 76" stroke-width="4"/></g></svg></span>
           <div><h4>Ménage</h4><p>Toutes les pièces, sols, sanitaires, cuisine et linge.</p></div></div>
         <div class="card"><span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#1673c6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 48 H82 V72 a14 14 0 0 1 -14 14 H32 a14 14 0 0 1 -14 -14 Z" fill="#d9f2f5"/><path d="M12 48 H88 M43 41 h14 M18 58 h-9 M82 58 h9"/><path d="M38 34 q-6 -7 0 -13 M54 34 q-6 -7 0 -13" stroke="#7fb2e0" stroke-width="4.5"/></g></svg></span>
-          <div><h4>Repas</h4><p>Cuisinés chez eux, pour la semaine, à leur goût.</p></div></div>
+          <div><h4>Repas</h4><p data-moi="Cuisinés chez vous, pour la semaine, à votre goût.">Cuisinés chez eux, pour la semaine, à leur goût.</p></div></div>
         <div class="card"><span class="ico"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#1673c6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M58 44 L74 10" stroke="#d99a4e" stroke-width="9"/><path d="M22 44 H78 L72 90 H28 Z" fill="#d9f2f5"/><path d="M38 44 V36 a12 12 0 0 1 24 0 V44" stroke-width="5"/></g></svg></span>
-          <div><h4>Courses</h4><p>Faites avec eux ou pour eux, et rangées dans les placards.</p></div></div>
+          <div><h4>Courses</h4><p data-moi="Faites avec vous ou pour vous, et rangées dans vos placards.">Faites avec eux ou pour eux, et rangées dans les placards.</p></div></div>
       </div>
     </div>
   </section>
@@ -233,7 +237,7 @@
   <section class="band" style="padding-top:0">
     <div class="wrap two">
       <div>
-        <h3 class="t">Vous savez ce qui a été fait</h3>
+        <h3 class="t" data-moi="Vos proches savent ce qui a été fait">Vous savez ce qui a été fait</h3>
         <div class="card notif" aria-label="Exemple de compte rendu">
           <div class="nh"><span><svg aria-hidden="true"><use href="#logo"/></svg>Coup de Main Provence</span><span>maintenant</span></div>
           <b>Compte rendu de jeudi</b>
@@ -244,21 +248,29 @@
           </ul>
         </div>
         <ul class="points" style="margin-top:1.1rem">
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Une intervenante attitrée, qui connaît leurs habitudes, et une remplaçante déjà présentée pour les absences.</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Vous restez notre interlocuteur, avec leur accord écrit. Jamais d'avis sur la santé.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-moi="Une intervenante attitrée, qui apprend vos habitudes, et une remplaçante déjà présentée pour les absences.">Une intervenante attitrée, qui connaît leurs habitudes, et une remplaçante déjà présentée pour les absences.</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span data-moi="Si vous le souhaitez, vos enfants reçoivent le compte rendu après chaque passage. Jamais d'avis sur la santé.">Vous restez notre interlocuteur, avec leur accord écrit. Jamais d'avis sur la santé.</span></li>
         </ul>
       </div>
       <div>
         <h3 class="t">Le prix, tout compris</h3>
         <div class="card price">
           <div class="row"><span>Une heure d'aide régulière</span><s>30&nbsp;€</s></div>
-          <div class="row"><span>Ce qu'ils paient, crédit d'impôt déduit</span><span class="big">15&nbsp;€</span></div>
-          <p>Le contrat est au nom de votre parent. Il touche le crédit d'impôt de 50&nbsp;% même s'il n'est pas imposable. Par exemple, deux passages de 2&nbsp;h par semaine reviennent à environ 260&nbsp;€ par mois après crédit d'impôt. Sans frais de déplacement, sans engagement.</p>
+          <div class="row"><span data-moi="Ce que vous payez, crédit d'impôt déduit">Ce qu'ils paient, crédit d'impôt déduit</span><span class="big">15&nbsp;€</span></div>
+          <p data-moi="Le contrat est à votre nom. Vous touchez le crédit d'impôt de 50&nbsp;% même si vous n'êtes pas imposable. Par exemple, deux passages de 2&nbsp;h par semaine reviennent à environ 260&nbsp;€ par mois après crédit d'impôt. Sans frais de déplacement, sans engagement.">Le contrat est au nom de votre parent. Il touche le crédit d'impôt de 50&nbsp;% même s'il n'est pas imposable. Par exemple, deux passages de 2&nbsp;h par semaine reviennent à environ 260&nbsp;€ par mois après crédit d'impôt. Sans frais de déplacement, sans engagement.</p>
         </div>
         <p class="note">Toilette, lever, compagnie ou heures financées par l'APA&nbsp;: ces services demandent un agrément que nous n'avons pas encore. On vous oriente alors vers un service autorisé.</p>
       </div>
     </div>
   </section>
+<script>
+/* ?pour=moi : la même page, à la 2e personne, pour les 65 ans et plus (ensemble Meta à part) */
+(function(){ if(new URLSearchParams(location.search).get('pour')!=='moi') return; window.CDM_POUR_MOI=true;
+  document.querySelectorAll('[data-moi]').forEach(function(e){ e.innerHTML=e.dataset.moi; });
+  document.querySelectorAll('[data-parents-only]').forEach(function(e){ e.hidden=true; });
+  document.querySelectorAll('[data-moi-only]').forEach(function(e){ e.hidden=false; });
+  document.title='Ménage, repas et courses chez vous à Avignon et Cavaillon | Coup de Main Provence'; })();
+</script>
 </main>
 
 <footer>
@@ -274,8 +286,8 @@
 <script>
 (function(){
   var $=function(id){ return document.getElementById(id); };
-  var Z=window.CDM_ZONE, who='', commenced=false, lastZone=null, sending=false;
-  function m(ev,p){ window.cdmMesure(ev,p); }
+  var MOI=!!window.CDM_POUR_MOI, Z=window.CDM_ZONE, who=MOI?'Moi-même':'', commenced=false, lastZone=null, sending=false;
+  function m(ev,p){ p=p||{}; p.variante=MOI?'moi':'parents'; window.cdmMesure(ev,p); }
 
   /* provenance : la même que le devis (sessionStorage cdm_src), recopiée dans le mail */
   var SRC={};
@@ -283,7 +295,7 @@
   try{ var qs=new URLSearchParams(location.search); ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ if(qs.get(k)) SRC[k]=qs.get(k); });
     if(Object.keys(SRC).length){ SRC.landing=location.pathname; sessionStorage.setItem('cdm_src',JSON.stringify(SRC)); } }catch(e){}
   /* le lien vers le devis garde les UTM de la pub */
-  try{ var dl=$('devisLink'), p=new URLSearchParams(location.search); p.set('q','parent'); dl.href='devis.html?'+p.toString(); }catch(e){}
+  try{ var dl=$('devisLink'), p=new URLSearchParams(location.search); p.delete('pour'); p.set('q',MOI?'moi':'parent'); dl.href='devis.html?'+p.toString(); }catch(e){}
 
   /* communes proposées : autour d'Avignon et de Cavaillon d'abord, puis Aix et Marseille */
   var names=Z.AVIGNON.concat(Z.AIX_MARSEILLE).map(function(c){ return c[0]; });
@@ -336,7 +348,7 @@
     var z=zoneOf(commune), zt= z.cls==='ok'? 'desservie' : (z.cls==='warn'? 'en limite' : 'à vérifier');
     var srcTxt=Object.keys(SRC).filter(function(k){ return k!=='fbclid' && k!=='landing'; }).map(function(k){ return k+'='+SRC[k]; }).join(', ');
     if(SRC.fbclid) srcTxt+=(srcTxt?', ':'')+'clic Meta';
-    var recap='Demande : être rappelé (page Pour vos parents)'
+    var recap='Demande : être rappelé (page '+(MOI?'Chez vous, pub 65 ans et plus':'Pour vos parents')+')'
       +'\nPour : '+who
       +'\nCommune : '+(z.cls==='ok'? z.lbl : commune)+' ('+zt+')'
       +'\nPrénom : '+prenom
@@ -345,7 +357,7 @@
       +'\nProvenance : '+(srcTxt||'directe ou inconnue');
     var fd=new FormData();
     fd.append('access_key','ccb01bd2-78c2-464c-a16b-1c4373caf243');
-    fd.append('subject','Rappel parents · '+prenom+' · '+(z.cls==='ok'? z.lbl : commune));
+    fd.append('subject',(MOI?'Rappel senior · ':'Rappel parents · ')+prenom+' · '+(z.cls==='ok'? z.lbl : commune));
     fd.append('from_name','Funnel Coup de Main Provence');
     fd.append('prénom',prenom);
     fd.append('téléphone',telPretty(tel));
